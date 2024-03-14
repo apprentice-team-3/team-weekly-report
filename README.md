@@ -78,6 +78,7 @@ TEAM WEEKLY REPORTでは、一週間を通してチーム内のメンバーの�
 - [Figjam ブレインストーミング](https://www.figma.com/file/HBNiNLmaQPbljILRmpGzg4/%E3%83%96%E3%83%AC%E3%82%A4%E3%83%B3%E3%82%B9%E3%83%88%E3%83%BC%E3%83%9F%E3%83%B3%E3%82%B0?type=whiteboard&node-id=0-1&t=xOrtzZ9IJClhMGrx-0)
 - [Figma ワイアーフレーム](https://www.figma.com/file/2lM4NdTUwWN4LQPMhQ3RYg/team-weekly-report?type=design&node-id=0-1&mode=design&t=g6ZounenW7Y9VEsu-0)
 - [canva](https://www.canva.com/design/DAF-DrhgPv8/IMTd2asvltNLsx_qR3f_KQ/edit)
+- [ガントチャート](https://docs.google.com/spreadsheets/d/1smK0GsQfyVPx66Foyk5vRdk7CFmL2-o6EbJq679zI7c/edit)
 
 ## 導入する環境
 
