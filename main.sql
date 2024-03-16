@@ -45,18 +45,13 @@ CREATE TABLE tasks (
     FOREIGN KEY (project_id) REFERENCES projects (id)
 );
 
-
-/* scoreの範囲は5段階？ 1~5 */
-
 CREATE TABLE comments (
-    task_user_id INT,
     task_id INT,
     user_id INT,
-    id INT,
+    task_user_id INT,
     comment TEXT NOT NULL,
-    score INT NOT NULL,
     created_at TIMESTAMP,
-    PRIMARY KEY (task_user_id, task_id, user_id, id),
+    PRIMARY KEY (task_id, user_id),
     FOREIGN KEY (task_user_id, task_id) REFERENCES tasks (user_id, id),
     FOREIGN KEY (user_id) REFERENCES users (id)
 );
@@ -69,14 +64,50 @@ CREATE TABLE comments (
 
 CREATE TABLE status_comments(
     user_id INT,
-    task_user_id INT,
     task_id INT,
     comment_user_id INT,
-    comment_id INT,
     isRead BOOLEAN DEFAULT FALSE,
     isCommented BOOLEAN DEFAULT FALSE,
-    PRIMARY KEY (user_id, task_user_id, task_id, comment_user_id, comment_id),
+    created_at TIMESTAMP,
+    PRIMARY KEY (user_id, task_id, comment_user_id),
     FOREIGN KEY (user_id) REFERENCES users (id),
-    FOREIGN KEY (task_user_id, task_id, comment_user_id, comment_id) REFERENCES comments (task_user_id, task_id, user_id, id)
+    FOREIGN KEY (task_id, comment_user_id) REFERENCES comments (task_id, user_id)
+);
+
+
+/*
+ name候補
+ コードの綺麗さ
+ 実装難易度
+ チーム貢献度
+ 報告のわかりやすさ
+ 実装速度
+
+ フロント
+ バック
+ データベース
+ 要件定義
+ WEBデザイン
+ */
+
+CREATE TABLE tags (
+    id INT PRIMARY KEY,
+    name VARCHAR(128) NOT NULL,
+    created_at TIMESTAMP
+);
+
+-- scoreは各人で初期値に+1ポイント持っておくようにする
+CREATE TABLE scores (
+    id INT,
+    task_id INT,
+    task_user_id INT,
+    user_id INT,
+    tag_name_id INT,
+    PRIMARY KEY (id, task_user_id, task_id, user_id, tag_name_id),
+    score INT DEFAULT 1 NOT NULL,
+    created_at TIMESTAMP,
+    Foreign Key (task_user_id, task_id) REFERENCES tasks (user_id, id),
+    Foreign Key (user_id) REFERENCES users (id),
+    Foreign Key (tag_name_id) REFERENCES tags(id)
 );
 
