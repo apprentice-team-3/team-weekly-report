@@ -78,6 +78,7 @@ CREATE TABLE task_status (
     user_id INT,
     task_id INT,
     status_id INT,
+    isStatus BOOLEAN DEFAULT FALSE,
     primary key (project_id, user_id, task_id, status_id),
     FOREIGN KEY (project_id, user_id, task_id) REFERENCES tasks (project_id, user_id, id),
     FOREIGN KEY (status_id) REFERENCES status (id)
