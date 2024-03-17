@@ -8,6 +8,7 @@ use team_weakly_report;
 progressは0~100で、100になったら完了とする
 tasksテーブルのprogressから集計する
  */
+
 CREATE TABLE projects (
     id INT PRIMARY KEY,
     title VARCHAR(128) NOT NULL,
@@ -15,6 +16,7 @@ CREATE TABLE projects (
     progress INT DEFAULT 0 NOT NULL,
     created_at TIMESTAMP
 );
+
 
 CREATE TABLE users (
     id INT PRIMARY KEY,
@@ -25,55 +27,75 @@ CREATE TABLE users (
     created_at TIMESTAMP
 );
 
-/*
-statusを設定することで、お気に入りのタスクだったり、救難信号だったり、新着コメントのあるタスクを区別する
- */
-
+CREATE TABLE user_project (
+    user_id INT,
+    project_id INT,
+    PRIMARY KEY (user_id, project_id),
+    FOREIGN KEY (user_id) REFERENCES users (id),
+    FOREIGN KEY (project_id) REFERENCES projects (id)
+);
 CREATE TABLE tasks (
+    project_id INT,
     user_id INT,
     id INT,
-    project_id INT,
     date DATE NOT NULL,
     learning_time INT NOT NULL,
     title VARCHAR(128) NOT NULL,
     content TEXT,
-    status VARCHAR(32) DEFAULT 'normal' NOT NULL,
     progress INT DEFAULT 0 NOT NULL,
     created_at TIMESTAMP,
-    PRIMARY KEY (user_id, id),
+    PRIMARY KEY (project_id, user_id, id),
     FOREIGN KEY (user_id) REFERENCES users (id),
     FOREIGN KEY (project_id) REFERENCES projects (id)
 );
 
-CREATE TABLE comments (
-    task_id INT,
-    user_id INT,
-    task_user_id INT,
-    comment TEXT NOT NULL,
-    created_at TIMESTAMP,
-    PRIMARY KEY (task_id, user_id),
-    FOREIGN KEY (task_user_id, task_id) REFERENCES tasks (user_id, id),
-    FOREIGN KEY (user_id) REFERENCES users (id)
-);
-
 /*
-    ユーザーがそのタスクを読んだか
-    ユーザーがそのタスクにコメントしたか
-    を管理するテーブル
+insert文が扱いやすいように各種状態のテーブルを作成しました。
  */
 
-CREATE TABLE status_comments(
-    user_id INT,
+CREATE TABLE completes (
+    project_id INT,
     task_id INT,
-    comment_user_id INT,
-    isRead BOOLEAN DEFAULT FALSE,
-    isCommented BOOLEAN DEFAULT FALSE,
+    task_user_id INT,
+    isCompleted BOOLEAN DEFAULT FALSE,
     created_at TIMESTAMP,
-    PRIMARY KEY (user_id, task_id, comment_user_id),
-    FOREIGN KEY (user_id) REFERENCES users (id),
-    FOREIGN KEY (task_id, comment_user_id) REFERENCES comments (task_id, user_id)
+    PRIMARY KEY (project_id, task_id, task_user_id),
+    FOREIGN KEY (project_id, task_user_id, task_id) REFERENCES tasks (project_id, user_id, id)
 );
 
+
+/*
+isCompletedがTRUEになると、isDangerをFALSEにする
+ */
+
+CREATE TABLE dangers(
+    project_id INT,
+    task_id INT,
+    task_user_id INT,
+    isDanger BOOLEAN DEFAULT FALSE,
+    created_at TIMESTAMP,
+    PRIMARY KEY (project_id, task_id, task_user_id),
+    FOREIGN KEY (project_id, task_user_id, task_id) REFERENCES tasks (project_id, user_id, id)
+);
+
+
+/*
+メンバーのタスク評価項目を全て完了するとevaluationsテーブルに1行追加する
+プロジェクトに参加しているユーザーの総数分をuser_projectテーブルから取得する。
+evaluationsテーブルを使って、タスクの評価が完了したユーザーの総数を取得する
+evaluations評価が完了すると、isEvaluationをTRUEにする
+ */
+
+CREATE TABLE evaluations(
+    project_id INT,
+    task_user_id INT,
+    task_id INT,
+    user_id INT,
+    created_at TIMESTAMP,
+    PRIMARY KEY (project_id, task_user_id, task_id, user_id),
+    FOREIGN KEY (project_id, task_user_id, task_id) REFERENCES tasks (project_id, user_id, id),
+    FOREIGN KEY (user_id) REFERENCES users (id)
+);
 
 /*
  name候補
@@ -96,18 +118,83 @@ CREATE TABLE tags (
     created_at TIMESTAMP
 );
 
+/*
+evaluation_tagsテーブルを使って、評価して欲しいタスクを設定する
+
+ */
+CREATE TABLE evaluation_tags(
+    project_id INT,
+    task_user_id INT,
+    task_id INT,
+    tag_name_id INT,
+    PRIMARY KEY (project_id, task_user_id, task_id, tag_name_id),
+    FOREIGN KEY (project_id, task_user_id, task_id) REFERENCES tasks (project_id, user_id, id),
+    FOREIGN KEY (tag_name_id) REFERENCES tags(id)
+);
+
 -- scoreは各人で初期値に+1ポイント持っておくようにする
+
+/*
+evaluationsテーブルのisEvaluationがTRUEにする条件
+メンバー全員が評価を完了した場合
+レコード数がプロジェクトメンバーの数 * 3以上になっている
+ */
+
 CREATE TABLE scores (
-    id INT,
+    project_id INT,
     task_id INT,
     task_user_id INT,
     user_id INT,
     tag_name_id INT,
-    PRIMARY KEY (id, task_user_id, task_id, user_id, tag_name_id),
+    PRIMARY KEY (project_id, task_user_id, task_id, user_id, tag_name_id),
     score INT DEFAULT 1 NOT NULL,
     created_at TIMESTAMP,
-    Foreign Key (task_user_id, task_id) REFERENCES tasks (user_id, id),
+    Foreign Key (project_id, task_user_id, task_id) REFERENCES tasks (project_id, user_id, id),
     Foreign Key (user_id) REFERENCES users (id),
     Foreign Key (tag_name_id) REFERENCES tags(id)
 );
 
+
+/*
+以降はadvanced
+ */
+
+CREATE TABLE comments (
+    project_id INT,
+    task_user_id INT,
+    task_id INT,
+    user_id INT,
+    comment TEXT NOT NULL,
+    created_at TIMESTAMP,
+    PRIMARY KEY (project_id, task_user_id, task_id, user_id),
+    FOREIGN KEY (project_id, task_user_id, task_id) REFERENCES tasks (project_id, user_id, id),
+    FOREIGN KEY (user_id) REFERENCES users (id)
+);
+
+/*
+    ユーザーがそのタスクを読んだか
+    ユーザーがそのタスクにコメントしたか
+    を管理するテーブル
+ */
+
+/*
+
+ユーザーがタスク詳細画面に訪れたか
+commentしたユーザーがいてかつ,isReadがFALSEの場合のみ
+newsテーブルのisNewをTRUEにする
+
+user_idはそのタスク詳細画面に訪れたユーザー
+ */
+
+CREATE TABLE is_read_comment(
+    project_id INT,
+    task_user_id INT,
+    task_id INT,
+    comment_user_id INT,
+    user_id INT,
+    isRead BOOLEAN DEFAULT FALSE,
+    created_at TIMESTAMP,
+    PRIMARY KEY (project_id, task_user_id, task_id, comment_user_id, user_id),
+    FOREIGN KEY (project_id, task_user_id, task_id, comment_user_id) REFERENCES comments (project_id, task_user_id, task_id, user_id),
+    FOREIGN KEY (user_id) REFERENCES users (id)
+);
