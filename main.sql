@@ -27,6 +27,12 @@ CREATE TABLE users (
     created_at TIMESTAMP
 );
 
+/*
+advanced
+そのプロジェクトに誰が参加しているかを管理するテーブル
+評価が完了したかを調べるために使う
+今回はusersテーブルの総数でも代用できるためadvanced
+ */
 CREATE TABLE user_project (
     user_id INT,
     project_id INT,
@@ -81,7 +87,7 @@ CREATE TABLE dangers(
 
 /*
 メンバーのタスク評価項目を全て完了するとevaluationsテーブルに1行追加する
-プロジェクトに参加しているユーザーの総数分をuser_projectテーブルから取得する。
+ユーザーの総数を取得し
 evaluationsテーブルを使って、タスクの評価が完了したユーザーの総数を取得する
 evaluations評価が完了すると、isEvaluationをTRUEにする
  */
