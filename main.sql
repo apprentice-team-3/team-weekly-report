@@ -40,6 +40,9 @@ CREATE TABLE user_project (
     FOREIGN KEY (user_id) REFERENCES users (id),
     FOREIGN KEY (project_id) REFERENCES projects (id)
 );
+
+
+
 CREATE TABLE tasks (
     project_id INT,
     user_id INT,
@@ -55,35 +58,30 @@ CREATE TABLE tasks (
     FOREIGN KEY (project_id) REFERENCES projects (id)
 );
 
-/*
-insert文が扱いやすいように各種状態のテーブルを作成しました。
- */
-
-CREATE TABLE completes (
-    project_id INT,
-    task_id INT,
-    task_user_id INT,
-    isCompleted BOOLEAN DEFAULT FALSE,
-    created_at TIMESTAMP,
-    PRIMARY KEY (project_id, task_id, task_user_id),
-    FOREIGN KEY (project_id, task_user_id, task_id) REFERENCES tasks (project_id, user_id, id)
-);
-
 
 /*
-isCompletedがTRUEになると、isDangerをFALSEにする
+statusテーブル name候補
+normal
+danger
+completed
+pending : 評価待ち
+evaluated
  */
-
-CREATE TABLE dangers(
-    project_id INT,
-    task_id INT,
-    task_user_id INT,
-    isDanger BOOLEAN DEFAULT FALSE,
-    created_at TIMESTAMP,
-    PRIMARY KEY (project_id, task_id, task_user_id),
-    FOREIGN KEY (project_id, task_user_id, task_id) REFERENCES tasks (project_id, user_id, id)
+CREATE TABLE status(
+    id INT PRIMARY KEY,
+    name VARCHAR(128) NOT NULL,
+    created_at TIMESTAMP
 );
 
+CREATE TABLE task_status (
+    project_id INT,
+    user_id INT,
+    task_id INT,
+    status_id INT,
+    primary key (project_id, user_id, task_id, status_id),
+    FOREIGN KEY (project_id, user_id, task_id) REFERENCES tasks (project_id, user_id, id),
+    FOREIGN KEY (status_id) REFERENCES status (id)
+);
 
 /*
 メンバーのタスク評価項目を全て完了するとevaluationsテーブルに1行追加する
@@ -187,7 +185,6 @@ CREATE TABLE comments (
 
 ユーザーがタスク詳細画面に訪れたか
 commentしたユーザーがいてかつ,isReadがFALSEの場合のみ
-newsテーブルのisNewをTRUEにする
 
 user_idはそのタスク詳細画面に訪れたユーザー
  */
