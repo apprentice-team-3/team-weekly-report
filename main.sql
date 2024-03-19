@@ -96,6 +96,7 @@ CREATE TABLE evaluations(
     task_user_id INT,
     task_id INT,
     user_id INT,
+    isEvaluated BOOLEAN DEFAULT FALSE,
     created_at TIMESTAMP,
     PRIMARY KEY (project_id, task_user_id, task_id, user_id),
     FOREIGN KEY (project_id, task_user_id, task_id) REFERENCES tasks (project_id, user_id, id),
