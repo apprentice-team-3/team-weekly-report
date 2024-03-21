@@ -211,7 +211,7 @@ INSERT INTO users (id, name, email, password, avatar_url) VALUES
 (4, 'Ryunosuke Matsuoka', 'ryuunosukematsuoka@gmail.com', 'password', '');
 
 INSERT INTO projects (id, title, content, created_at) VALUES
-(1, 'TEAM WEEKLY REPORT', 'TEAM WEEKLY REPORTの内容', concat( date_sub(current_date(), interval 120 day))),
+(1, '僕らのプロジェクト', '僕らのプロジェクトの内容', concat( date_sub(current_date(), interval 120 day))),
 (2, 'プロジェクト2', 'プロジェクト2の内容', concat( date_sub(current_date(), interval 120 day))),
 (3, 'プロジェクト3', 'プロジェクト3の内容', concat( date_sub(current_date(), interval 120 day))),
 (4, 'プロジェクト4', 'プロジェクト4の内容', concat( date_sub(current_date(), interval 120 day)));
