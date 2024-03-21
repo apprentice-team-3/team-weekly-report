@@ -3,3 +3,15 @@ INSERT INTO users (id, name, email, password, avatar_url) VALUES
 (2, 'gintoki', 'gintoki@gmail.com', 'password', ''),
 (3, 'ryumasann', 'ryuumasann@gmail.com', 'password', ''),
 (4, 'Ryunosuke Matsuoka', 'ryuunosukematsuoka@gmail.com', 'password', '');
+
+INSERT INTO tags (id, name) VALUES
+(1, 'コードの綺麗さ'),
+(2, '実装難易度'),
+(3, 'チーム貢献度'),
+(4, '報告のわかりやすさ'),
+(5, '実装速度'),
+(6, 'フロント'),
+(7, 'バック'),
+(8, 'データベース'),
+(9, '要件定義'),
+(10, 'WEBデザイン');
