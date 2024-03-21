@@ -4,10 +4,9 @@ INSERT INTO users (id, name, email, password, avatar_url) VALUES
 (3, 'ryumasann', 'ryuumasann@gmail.com', 'password', ''),
 (4, 'Ryunosuke Matsuoka', 'ryuunosukematsuoka@gmail.com', 'password', '');
 
--- pending : 評価待ち
+-- pending : 評価待ち、タスクの完了 = 評価待ち状態
 INSERT INTO status (id, name) VALUES
 (1, 'normal'),
 (2, 'danger'),
-(3, 'completed'),
-(4, 'pending'),
-(5, 'evaluated');
+(3, 'pending'),
+(4, 'evaluated');

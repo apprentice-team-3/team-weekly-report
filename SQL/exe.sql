@@ -213,6 +213,5 @@ INSERT INTO users (id, name, email, password, avatar_url) VALUES
 INSERT INTO status (id, name) VALUES
 (1, 'normal'),
 (2, 'danger'),
-(3, 'completed'),
-(4, 'pending'),
-(5, 'evaluated');
+(3, 'pending'),
+(4, 'evaluated');
