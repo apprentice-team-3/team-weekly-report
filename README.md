@@ -100,6 +100,8 @@ TEAM WEEKLY REPORTでは、一週間を通してチーム内のメンバーの�
 ## 資料
 - [日報ジェネレーターgithub](https://github.com/YNSTakeru/nippou)
 - [Figjam ブレインストーミング](https://www.figma.com/file/HBNiNLmaQPbljILRmpGzg4/%E3%83%96%E3%83%AC%E3%82%A4%E3%83%B3%E3%82%B9%E3%83%88%E3%83%BC%E3%83%9F%E3%83%B3%E3%82%B0?type=whiteboard&node-id=0-1&t=xOrtzZ9IJClhMGrx-0)
+- [画面遷移図](https://www.figma.com/file/ykH6v9Pb38mgeLfxPi8efe/%E7%94%BB%E9%9D%A2%E9%81%B7%E7%A7%BB%E5%9B%B3?type=design&node-id=0-1&mode=design&t=I9o4KxaUTOZHPsMR-0)
+    - こちらを参照して作成していく
 - [Figma ワイアーフレーム](https://www.figma.com/file/2lM4NdTUwWN4LQPMhQ3RYg/team-weekly-report?type=design&node-id=0-1&mode=design&t=g6ZounenW7Y9VEsu-0)
 - [canva](https://www.canva.com/design/DAF-DrhgPv8/IMTd2asvltNLsx_qR3f_KQ/edit)
 - [ガントチャート](https://docs.google.com/spreadsheets/d/1smK0GsQfyVPx66Foyk5vRdk7CFmL2-o6EbJq679zI7c/edit)
