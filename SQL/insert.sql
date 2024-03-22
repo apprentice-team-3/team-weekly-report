@@ -10,3 +10,10 @@ INSERT INTO status (id, name) VALUES
 (2, 'danger'),
 (3, 'pending'),
 (4, 'evaluated');
+
+INSERT INTO tags (id, name) VALUES
+(1, 'コードの綺麗さ'),
+(2, '実装難易度'),
+(3, 'チーム貢献度'),
+(4, '報告のわかりやすさ'),
+(5, '実装速度');
