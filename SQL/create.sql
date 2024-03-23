@@ -1,5 +1,5 @@
 -- 2回目以降コメントアウトして実行するとデバッグが楽になります
--- drop database team_weakly_report;
+drop database team_weakly_report;
 
 create database team_weakly_report;
 use team_weakly_report;
@@ -64,6 +64,7 @@ CREATE TABLE child_tasks (
     project_id INT,
     user_id INT,
     parent_task_id INT,
+    id INT,
     title VARCHAR(128) NOT NULL,
     content TEXT,
     progress INT DEFAULT 0 NOT NULL,
@@ -90,11 +91,12 @@ CREATE TABLE status(
 CREATE TABLE task_status (
     project_id INT,
     user_id INT,
+    parent_task_id INT,
     task_id INT,
     status_id INT,
     isStatus BOOLEAN DEFAULT FALSE,
     primary key (project_id, user_id, task_id, status_id),
-    FOREIGN KEY (project_id, user_id, task_id) REFERENCES child_tasks (project_id, user_id, parent_task_id, id),
+    FOREIGN KEY (project_id, user_id, parent_task_id,task_id) REFERENCES child_tasks (project_id, user_id, parent_task_id, id),
     FOREIGN KEY (status_id) REFERENCES status (id)
 );
 
@@ -112,13 +114,12 @@ evaluationsテーブルのisEvaluationがTRUEにする条件
 CREATE TABLE evaluations(
     project_id INT,
     task_user_id INT,
+    parent_task_id INT,
     task_id INT,
     user_id INT,
-    isEvaluated BOOLEAN DEFAULT FALSE,
-    comment VARCHAR(255),
     created_at TIMESTAMP,
-    PRIMARY KEY (project_id, task_user_id, task_id, user_id),
-    FOREIGN KEY (project_id, user_id, task_id) REFERENCES child_tasks (project_id, user_id, parent_task_id, id),
+    PRIMARY KEY (project_id, task_user_id, parent_task_id, task_id, user_id),
+    FOREIGN KEY (project_id, user_id, parent_task_id, task_id) REFERENCES child_tasks (project_id, user_id, parent_task_id, id),
     FOREIGN KEY (user_id) REFERENCES users (id)
 );
 
@@ -145,15 +146,18 @@ CREATE TABLE tags (
 
 /*
 evaluation_tagsテーブルを使って、評価して欲しいタスクを設定する
-
  */
 CREATE TABLE evaluation_tags(
     project_id INT,
     task_user_id INT,
+    parent_task_id INT,
     task_id INT,
+    user_id INT,
     tag_name_id INT,
-    PRIMARY KEY (project_id, task_user_id, task_id, tag_name_id),
-    FOREIGN KEY (project_id, user_id, task_id) REFERENCES child_tasks (project_id, user_id, parent_task_id, id),
+    isEvaluated BOOLEAN DEFAULT FALSE,
+    comment VARCHAR(255),
+    PRIMARY KEY (project_id, task_user_id, parent_task_id, task_id, user_id, tag_name_id),
+    FOREIGN KEY (project_id, task_user_id, parent_task_id, task_id, user_id) REFERENCES evaluations (project_id, task_user_id, parent_task_id, task_id, user_id),
     FOREIGN KEY (tag_name_id) REFERENCES tags(id)
 );
 
