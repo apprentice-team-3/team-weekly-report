@@ -102,13 +102,7 @@ CREATE TABLE task_status (
 
 
 /*
-メンバーのタスク評価項目を全て完了するとevaluationsテーブルに1行追加する
-ユーザーの総数を取得し
-evaluationsテーブルを使って、タスクの評価が完了したユーザーの総数を取得する
-evaluations評価が完了すると、isEvaluationをTRUEにする
-
-evaluationsテーブルのisEvaluationがTRUEにする条件
-メンバー全員が評価を完了した場合
+evaluationsテーブルはevaluation_tagsと紐付けるために使用
  */
 
 CREATE TABLE evaluations(
@@ -119,7 +113,7 @@ CREATE TABLE evaluations(
     user_id INT,
     created_at TIMESTAMP,
     PRIMARY KEY (project_id, task_user_id, parent_task_id, task_id, user_id),
-    FOREIGN KEY (project_id, user_id, parent_task_id, task_id) REFERENCES child_tasks (project_id, user_id, parent_task_id, id),
+    FOREIGN KEY (project_id, task_user_id, parent_task_id, task_id) REFERENCES child_tasks (project_id, user_id, parent_task_id, id),
     FOREIGN KEY (user_id) REFERENCES users (id)
 );
 
