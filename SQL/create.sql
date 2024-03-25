@@ -1,8 +1,8 @@
 -- 2回目以降コメントアウトして実行するとデバッグが楽になります
-drop database team_weakly_report;
+drop database team_weekly_report;
 
-create database team_weakly_report;
-use team_weakly_report;
+create database team_weekly_report;
+use team_weekly_report;
 
 /*
 progressは0~100で、100になったら完了とする
