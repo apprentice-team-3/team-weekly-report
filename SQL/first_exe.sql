@@ -280,3 +280,24 @@ set @s_project_id = 1;
 -- 親タスクを集計してプロジェクト全体の進捗を出す
 SELECT  @s_project_progress := (sum(progress) / (count(progress) * 100)) FROM parent_tasks t where project_id = @s_project_id;
 UPDATE projects SET progress = @s_project_progress WHERE id = @s_project_id;
+
+INSERT INTO task_status (project_id, user_id, parent_task_id, task_id, status_id) VALUES
+(1, 1, 1, 1, 3),
+(1, 1, 1, 2, 1),
+(1, 1, 1, 3, 1),
+(1, 2, 2, 4, 3),
+(1, 2, 2, 5, 3),
+(1, 3, 3, 6, 3),
+(1, 3, 3, 7, 1),
+(1, 3, 3, 8, 1),
+(1, 4, 4, 9, 3),
+(1, 4, 4, 10, 3),
+(1, 1, 5, 11, 3),
+(1, 1, 5, 12, 3),
+(1, 1, 5, 13, 3),
+(1, 2, 6, 14, 1),
+(1, 2, 6, 15, 1),
+(1, 3, 7, 16, 3),
+(1, 3, 7, 17, 3),
+(1, 4, 8, 18, 3),
+(1, 4, 8, 19, 1);
