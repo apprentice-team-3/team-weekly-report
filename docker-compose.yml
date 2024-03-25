@@ -1,4 +1,4 @@
-version: '3'
+version: "3"
 services:
   php:
     container_name: php
@@ -6,6 +6,7 @@ services:
       context: .
       dockerfile: ./php/Dockerfile
     volumes:
+      - ./php/php.ini:/usr/local/etc/php/php.ini
       - ./src:/var/www/html
     ports:
       - 8080:80
