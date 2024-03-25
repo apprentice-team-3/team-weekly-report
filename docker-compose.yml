@@ -15,13 +15,16 @@ services:
 
   mysql:
     container_name: mysql
+    command: mysqld --character-set-server=utf8 --collation-server=utf8_unicode_ci
     image: mysql:5.7
     environment:
       MYSQL_ROOT_PASSWORD: root
       MYSQL_DATABASE: mydb
       MYSQL_USER: myuser
       MYSQL_PASSWORD: mypassword
+      TZ: Asia/Tokyo
     volumes:
       - ./mysql/data:/var/lib/mysql
+      - ./my.cnf:/etc/mysql/conf.d/my.cnf
     ports:
       - 3306:3306

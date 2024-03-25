@@ -13,7 +13,7 @@ $conn = new PDO("mysql:host={$host};dbname={$dbName};", $user, $pwd);
 
 // 連想配列で取得するように設定
 $conn->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_ASSOC);
-$pst = $conn->query('select * from users');
+$pst = $conn->query('select * from projects');
 $result = $pst->fetchAll();
 
 echo "<pre>";
