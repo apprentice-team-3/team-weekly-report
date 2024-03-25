@@ -119,7 +119,7 @@ CREATE TABLE evaluations(
     user_id INT,
     created_at TIMESTAMP,
     PRIMARY KEY (project_id, task_user_id, parent_task_id, task_id, user_id),
-    FOREIGN KEY (project_id, user_id, parent_task_id, task_id) REFERENCES child_tasks (project_id, user_id, parent_task_id, id),
+    FOREIGN KEY (project_id, task_user_id, parent_task_id, task_id) REFERENCES child_tasks (project_id, user_id, parent_task_id, id),
     FOREIGN KEY (user_id) REFERENCES users (id)
 );
 

@@ -119,7 +119,7 @@ CREATE TABLE evaluations(
     user_id INT,
     created_at TIMESTAMP,
     PRIMARY KEY (project_id, task_user_id, parent_task_id, task_id, user_id),
-    FOREIGN KEY (project_id, user_id, parent_task_id, task_id) REFERENCES child_tasks (project_id, user_id, parent_task_id, id),
+    FOREIGN KEY (project_id, task_user_id, parent_task_id, task_id) REFERENCES child_tasks (project_id, user_id, parent_task_id, id),
     FOREIGN KEY (user_id) REFERENCES users (id)
 );
 
@@ -308,3 +308,37 @@ INSERT INTO task_status (project_id, user_id, parent_task_id, task_id, status_id
 (1, 3, 7, 17, 3),
 (1, 4, 8, 18, 3),
 (1, 4, 8, 19, 1);
+
+INSERT INTO evaluations (project_id, task_user_id, parent_task_id, task_id, user_id) VALUES
+(1, 1, 1, 1, 2),
+(1, 1, 1, 1, 3),
+(1, 1, 1, 1, 4),
+(1, 2, 2, 4, 1),
+(1, 2, 2, 4, 3),
+(1, 2, 2, 4, 4),
+(1, 2, 2, 5, 1),
+(1, 2, 2, 5, 3),
+(1, 3, 3, 6, 1),
+(1, 3, 3, 6, 3),
+(1, 4, 4, 9, 2),
+(1, 4, 4, 9, 3),
+(1, 4, 4, 9, 1),
+(1, 4, 4, 10, 1),
+(1, 4, 4, 10, 2),
+(1, 1, 5, 11, 2),
+(1, 1, 5, 11, 3),
+(1, 1, 5, 11, 4),
+(1, 1, 5, 12, 2),
+(1, 1, 5, 12, 3),
+(1, 1, 5, 12, 4),
+(1, 1, 5, 13, 2),
+(1, 1, 5, 13, 3),
+(1, 1, 5, 13, 4),
+(1, 3, 7, 16, 1),
+(1, 3, 7, 16, 2),
+(1, 3, 7, 16, 4),
+(1, 3, 7, 17, 1),
+(1, 3, 7, 17, 4),
+(1, 4, 8, 18, 1),
+(1, 4, 8, 18, 2),
+(1, 4, 8, 18, 3);
