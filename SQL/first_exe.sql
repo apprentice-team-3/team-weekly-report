@@ -13,7 +13,7 @@ CREATE TABLE projects (
     id INT PRIMARY KEY,
     title VARCHAR(128) NOT NULL,
     content TEXT NOT NULL,
-    progress INT DEFAULT 0 NOT NULL,
+    progress FLOAT DEFAULT 0 NOT NULL,
     created_at TIMESTAMP
 );
 
@@ -50,7 +50,7 @@ CREATE TABLE parent_tasks (
     user_id INT,
     id INT,
     title VARCHAR(128) NOT NULL,
-    progress INT DEFAULT 0 NOT NULL,
+    progress FLOAT DEFAULT 0 NOT NULL,
     created_at TIMESTAMP,
     PRIMARY KEY (project_id, user_id, id),
     FOREIGN KEY (user_id) REFERENCES users (id),
@@ -67,7 +67,7 @@ CREATE TABLE child_tasks (
     id INT,
     title VARCHAR(128) NOT NULL,
     content TEXT,
-    progress INT DEFAULT 0 NOT NULL,
+    progress FLOAT DEFAULT 0 NOT NULL,
     created_at TIMESTAMP,
     PRIMARY KEY (project_id, user_id, parent_task_id, id),
     FOREIGN KEY (project_id, user_id, parent_task_id) REFERENCES parent_tasks (project_id, user_id, id)
