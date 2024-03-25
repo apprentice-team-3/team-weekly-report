@@ -68,7 +68,7 @@ INSERT INTO child_tasks (project_id, user_id, parent_task_id, id, title, content
 (1, 4, 8, 18, '登録画面を作成', '', 100),
 (1, 4, 8, 19, '通信を暗号化する', '暗号化!!', 80);
 
-INSERT INTO task_status (project_id, user_id, parent_task_id, child_task_id, status_id) VALUES
+INSERT INTO task_status (project_id, user_id, parent_task_id, task_id, status_id) VALUES
 (1, 1, 1, 1, 3),
 (1, 1, 1, 2, 1),
 (1, 1, 1, 3, 1),
@@ -87,4 +87,4 @@ INSERT INTO task_status (project_id, user_id, parent_task_id, child_task_id, sta
 (1, 3, 7, 16, 3),
 (1, 3, 7, 17, 3),
 (1, 4, 8, 18, 3),
-(1, 4, 8, 19, 1),
+(1, 4, 8, 19, 1);
