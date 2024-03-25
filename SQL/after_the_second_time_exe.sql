@@ -277,6 +277,13 @@ INSERT INTO child_tasks (project_id, user_id, parent_task_id, id, title, content
 -- 初期設定
 set @s_project_id = 1;
 
+-- 子タスクを集計して親タスクの進捗を出す
+SELECT  @s_parent_progress := (sum(progress) / (count(progress) * 100)) FROM child_tasks t where project_id = @s_project_id;
+
+-- 親タスクの進捗を更新
+UPDATE parent_tasks SET progress = @s_parent_progress WHERE project_id = @s_project_id;
+
+
 -- 親タスクを集計してプロジェクト全体の進捗を出す
 SELECT  @s_project_progress := (sum(progress) / (count(progress) * 100)) FROM parent_tasks t where project_id = @s_project_id;
 UPDATE projects SET progress = @s_project_progress WHERE id = @s_project_id;
