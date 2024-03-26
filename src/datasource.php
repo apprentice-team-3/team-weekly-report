@@ -13,8 +13,9 @@ class DataSource
 
     public function __construct($host = "mysql", $dbName = "team_weekly_report", $username = "root", $password = "root")
     {
-
+        // DBに接続する
         $dsn = "mysql:host={$host};dbname={$dbName};port=3306;";
+        // 先にフィックス
         $this->conn = new PDO($dsn, $username, $password);
 
         $this->conn->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_ASSOC);
