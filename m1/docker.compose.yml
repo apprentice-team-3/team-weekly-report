@@ -1,0 +1,25 @@
+version: "3"
+services:
+  php:
+    container_name: php
+    build:
+      context: .
+      dockerfile: ./php/Dockerfile
+    volumes:
+      - ./php/php.ini:/usr/local/etc/php/php.ini
+      - ./src:/var/www/html
+    ports:
+      - 8080:80
+    depends_on:
+      - mysql
+
+  mysql:
+    container_name: mysql
+    build:
+      context: .
+      dockerfile: ./php/Dockerfile
+    volumes:
+      - ./mysql/data:/var/lib/mysql
+      - ./conf.d/:/etc/mysql/conf.d/
+    ports:
+      - 3306:3306
