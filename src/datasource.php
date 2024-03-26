@@ -18,6 +18,8 @@ class DataSource
         // 先にフィックス
         $this->conn = new PDO($dsn, $username, $password);
 
+        // わー
+
         $this->conn->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_ASSOC);
         $this->conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
         $this->conn->setAttribute(PDO::ATTR_EMULATE_PREPARES, false);
@@ -64,14 +66,10 @@ class DataSource
         $this->conn->rollback();
     }
 
-    private function executeSql($sql, $params)
+
+    private function newStatement($sql = "")
     {
-        $stmt = $this->conn->prepare($sql);
-        $this->sqlResult = $stmt->execute($params);
-        return $stmt;
+        return $this->conn->prepare($sql);
     }
 
-    private function newAAA(){
-
-    }
 }
