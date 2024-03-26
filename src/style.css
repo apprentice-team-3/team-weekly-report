@@ -41,6 +41,7 @@ header nav li a {
   color: black;
 }
 
+<<<<<<< HEAD
 /* ページネーション */
 .pagination-nav {
   position: fixed;
@@ -73,4 +74,16 @@ header nav li a {
 
 .pagination li a:hover {
   background-color: rgb(215, 215, 99);
+=======
+.container {
+  display: flex;
+  background-color: green;
+  margin: 200px 30px 100px;
+}
+
+.container div {
+  width: 50%;
+  height: 50%;
+  margin: .8rem;
+>>>>>>> 5f3192c (2行2列の領域に分割するHTMLを作成)
 }

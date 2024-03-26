@@ -1,4 +1,4 @@
-version: "3"
+version: '3'
 services:
   php:
     container_name: php
@@ -6,7 +6,6 @@ services:
       context: .
       dockerfile: ./php/Dockerfile
     volumes:
-      - ./php/php.ini:/usr/local/etc/php/php.ini
       - ./src:/var/www/html
     ports:
       - 8080:80
@@ -15,16 +14,13 @@ services:
 
   mysql:
     container_name: mysql
-    command: mysqld --character-set-server=utf8 --collation-server=utf8_unicode_ci
-    image: mysql:5.7
+    image: mysql:8-oracle
     environment:
       MYSQL_ROOT_PASSWORD: root
       MYSQL_DATABASE: mydb
       MYSQL_USER: myuser
       MYSQL_PASSWORD: mypassword
-      TZ: Asia/Tokyo
     volumes:
       - ./mysql/data:/var/lib/mysql
-      - ./my.cnf:/etc/mysql/conf.d/my.cnf
     ports:
       - 3306:3306
