@@ -1,3 +1,3 @@
 <?php
-include __DIR__ . '/header.php';
-echo "評価一覧画面";
+$title = '評価一覧';
+include __DIR__ . '/layout.php';
