@@ -83,13 +83,12 @@ header nav li a {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
-    margin-top: 50px;
     gap: 20px;
 
-    > div {
+    >div {
       width: calc(50% - 20px);
       height: 250px;
-      background-color: green;
+      background-color: rgb(6, 71, 6);
     }
   }
 
@@ -97,14 +96,15 @@ header nav li a {
     display: flex;
     justify-content: space-between;
     align-items: baseline;
-    padding-top: 40px;
+    padding: 10px 10px 10px;
 
     .evaluation__week__user__name {
-      font-size: 48px;
+      font-size: 2rem;
       font-weight: bold;
     }
+
     .evaluation__project__name {
-      font-size: 30px;
+      font-size: 1.3rem;
       font-weight: bold;
       height: content-fit;
     }
