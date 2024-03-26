@@ -1,3 +1,4 @@
 <?php
 $title = 'メンバータスク一覧';
-include __DIR__ . '/layout.php';
+$content = __DIR__ . '/views/member-task.php';
+include __DIR__ . '/views/layout.php';
