@@ -83,10 +83,9 @@ header nav li a {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
-    margin-top: 50px;
     gap: 20px;
 
-    > div {
+    >div {
       width: calc(50% - 20px);
       height: 250px;
       background-color: rgb(6, 71, 6);
@@ -103,6 +102,7 @@ header nav li a {
       font-size: 2rem;
       font-weight: bold;
     }
+
     .evaluation__project__name {
       font-size: 1.3rem;
       font-weight: bold;
