@@ -15,6 +15,7 @@ class DataSource
     {
         // DBに接続する
         $dsn = "mysql:host={$host};dbname={$dbName};port=3306;";
+        // 先にフィックス
         $this->conn = new PDO($dsn, $username, $password);
 
         $this->conn->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_ASSOC);
