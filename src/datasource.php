@@ -37,6 +37,7 @@ class DataSource
 
     public function execute($sql = "", $params = [])
     {
+        // 実行
         $this->executeSql($sql, $params);
         return  $this->sqlResult;
     }
