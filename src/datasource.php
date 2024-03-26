@@ -13,7 +13,7 @@ class DataSource
 
     public function __construct($host = "mysql", $dbName = "team_weekly_report", $username = "root", $password = "root")
     {
-
+        // DBに接続する
         $dsn = "mysql:host={$host};dbname={$dbName};port=3306;";
         $this->conn = new PDO($dsn, $username, $password);
 
