@@ -69,8 +69,4 @@ class DataSource
         $this->sqlResult = $stmt->execute($params);
         return $stmt;
     }
-
-    private function newAAA(){
-
-    }
 }
