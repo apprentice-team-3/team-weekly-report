@@ -9,6 +9,7 @@ class DataSource
 
     private $conn;
     private $sqlResult;
+    public const CLS = 'cls';
 
     public function __construct($host = "mysql", $dbName = "team_weekly_report", $username = "root", $password = "root")
     {
@@ -21,21 +22,28 @@ class DataSource
         $this->conn->setAttribute(PDO::ATTR_EMULATE_PREPARES, false);
     }
 
-    public function select($sql = "", $params = [])
+    public function select($sql = "", $params = [], $type = '', $cls = '')
     {
         $stmt = $this->executeSql($sql, $params);
-        return $stmt->fetchAll();
+        // モデルを使えるように変更
+        if ($type === static::CLS) {
+            // クラス
+            return $stmt->fetchAll(PDO::FETCH_CLASS, $cls);
+        } else {
+            // 連想配列
+            return $stmt->fetchAll();
+        }
     }
 
     public function execute($sql = "", $params = [])
     {
         $this->executeSql($sql, $params);
-        return $this->sqlResult;
+        return  $this->sqlResult;
     }
 
-    public function selectOne($sql = "", $params = [])
+    public function selectOne($sql = "", $params = [], $type = '', $cls = '')
     {
-        $result = $this->select($sql, $params);
+        $result = $this->select($sql, $params, $type, $cls);
         return count($result) > 0 ? $result[0] : false;
     }
 
