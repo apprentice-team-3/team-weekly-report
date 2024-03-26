@@ -87,5 +87,5 @@ header nav li a {
   width: calc(50% - 20px);
   height: 250px;
   margin: 10px;
-  background-color: green;
+  background-color: rgb(6, 71, 6);
 }

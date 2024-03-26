@@ -1,5 +1,4 @@
--- 2回目以降コメントアウトして実行するとデバッグが楽になります
--- drop database team_weekly_report;
+DROP DATABASE IF EXISTS team_weekly_report;
 
 create database team_weekly_report character set 'utf8mb4';
 use team_weekly_report;
