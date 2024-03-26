@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="/views/style.css">
     <title>TWR -<?php echo $title; ?>-</title>
 </head>
 <body>
@@ -24,26 +24,30 @@
         </nav>
     </header>
 
-    <nav class="pagination-nav">
-        <ul class="pagination">
-            <li class="page-item">
-                <a class="page-link" href="#">
-                <span>&laquo;</span>
-                </a>
-            </li>
-            <li class="page-item"><a class="page-link" href="#">先週</a></li>
-            <li class="page-item"><a class="page-link" href="#">1</a></li>
-            <li class="page-item"><a class="page-link" href="#">2</a></li>
-            <li class="page-item"><a class="page-link" href="#">3</a></li>
-            <li class="page-item"><a class="page-link" href="#">...</a></li>
-            <li class="page-item"><a class="page-link" href="#">9</a></li>
-            <li class="page-item"><a class="page-link" href="#">来週</a></li>
-            <li class="page-item">
-                <a class="page-link" href="#">
-                <span>&raquo;</span>
-                </a>
-            </li>
-        </ul>
-    </nav>
+    <main>
+        <?php include $content; ?>
+
+        <nav class="pagination-nav">
+            <ul class="pagination">
+                <li class="page-item">
+                    <a class="page-link" href="#">
+                    <span>&laquo;</span>
+                    </a>
+                </li>
+                <li class="page-item"><a class="page-link" href="#">先週</a></li>
+                <li class="page-item"><a class="page-link" href="#">1</a></li>
+                <li class="page-item"><a class="page-link" href="#">2</a></li>
+                <li class="page-item"><a class="page-link" href="#">3</a></li>
+                <li class="page-item"><a class="page-link" href="#">...</a></li>
+                <li class="page-item"><a class="page-link" href="#">9</a></li>
+                <li class="page-item"><a class="page-link" href="#">来週</a></li>
+                <li class="page-item">
+                    <a class="page-link" href="#">
+                    <span>&raquo;</span>
+                    </a>
+                </li>
+            </ul>
+        </nav>
+    </main>
 </body>
 </html>

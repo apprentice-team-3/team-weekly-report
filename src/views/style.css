@@ -74,3 +74,18 @@ header nav li a {
 .pagination li a:hover {
   background-color: rgb(215, 215, 99);
 }
+
+/* 評価一覧画面 */
+.container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  margin-top: 50px;
+}
+
+.container>div {
+  width: calc(50% - 20px);
+  height: 250px;
+  margin: 10px;
+  background-color: green;
+}

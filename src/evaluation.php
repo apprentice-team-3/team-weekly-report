@@ -1,3 +1,4 @@
 <?php
 $title = '評価一覧';
-include __DIR__ . '/layout.php';
+$content = __DIR__ . '/views/evaluation.php';
+include __DIR__ . '/views/layout.php';
