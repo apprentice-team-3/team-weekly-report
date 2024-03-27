@@ -18,6 +18,7 @@
     })
 
     $doms.forEach(dom => {
+        if(dom === $popup) return
         dom.addEventListener('click', () => {
             $doms.forEach(dom => {
                 dom.classList.remove('popup__open')
