@@ -58,6 +58,9 @@ try {
     echo '親タスクを取得できませんでした。<br>';
     $db->rollback();
 }
+<<<<<<< HEAD
 // echo "<pre>";
 // print_r($weekly_tasks);
 // echo "</pre>";
+=======
+>>>>>>> 4641779 (コンフリクトの解決)
