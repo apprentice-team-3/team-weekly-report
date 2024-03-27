@@ -3,8 +3,8 @@
       <button class="btn" data-parent_task_id="1">ボタン</button>
       <div class="popup popup__open">
         <div class="parent__task__section">
-          <div class="parent__task popup__text">親タスク</div>
-          <div class="popup__text parent__progress green">100%</div>
+          <div class="parent__task popup__text" id="parent-task">親タスク</div>
+          <div class="popup__text parent__progress green" id="parent-task-progress">100%</div>
         </div>
         <div class="child__task__section">
           <div class="popup__text relation__child__task">
@@ -12,34 +12,18 @@
           </div>
           <ul class="child__task__container">
             <li class="child__task__list__container">
-              <div class="popup__text child__task">子タスク</div>
+              <div class="popup__text child__task child__task__php">子タスク</div>
               <div class="btn__container">
                 <button class="btn">説明を表示</button
                 ><button class="btn">評価</button>
               </div>
               <div class="progress__container">
                 <ul class="progress__character__container">
-                  <li class="popup__text progress__character">0%</li>
-                  <li class="popup__text progress__character red">30%</li>
-                  <li class="popup__text progress__character yellow">60%</li>
-                  <li class="popup__text progress__character blue">80%</li>
-                  <li class="popup__text progress__character green">100%</li>
-                </ul>
-              </div>
-            </li>
-            <li class="child__task__list__container">
-              <div class="popup__text child__task">子タスク</div>
-              <div class="btn__container">
-                <button class="btn">説明を表示</button
-                ><button class="btn">評価</button>
-              </div>
-              <div class="progress__container">
-                <ul class="progress__character__container">
-                  <li class="popup__text progress__character">0%</li>
-                  <li class="popup__text progress__character red">30%</li>
-                  <li class="popup__text progress__character yellow">60%</li>
-                  <li class="popup__text progress__character blue">80%</li>
-                  <li class="popup__text progress__character green">100%</li>
+                  <li class="popup__text progress__character child__task__progress__php__0">0%</li>
+                  <li class="popup__text progress__character red child__task__progress__php__30">30%</li>
+                  <li class="popup__text progress__character yellow child__task__progress__php__60">60%</li>
+                  <li class="popup__text progress__character blue child__task__progress__php__80">80%</li>
+                  <li class="popup__text progress__character green child__task__progress__php__100">100%</li>
                 </ul>
               </div>
             </li>
