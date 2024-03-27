@@ -58,6 +58,6 @@ try {
     echo '親タスクを取得できませんでした。<br>';
     $db->rollback();
 }
-/* echo "<pre>";
-    print_r($weekly_tasks);
-    echo "</pre>"; */
+// echo "<pre>";
+//     print_r($weekly_tasks);
+//     echo "</pre>";
