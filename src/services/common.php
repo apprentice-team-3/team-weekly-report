@@ -46,13 +46,18 @@ try {
 
     foreach($parent_tasks as $parent_task){
         $date = $parent_task->getDate();
-        if(!isset($weekly_tasks[$date])){
-            $weekly_tasks[$date] = new WeeklyTask();
+        $user_id = $parent_task->user_id;
+        $key = $date . $user_id;
+        if(!isset($weekly_tasks[$key])){
+            $weekly_tasks[$key] = new WeeklyTask();
         }
-        $weekly_tasks[$date]->addParentTask($parent_task);
+        $weekly_tasks[$key]->addParentTask($parent_task);
     }
 
 } catch (PDOException $e) {
     echo '親タスクを取得できませんでした。<br>';
     $db->rollback();
 }
+/* echo "<pre>";
+    print_r($weekly_tasks);
+    echo "</pre>"; */
