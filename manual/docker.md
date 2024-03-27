@@ -1,5 +1,7 @@
 # Docker起動までの流れ
 
+## M1の人はM1フォルダにcdしてから以下のコマンドの実行お願いします
+
 ```bash
 docker-compose up -d
 docker-compose exec mysql mysql -u root -p mydb
