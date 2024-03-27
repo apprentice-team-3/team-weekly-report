@@ -52,23 +52,10 @@ try {
         $weekly_tasks[$date]->addParentTask($parent_task);
     }
 
-
-
-<<<<<<< Updated upstream
-
-
-=======
->>>>>>> Stashed changes
 } catch (PDOException $e) {
     echo '親タスクを取得できませんでした。<br>';
     $db->rollback();
 }
-<<<<<<< Updated upstream
 // echo "<pre>";
 //     print_r($weekly_tasks);
 //     echo "</pre>";
-=======
-echo "<pre>";
-    print_r($weekly_tasks);
-    echo "</pre>";
->>>>>>> Stashed changes
