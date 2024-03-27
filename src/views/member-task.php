@@ -3,6 +3,8 @@
 use db\DataSource;
 use model\Project;
 use model\User;
+use model\ParentTask;
+use model\WeeklyTask;
 
 try {
     $db = new DataSource;
@@ -28,6 +30,36 @@ try {
     echo 'ユーザーを取得できませんでした。<br>';
     $db->rollback();
 }
+
+try {
+    $db->begin();
+    // 全部とってくると重いので仮決めで200件にしている、本来はページネーションを使う
+    $sql = 'SELECT * FROM parent_tasks where project_id = :project_id ORDER BY created_at DESC LIMIT 200;';
+
+    $parent_tasks = $db->select($sql,[':project_id' => 1],DataSource::CLS,ParentTask::class);
+
+
+    $db->commit();
+    $weekly_tasks = [];
+
+    foreach($parent_tasks as $parent_task){
+        $date = $parent_task->getDate();
+        if(!isset($weekly_tasks[$date])){
+            $weekly_tasks[$date] = new WeeklyTask();
+        }
+        $weekly_tasks[$date]->addParentTask($parent_task);
+    }
+
+    // echo "<pre>";
+    // print_r($weekly_tasks);
+    // echo "</pre>";
+
+
+} catch (PDOException $e) {
+    echo '親タスクを取得できませんでした。<br>';
+    $db->rollback();
+
+}
 ?>
 
 
@@ -49,6 +81,22 @@ try {
                <div class="user__name">
                    <?php echo $user->name ?>
                 </div>
+
+                <?php foreach ($weekly_tasks as $weekly_task) : ?>
+                    <div class="weekly__report__task__container">
+                        <div class="date">
+                            <?php
+                            $today = new DateTime();
+                            $today = $today->format('Y-m-d');
+                            if ($weekly_task->date === $today) {
+                                echo $weekly_task->getDate() . ' 本日';
+                            } else {
+                                echo $weekly_task->getDate();
+                            }
+                            ?>
+                        </div>
+                    </div>
+                <?php endforeach; ?>
             </li>
         <?php endforeach; ?>
         <script>
