@@ -54,10 +54,10 @@ try {
         $weekly_tasks[$key]->addParentTask($parent_task);
     }
 
-
-
 } catch (PDOException $e) {
     echo '親タスクを取得できませんでした。<br>';
     $db->rollback();
 }
-
+// echo "<pre>";
+//     print_r($weekly_tasks);
+//     echo "</pre>";
