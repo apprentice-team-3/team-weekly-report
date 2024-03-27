@@ -14,10 +14,26 @@ li {
   margin-top: 1rem;
   position: relative;
 }
-.button__container .btn {
+
+.btn {
   display: block;
-  width: 60px;
-  height: 40px;
+  width: -moz-fit-content;
+  width: fit-content;
+  min-height: 40px;
+  padding: 0 20px;
+  border-radius: 90px;
+  border: none;
+  background-color: #f6c64b;
+  color: white;
+  box-shadow: 6px 6px 5px 0px rgba(246, 198, 75, 0.6509803922);
+  cursor: pointer;
+  transition: all ease-in-out 0.2s;
+}
+.btn:hover {
+  background-color: rgba(246, 198, 75, 0.6509803922);
+  box-shadow: none;
+  color: gray;
+  transform: scale(0.95);
 }
 
 .popup {
@@ -40,25 +56,34 @@ li {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  position: relative;
 }
-.popup .parent__task__section .parent__progress {
+.popup .parent__task__section .relative__progress__container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: absolute;
+  top: 0px;
+  right: 0px;
+}
+.popup .parent__task__section .relative__progress__container .parent__progress {
   font-size: 28px;
   -webkit-text-stroke: none;
   text-shadow: 0px 0px 3px black;
 }
-.popup .parent__task__section .parent__progress.red {
+.popup .parent__task__section .relative__progress__container .parent__progress.red {
   color: #ee6d6d;
   text-shadow: 0px 0px 3px #ee6d6d;
 }
-.popup .parent__task__section .parent__progress.yellow {
+.popup .parent__task__section .relative__progress__container .parent__progress.yellow {
   color: #ffee00;
   text-shadow: 0px 0px 3px #ffee00;
 }
-.popup .parent__task__section .parent__progress.blue {
+.popup .parent__task__section .relative__progress__container .parent__progress.blue {
   color: #6dcfee;
   text-shadow: 0px 0px 3px #6dcfee;
 }
-.popup .parent__task__section .parent__progress.green {
+.popup .parent__task__section .relative__progress__container .parent__progress.green {
   color: #77e48f;
   text-shadow: 0px 0px 3px #77e48f;
 }
@@ -68,7 +93,7 @@ li {
   color: white;
 }
 .popup .popup__text.parent__task {
-  font-size: 32px;
+  font-size: 28px;
 }
 .popup .popup__text.relation__child__task {
   font-size: 24px;
@@ -115,26 +140,25 @@ li {
   flex-direction: row;
   gap: 10px;
 }
-.popup.popup__open .child__task__section .child__task__container .child__task__list__container .btn__container .btn {
-  display: block;
-  width: -moz-fit-content;
-  width: fit-content;
-  min-height: -moz-fit-content;
-  min-height: fit-content;
-  padding: 0 20px;
-  border-radius: 90px;
-  border: none;
-  background-color: #f6c64b;
-  color: white;
-  box-shadow: 6px 6px 5px 0px rgba(246, 198, 75, 0.6509803922);
-  cursor: pointer;
+.popup.popup__open .child__task__section .child__task__container .child__task__list__container .comment__box {
+  border: 1px solid black;
+  border-radius: 10px;
+  margin-top: 10px;
+  margin-right: 20px;
+  padding: 10px 20px;
+  opacity: 1;
   transition: all ease-in-out 0.2s;
+  height: -moz-fit-content;
+  height: fit-content;
+  visibility: visible;
 }
-.popup.popup__open .child__task__section .child__task__container .child__task__list__container .btn__container .btn:hover {
-  background-color: rgba(246, 198, 75, 0.6509803922);
-  box-shadow: none;
-  color: gray;
-  transform: scale(0.95);
+.popup.popup__open .child__task__section .child__task__container .child__task__list__container .comment__box.hidden {
+  visibility: hidden;
+  height: 0px;
+  width: 0px;
+  opacity: 0;
+  margin-top: 0;
+  padding: 0;
 }
 .popup.popup__open .child__task__section .child__task__container .child__task__list__container .progress__container {
   display: flex;

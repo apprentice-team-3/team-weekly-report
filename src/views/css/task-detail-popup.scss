@@ -13,11 +13,27 @@ li {
   align-items: center;
   margin-top: 1rem;
   position: relative;
+}
 
-  & .btn {
-    display: block;
-    width: 60px;
-    height: 40px;
+.btn {
+  display: block;
+  width: fit-content;
+  min-height: 40px;
+
+  padding: 0 20px;
+  border-radius: 90px;
+  border: none;
+  background-color: #f6c64b;
+  color: white;
+  box-shadow: 6px 6px 5px 0px #f6c64ba6;
+  cursor: pointer;
+  transition: all ease-in-out 0.2s;
+
+  &:hover {
+    background-color: #f6c64ba6;
+    box-shadow: none;
+    color: gray;
+    transform: scale(0.95);
   }
 }
 
@@ -40,27 +56,37 @@ li {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    position: relative;
 
-    & .parent__progress {
-      font-size: 28px;
-      -webkit-text-stroke: none;
-      text-shadow: 0px 0px 3px black;
+    & .relative__progress__container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      position: absolute;
+      top: 0px;
+      right: 0px;
 
-      &.red {
-        color: #ee6d6d;
-        text-shadow: 0px 0px 3px #ee6d6d;
-      }
-      &.yellow {
-        color: #ffee00;
-        text-shadow: 0px 0px 3px #ffee00;
-      }
-      &.blue {
-        color: #6dcfee;
-        text-shadow: 0px 0px 3px #6dcfee;
-      }
-      &.green {
-        color: #77e48f;
-        text-shadow: 0px 0px 3px #77e48f;
+      & .parent__progress {
+        font-size: 28px;
+        -webkit-text-stroke: none;
+        text-shadow: 0px 0px 3px black;
+
+        &.red {
+          color: #ee6d6d;
+          text-shadow: 0px 0px 3px #ee6d6d;
+        }
+        &.yellow {
+          color: #ffee00;
+          text-shadow: 0px 0px 3px #ffee00;
+        }
+        &.blue {
+          color: #6dcfee;
+          text-shadow: 0px 0px 3px #6dcfee;
+        }
+        &.green {
+          color: #77e48f;
+          text-shadow: 0px 0px 3px #77e48f;
+        }
       }
     }
   }
@@ -71,7 +97,7 @@ li {
     color: white;
 
     &.parent__task {
-      font-size: 32px;
+      font-size: 28px;
     }
 
     &.relation__child__task {
@@ -122,27 +148,27 @@ li {
             display: flex;
             flex-direction: row;
             gap: 10px;
+          }
 
-            & .btn {
-              display: block;
-              width: fit-content;
-              min-height: fit-content;
+          & .comment__box {
+            border: 1px solid black;
+            border-radius: 10px;
+            margin-top: 10px;
+            margin-right: 20px;
+            padding: 10px 20px;
+            // hiddenでアニメーションをつける
+            opacity: 1;
+            transition: all ease-in-out 0.2s;
+            height: fit-content;
+            visibility: visible;
 
-              padding: 0 20px;
-              border-radius: 90px;
-              border: none;
-              background-color: #f6c64b;
-              color: white;
-              box-shadow: 6px 6px 5px 0px #f6c64ba6;
-              cursor: pointer;
-              transition: all ease-in-out 0.2s;
-
-              &:hover {
-                background-color: #f6c64ba6;
-                box-shadow: none;
-                color: gray;
-                transform: scale(0.95);
-              }
+            &.hidden {
+              visibility: hidden;
+              height: 0px;
+              width: 0px;
+              opacity: 0;
+              margin-top: 0;
+              padding: 0;
             }
           }
 
