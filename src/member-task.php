@@ -1,6 +1,9 @@
 <?php
 require_once "datasource.php";
 require_once "models/project.model.php";
+require_once "models/user.model.php";
+require_once "models/parent_task.model.php";
+require_once "models/weekly_tasks.model.php";
 
 use db\DataSource;
 use model\Project;
