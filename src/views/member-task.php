@@ -24,6 +24,7 @@
                     </div>
                 </div>
 
+            <div class="weekly__report__task__container">
                 <?php foreach ($weekly_tasks as $weekly_task) : ?>
                     <?php if ($weekly_task->parent_tasks[0]->user_id === $user->id) : ?>
                         <div class="weekly__report__task__container">
@@ -60,8 +61,8 @@
                         </div>
                     <?php endif ;?>
                 <?php endforeach; ?>
-            </li>
-        <?php endforeach; ?>
+            </div>
+        </li>
         <script>
             const $users = document.querySelectorAll('.user__name')
 
