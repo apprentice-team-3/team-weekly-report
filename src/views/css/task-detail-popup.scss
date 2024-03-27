@@ -1,0 +1,54 @@
+.button__container {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 1rem;
+  position: relative;
+
+  & .btn {
+    display: block;
+    width: 60px;
+    height: 40px;
+  }
+}
+
+.popup {
+  visibility: hidden;
+  position: absolute;
+
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 100px;
+  height: 100px;
+  z-index: 1000;
+  opacity: 0;
+  transition: opacity ease-in-out 0.2s;
+
+  &.popup__open {
+    visibility: visible;
+    display: block;
+    background-color: red;
+    opacity: 1;
+  }
+}
+
+.cover {
+  visibility: hidden;
+  position: absolute;
+  width: 100vw;
+  height: 100vh;
+  top: 0;
+  left: 0;
+  background-color: rgba(0, 0, 0, 0.3);
+  z-index: 999;
+  opacity: 0;
+  transition: opacity ease-in-out 0.2s;
+
+  &.popup__open {
+    visibility: visible;
+    opacity: 1;
+  }
+}
