@@ -1,20 +1,12 @@
 -- 2回目以降コメントアウトして実行するとデバッグが楽になります
 drop database team_weekly_report;
 
-create database team_weekly_report;
-use team_weekly_report;
-
-/*
-progressは0~100で、100になったら完了とする
-parent_tasksテーブルのprogressから集計する
- */
-
 CREATE TABLE projects (
     id INT PRIMARY KEY,
     title VARCHAR(128) NOT NULL,
     content TEXT NOT NULL,
     progress FLOAT DEFAULT 0 NOT NULL,
-    created_at TIMESTAMP
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 
 
@@ -24,7 +16,7 @@ CREATE TABLE users (
     email VARCHAR(255) NOT NULL,
     password VARCHAR(255) NOT NULL,
     avatar_url VARCHAR(255),
-    created_at TIMESTAMP
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 
 /*
@@ -51,7 +43,7 @@ CREATE TABLE parent_tasks (
     id INT,
     title VARCHAR(128) NOT NULL,
     progress FLOAT DEFAULT 0 NOT NULL,
-    created_at TIMESTAMP,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     PRIMARY KEY (project_id, user_id, id),
     FOREIGN KEY (user_id) REFERENCES users (id),
     FOREIGN KEY (project_id) REFERENCES projects (id)
@@ -68,7 +60,7 @@ CREATE TABLE child_tasks (
     title VARCHAR(128) NOT NULL,
     content TEXT,
     progress FLOAT DEFAULT 0 NOT NULL,
-    created_at TIMESTAMP,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     PRIMARY KEY (project_id, user_id, parent_task_id, id),
     FOREIGN KEY (project_id, user_id, parent_task_id) REFERENCES parent_tasks (project_id, user_id, id)
 );
@@ -85,7 +77,7 @@ evaluated
 CREATE TABLE status(
     id INT PRIMARY KEY,
     name VARCHAR(128) NOT NULL,
-    created_at TIMESTAMP
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 
 CREATE TABLE task_status (
@@ -117,7 +109,7 @@ CREATE TABLE evaluations(
     parent_task_id INT,
     task_id INT,
     user_id INT,
-    created_at TIMESTAMP,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     PRIMARY KEY (project_id, task_user_id, parent_task_id, task_id, user_id),
     FOREIGN KEY (project_id, task_user_id, parent_task_id, task_id) REFERENCES child_tasks (project_id, user_id, parent_task_id, id),
     FOREIGN KEY (user_id) REFERENCES users (id)
@@ -141,7 +133,7 @@ CREATE TABLE evaluations(
 CREATE TABLE tags (
     id INT PRIMARY KEY,
     name VARCHAR(128) NOT NULL,
-    created_at TIMESTAMP
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 
 /*
@@ -171,7 +163,7 @@ CREATE TABLE comments (
     task_id INT,
     user_id INT,
     comment TEXT NOT NULL,
-    created_at TIMESTAMP,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     PRIMARY KEY (project_id, task_user_id, task_id, user_id),
     FOREIGN KEY (project_id, task_user_id, task_id) REFERENCES parent_tasks (project_id, user_id, id),
     FOREIGN KEY (user_id) REFERENCES users (id)
@@ -198,7 +190,7 @@ CREATE TABLE is_read_comment(
     comment_user_id INT,
     user_id INT,
     isRead BOOLEAN DEFAULT FALSE,
-    created_at TIMESTAMP,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     PRIMARY KEY (project_id, task_user_id, task_id, comment_user_id, user_id),
     FOREIGN KEY (project_id, task_user_id, task_id, comment_user_id) REFERENCES comments (project_id, task_user_id, task_id, user_id),
     FOREIGN KEY (user_id) REFERENCES users (id)
