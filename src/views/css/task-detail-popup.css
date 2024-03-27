@@ -102,6 +102,8 @@ li {
   display: flex;
   gap: 20px;
   flex-direction: column;
+  max-height: 60vh;
+  overflow-y: auto;
 }
 .popup.popup__open .child__task__section .child__task__container .child__task__list__container {
   display: flex;

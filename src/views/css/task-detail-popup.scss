@@ -109,6 +109,9 @@ li {
         display: flex;
         gap: 20px;
         flex-direction: column;
+        max-height: 60vh;
+        // はみ出てる箇所は隠す
+        overflow-y: auto;
 
         & .child__task__list__container {
           display: flex;

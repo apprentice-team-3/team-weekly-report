@@ -1,3 +1,22 @@
+<template id="task-template">
+      <div class="child__task__list__container">
+        <div class="popup__text child__task child__task__php">子タスク</div>
+        <div class="btn__container">
+          <button class="btn">説明を表示</button
+          ><button class="btn">評価</button>
+        </div>
+        <div class="progress__container">
+          <ul class="progress__character__container">
+            <li class="popup__text progress__character child__task__progress__0__php" >0%</li>
+            <li class="popup__text progress__character red child__task__progress__30__php">30%</li>
+            <li class="popup__text progress__character yellow child__task__progress__60__php">60%</li>
+            <li class="popup__text progress__character blue child__task__progress__80__php">80%</li>
+            <li class="popup__text progress__character green child__task__progress__100__php">100%</li>
+          </ul>
+        </div>
+      </div>
+    </template>
+
 <div class="button__container">
       <!-- ボタンにデータを仕込む -->
       <button class="btn" data-parent_task_id="1">ボタン</button>
@@ -11,22 +30,6 @@
             関連するタスクを登録
           </div>
           <ul class="child__task__container">
-            <li class="child__task__list__container">
-              <div class="popup__text child__task child__task__php">子タスク</div>
-              <div class="btn__container">
-                <button class="btn">説明を表示</button
-                ><button class="btn">評価</button>
-              </div>
-              <div class="progress__container">
-                <ul class="progress__character__container">
-                  <li class="popup__text progress__character child__task__progress__php__0">0%</li>
-                  <li class="popup__text progress__character red child__task__progress__php__30">30%</li>
-                  <li class="popup__text progress__character yellow child__task__progress__php__60">60%</li>
-                  <li class="popup__text progress__character blue child__task__progress__php__80">80%</li>
-                  <li class="popup__text progress__character green child__task__progress__php__100">100%</li>
-                </ul>
-              </div>
-            </li>
           </ul>
         </div>
         <div class="close__btn"></div>
@@ -69,4 +72,13 @@
             })
         })
     })
+
+    const $taskTemplate = document.querySelector("#task-template");
+      const $childTaskContainer = document.querySelector(
+        ".child__task__container"
+      );
+      for (let i = 0; i < 10; i++) {
+        const $task = $taskTemplate.content.cloneNode(true);
+        $childTaskContainer.appendChild($task);
+      }
 </script>
