@@ -11,6 +11,12 @@ header {
   height: 3rem;
 }
 
+ul,
+li {
+  list-style: none;
+  padding: 0;
+}
+
 .main-header {
   display: flex;
 }
@@ -85,7 +91,7 @@ header nav li a {
     justify-content: space-between;
     gap: 20px;
 
-    >div {
+    > div {
       width: calc(50% - 20px);
       height: 250px;
       background-color: rgb(6, 71, 6);
@@ -114,16 +120,51 @@ header nav li a {
 /* タスク一覧画面 */
 
 .task__container {
-  padding: 0px 10px;
-  padding-top: 40px;
-
   .project__container {
     display: flex;
     justify-content: end;
 
     .project__detail {
-      font-size: 30px;
+      font-size: 1.3rem;
       font-weight: bold;
+    }
+  }
+}
+
+.weekly__report__container {
+  display: flex;
+  gap: 20px;
+  flex-direction: column;
+
+  .weekly__report {
+    min-height: calc(((100vh - (48px + 45px) - 200px) / 4));
+    background-color: rgb(6, 71, 6);
+    color: white;
+    display: flex;
+    justify-content: left;
+    align-items: center;
+
+    .user__name {
+      font-size: 1.3rem;
+      font-weight: bold;
+      line-height: 1.5;
+      padding: 5px 5px;
+      border-right: 5px solid white;
+    }
+
+    .weekly__report__task__container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: flex-start;
+      align-items: center;
+      flex-direction: column;
+      padding: 0 10px;
+      min-height: calc(((100vh - (48px + 45px) - 200px) / 4));
+
+      .date {
+        font-size: 1.3rem;
+        font-weight: bold;
+      }
     }
   }
 }
