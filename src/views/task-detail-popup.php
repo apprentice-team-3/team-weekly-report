@@ -22,6 +22,7 @@
       <!-- ボタンにデータを仕込む -->
       <button class="btn" data-parent_task_id="1">ボタン</button>
       <div class="popup popup__open">
+        <!-- ここから編集 -->
         <div class="parent__task__section">
           <div class="parent__task popup__text" id="parent-task">親タスク</div>
           <div class="relative__progress__container">
