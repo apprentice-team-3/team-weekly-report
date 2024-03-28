@@ -132,15 +132,15 @@ $registerBtn.addEventListener("click", (e) => {
 });
 }
 
-// const $editTaskBtn = document.querySelector(".open__detail__task__btn");
-// const $editPopup = document.querySelector("#task-edit-popup");
+const $editTaskBtn = document.querySelector(".open__detail__task__btn");
+const $editPopup = document.querySelector("#task-edit-popup");
+const $taskEditTemplate = document.querySelector("#task-edit-template");
 
 const $addTaskBtn = document.querySelector(".open__add__task__btn");
 const $addPopup = document.querySelector("#task-add-popup");
-const $taskAddTmeplate = document.querySelector("#task-add-template");
+const $taskAddTemplate = document.querySelector("#task-add-template");
 
-popupHandler($addTaskBtn, $addPopup, $taskAddTmeplate);
-
-// popupHandler($editTaskBtn, $editPopup, "#task-edit-template");
+popupHandler($addTaskBtn, $addPopup, $taskAddTemplate);
+popupHandler($editTaskBtn, $editPopup, $taskEditTemplate);
 
 </script>
