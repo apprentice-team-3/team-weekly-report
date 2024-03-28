@@ -320,87 +320,6 @@ textarea {
               }
             }
           }
-          & .add__icon {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            width: 40px;
-            height: 40px;
-            background-color: #77e48f;
-            margin-right: 3px;
-            margin-bottom: 3px;
-            border-radius: 50%;
-            color: white;
-            cursor: pointer;
-            position: relative;
-            box-shadow: #19af3a 3px 3px 3px;
-            transition: all ease-in-out 0.2s;
-
-            &:hover {
-              box-shadow: none;
-              background-color: #19af3a;
-              transform: scale(0.95);
-            }
-
-            &::before {
-              content: "";
-              position: absolute;
-              top: 50%;
-              left: 50%;
-              width: 60%;
-              height: 2px;
-              background-color: white;
-              transform: translate(-50%, -50%);
-              border: 1px solid white;
-            }
-
-            &::after {
-              content: "";
-              position: absolute;
-              top: 50%;
-              left: 50%;
-              width: 60%;
-              height: 2px;
-              background-color: white;
-              transform: translate(-50%, -50%) rotate(90deg);
-              border: 1px solid white;
-            }
-          }
-
-          & .remove__icon {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            width: 40px;
-            height: 40px;
-            background-color: #ee6d6d;
-            margin-right: 3px;
-            margin-bottom: 3px;
-            border-radius: 50%;
-            color: white;
-            cursor: pointer;
-            position: relative;
-            box-shadow: #b9490a 3px 3px 3px;
-            transition: all ease-in-out 0.2s;
-
-            &:hover {
-              box-shadow: none;
-              background-color: #b9490a;
-              transform: scale(0.95);
-            }
-
-            &::before {
-              content: "";
-              position: absolute;
-              top: 50%;
-              left: 50%;
-              width: 60%;
-              height: 2px;
-              background-color: white;
-              transform: translate(-50%, -50%);
-              border: 1px solid white;
-            }
-          }
         }
       }
     }
@@ -462,4 +381,78 @@ textarea {
   opacity: 0;
   margin-top: 0;
   padding: 0;
+}
+
+.icon {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 40px;
+  height: 40px;
+  margin-right: 3px;
+  margin-bottom: 3px;
+  border-radius: 50%;
+  color: white;
+  cursor: pointer;
+  position: relative;
+  transition: all ease-in-out 0.2s;
+
+  &:hover {
+    box-shadow: none;
+    transform: scale(0.95);
+  }
+  &__add {
+    background-color: #77e48f;
+    box-shadow: #19af3a 3px 3px 3px;
+
+    &:hover {
+      background-color: #19af3a;
+    }
+
+    &::before {
+      content: "";
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 60%;
+      height: 2px;
+      background-color: white;
+      transform: translate(-50%, -50%);
+      border: 1px solid white;
+    }
+
+    &::after {
+      content: "";
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 60%;
+      height: 2px;
+      background-color: white;
+      transform: translate(-50%, -50%) rotate(90deg);
+      border: 1px solid white;
+    }
+  }
+
+  &__remove {
+    background-color: #ee6d6d;
+    color: white;
+    box-shadow: #b9490a 3px 3px 3px;
+
+    &:hover {
+      background-color: #b9490a;
+    }
+
+    &::before {
+      content: "";
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 60%;
+      height: 2px;
+      background-color: white;
+      transform: translate(-50%, -50%);
+      border: 1px solid white;
+    }
+  }
 }

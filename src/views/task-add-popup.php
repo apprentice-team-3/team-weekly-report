@@ -1,11 +1,10 @@
+<?php  ?>
 
-<!-- 親タスク追加画面 -->
-<!-- templateの作成 -->
 <template id="task-template">
     <li class="child__task__list__container">
     <div class="child__task__name__remove">
         <div class="popup__text child__task child__task__php">子タスク</div>
-        <div class="remove__icon"></div>
+        <div class="icon icon__remove"></div>
     </div>
     <div class="comment__box child__task__comment__php">
         <textarea
@@ -52,7 +51,7 @@
             placeholder="関連するタスクの名前を入力してください"
         />
         </div>
-        <button class="add__icon"></button>
+        <button class="icon icon__add"></button>
     </div>
     </li>
 </template>
@@ -60,8 +59,8 @@
 <div class="button__container">
     <!-- ボタンにデータを仕込む -->
     <button class="btn" data-parent_task_id="1">ボタン</button>
-    <div class="popup popup__open">
-    <div>タスク名</div>
+    <form class="popup popup__open">
+    <div class="popup__text parent__task">タスク名</div>
     <div class="parent__task__section">
         <div class="parent__task__input">
         <textarea
@@ -78,7 +77,7 @@
     </div>
     <button class="btn register__btn">タスクの登録</button>
     <div class="close__btn"></div>
-    </div>
+    </form>
     <div class="cover popup__open"></div>
 </div>
 <script>
@@ -89,11 +88,11 @@
 
     const $doms = [$popup, $cover, $closeBtn];
 
-    $button.addEventListener("click", () => {
+    $button.addEventListener("click", (e) => {
+    e.preventDefault();
     $doms.forEach((dom) => {
         dom.classList.toggle("popup__open");
     });
-    // dataの取得
     const parentTaskId = $button.dataset.parent_task_id;
 
     const parentTaskName = document.querySelector(".parent__task");
@@ -101,13 +100,14 @@
 
     $doms.forEach((dom) => {
     if (dom === $popup) return;
-    dom.addEventListener("click", () => {
+    dom.addEventListener("click", (e) => {
+        e.preventDefault();
         $doms.forEach((dom) => {
         dom.classList.remove("popup__open");
         });
     });
     });
-    //   templateを使って5件の子タスクを作成
+    //   templateを使って1件の子タスクを作成
     const $taskTemplate = document.querySelector("#task-template");
     const $childTaskContainer = document.querySelector(
     ".child__task__container"
@@ -131,6 +131,7 @@
 
     $progressCharacters.forEach(($progressCharacter) => {
         $progressCharacter.addEventListener("click", (e) => {
+        e.preventDefault();
         $progressCharacters.forEach(($progressCharacter) => {
             if ($progressCharacter.classList.contains("selected")) {
             $progressCharacter.classList.remove("selected");
@@ -141,4 +142,7 @@
         });
     });
     });
+
+    //   addされた時にデータを取得する
 </script>
+
