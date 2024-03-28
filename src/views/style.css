@@ -91,7 +91,7 @@ header nav li a {
     justify-content: space-between;
     gap: 20px;
 
-    > div {
+    >div {
       width: calc(50% - 20px);
       height: 250px;
       background-color: rgb(6, 71, 6);
@@ -158,7 +158,6 @@ header nav li a {
       justify-content: flex-start;
       align-items: center;
       flex-direction: column;
-      padding: 0 10px;
       min-height: calc(((100vh - (48px + 45px) - 200px) / 4));
 
       .date {
