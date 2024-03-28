@@ -50,8 +50,6 @@
 </template>
 
 
-
-
 <div class="button__container">
     <!-- ボタンにデータを仕込む -->
     <button class="btn open__add__task__btn" data-parent_task_id="1">タスク追加</button>
