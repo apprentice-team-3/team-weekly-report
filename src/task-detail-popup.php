@@ -10,4 +10,4 @@ require_once "services/common.php";
 
 $title = 'メンバータスク一覧、タスク詳細ポップアップ';
 $content = __DIR__ . '/views/task-detail-popup.php';
-include __DIR__ . '/views/layout.php';
+include __DIR__ . '/views/member-task_layout.php';

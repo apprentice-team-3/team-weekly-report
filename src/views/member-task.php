@@ -13,35 +13,35 @@
     <ul class="weekly__report__container">
         <?php foreach ($users as $user) : ?>
             <li class="weekly__report">
-            <div class="user__name">
-                <?php echo $user->name ?>
-            </div>
+                <div class="user__name">
+                    <?php echo $user->name ?>
+                </div>
 
-            <?php foreach ($weekly_tasks as $weekly_task) : ?>
-                <?php if ($weekly_task->parent_tasks[0]->user_id === $user->id) : ?>
-                    <div class="weekly__report__task__container">
-                        <?php
-                        $today = new DateTime();
-                        $today = $today->format('Y-m-d');
-                        ?>
-                        <?php if ($weekly_task->date === $today) :?>
-                            <div class="date">
-                                <?php echo $weekly_task->getDate() . ' 本日'; ?>
+                <?php foreach ($weekly_tasks as $weekly_task) : ?>
+                    <?php if ($weekly_task->parent_tasks[0]->user_id === $user->id) : ?>
+                        <div class="weekly__report__task__container">
+                            <?php
+                            $today = new DateTime();
+                            $today = $today->format('Y-m-d');
+                            ?>
+                            <?php if ($weekly_task->date === $today) :?>
+                                <div class="date">
+                                    <?php echo $weekly_task->getDate() . ' 本日'; ?>
+                                </div>
+                            <?php endif ; ?>
+                            <?php if ($weekly_task->date !== $today) :?>
+                                <div class="date">
+                                    <?php echo $weekly_task->getDate(); ?>
+                                </div>
+                            <?php endif ; ?>
+                            <div class="task">
+                                <?php for ($i = 0; $i < count($weekly_task->parent_tasks); $i++) :?>
+                                    <?php echo $weekly_task->parent_tasks[$i]->title; ?>
+                                <?php endfor ; ?>
                             </div>
-                        <?php endif ; ?>
-                        <?php if ($weekly_task->date !== $today) :?>
-                            <div class="date">
-                                <?php echo $weekly_task->getDate(); ?>
-                            </div>
-                        <?php endif ; ?>
-                        <div class="task">
-                            <?php for ($i = 0; $i < count($weekly_task->parent_tasks); $i++) :?>
-                                <?php echo $weekly_task->parent_tasks[$i]->title; ?>
-                            <?php endfor ; ?>
                         </div>
-                    </div>
-                <?php endif ;?>
-            <?php endforeach; ?>
+                    <?php endif ;?>
+                <?php endforeach; ?>
             </li>
         <?php endforeach; ?>
         <script>
