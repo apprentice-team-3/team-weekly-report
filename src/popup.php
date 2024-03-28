@@ -9,7 +9,7 @@ require_once "models/weekly_tasks.model.php";
 require_once "services/common.php";
 
 
-$title = 'メンバータスク一覧、親タスク追加ポップアップ';
+$title = 'メンバータスク一覧、タスク詳細ポップアップ';
 
-$content = __DIR__ . '/views/task-add-popup.php';
+$content = __DIR__ . '/views/general-popup.php';
 include __DIR__ . '/views/member-task_layout.php';
