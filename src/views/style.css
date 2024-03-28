@@ -135,6 +135,7 @@ header nav li a {
   display: flex;
   gap: 20px;
   flex-direction: column;
+  width: max-content;
 
   .weekly__report {
     min-height: calc(((100vh - (48px + 45px) - 200px) / 4));
