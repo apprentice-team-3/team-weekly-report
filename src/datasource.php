@@ -68,4 +68,9 @@ class DataSource
         $this->sqlResult = $stmt->execute($params);
         return $stmt;
     }
+    // 最後に登録されたIDを返す（親タスクが登録された後に子タスクを紐づけて登録できるように）
+    public function getLastInsertId()
+    {
+        return $this->conn->lastInsertId();
+    }
 }

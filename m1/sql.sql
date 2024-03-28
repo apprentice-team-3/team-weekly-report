@@ -1,4 +1,4 @@
-drop database team_weekly_report;
+-- drop database team_weekly_report;
 
 create database team_weekly_report character set 'utf8';
 use team_weekly_report;

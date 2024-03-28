@@ -9,66 +9,59 @@ require_once "models/weekly_tasks.model.php";
 use db\DataSource;
 use model\Project;
 
-try {
-    $db = new DataSource;
-    $db->begin();
-    $sql = 'SELECT * FROM projects where id = :id;';
-
-    $project = $db->selectOne($sql,[':id' => 1],DataSource::CLS,Project::class);
-
-    $db->commit();
-} catch (PDOException $e){
-    echo 'プロジェクトを取得できませんでした。<br>';
-    $db->rollback();
-}
-
-
-
-$pdo = new PDO("mysql:host=$host;dbname=$dbname", $username, $password);
-if (!$pdo) {
-    die("データベース接続エラー: " . $pdo->errorInfo()[2]);
-}
-
-try {
-    $db = new DataSource;
-    $db->begin();
-    $sql = 'SELECT * FROM projects';
-
-    $result = $db->select($sql);
-
-    echo "<pre>";
-    print_r($result);
-    echo "</pre>";
-
-    $db->commit();
-} catch (PDOException $e){
-    echo '時間をおいて再度お試しください。<br>';
-    $db->rollback();
-}
-
 class parentTask {
-    private $title;
-    private $progress;
+    private $parentTitle;
+    private $parentProgress;
+    
+    public function __construct($parentTitle, $parentProgress) {
+    $this->title = $parentTitle;
+    $this->progress = $parentProgress;
+    }
+        
+    public function save($db, $projectId, $userId) {
+        $sql = "INSERT INTO parent_tasks (project_id, user_id, title, progress) VALUES (?, ?, ?, ?)";
+        $params = [$projectId, $userId, $this->title, $this->progress];
+        $db->execute($sql, $params);
+        return $db->getLastInsertId();
+    }
+}
 
-    public function _construction($title, $progress) {
-        $this->title = $title;
-        $this->progress = $progress;
+class childTask {
+    private $childTitle;
+    private $childContent;
+    private $childProgress;
+
+    public function __construct($childTitle, $childProgress) {
+        $this->childTitle = $childTitle;
+        $this->childProgress = $childProgress;
     }
 
-    public function save($db) {
-        $stmt = $db->prepare("INSERT INTO parent_tasks (title,progress) values(?,?)");
-        $stmt->bind_param("si", $this->title, $this->progress);
-        $stmt->execute();
+    public function save($db, $parentTaskId) {
+        $sql = "INSERT INTO child_tasks (parent_task_id, title, progress) VALUES (?, ?, ?)";
+        $params = [$parentTaskId, $this->childTitle, $this->childProgress];
+        $db->execute($sql, $params);
     }
-
 }
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $title = $_POST["title"];
-    $progress = $_POST["progress"];
-
-    $parentTask = new parentTask($title, $progress);
-    $parentTask->save();
+    $parentTitle = $_POST["parent-title"];
+    $childTitle = $_POST["child-title"];
+    $childProgress = intval($_POST["child-progress"]);
+    $projectId = 2;
+    $userId = 1;
+    
+    $db = new DataSource();
+    
+    $parentTask = new parentTask($parentTitle, 0);
+    $parentTaskId = $parentTask->save($db, $projectId, $userId);
+    
+    if ($parentTaskId) {
+        $childTask = new childTask($childTitle, $childProgress);
+        $childTask->save($db, $parentTaskId);
+    } else {
+        // 親タスクの登録に失敗した場合のエラーハンドリング
+        echo "親タスクの登録に失敗しました。";
+    }
 }
 
 ?>
@@ -81,17 +74,22 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <title>親タスク作成</title>
 </head>
 <body>
-    <?php phpinfo(); ?>
     <div class="create-task">
-        <form action="" method="post">
-            <dl>
-                <dt>タスク名</dt>
-                <dd>
-                    <textarea name="title" id="title" cols="30" rows="10"></textarea>
-                </dd>
-                <dt>関連する子タスクを登録</dt>
-            </dl>
-            <input type="submit" value="登録する">
+        <form action="index.php" method="post">
+            <label for="title">タスク名</label>
+            <input type="text" name="parent-title" id="title">
+            <label for="title">子タスク名</label>
+            <input type="text" name="child-title" id="title">
+            <label for="quantity">進捗度:</label>
+        <select id="progress" name="child-progress">
+        <option value="1">0~20</option>
+        <option value="2">21~40</option>
+        <option value="3">41~60</option>
+        <option value="4">61~80</option>
+        <option value="5">100</option>
+        </select>
+
+        <input type="submit" value="送信">
         </form>
     </div>
 </body>
