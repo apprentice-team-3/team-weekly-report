@@ -45,6 +45,12 @@ textarea :hover {
   position: relative;
 }
 
+.register__btn {
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
+}
+
 .btn {
   display: block;
   width: -moz-fit-content;
@@ -65,11 +71,30 @@ textarea :hover {
   color: gray;
   transform: scale(0.95);
 }
-
-.register__btn {
+.btn__danger {
+  background-color: #ee6d6d;
+  box-shadow: 6px 6px 5px 0px rgba(238, 109, 109, 0.6509803922);
+  margin-right: 20px;
+}
+.btn__danger:hover {
+  background-color: rgba(238, 109, 109, 0.6509803922);
+  box-shadow: none;
+  color: gray;
+  transform: scale(0.95);
+}
+.btn__container {
+  display: flex;
+  justify-content: flex-end;
+  align-items: flex-end;
+  gap: 10px;
   position: absolute;
   bottom: 20px;
   right: 20px;
+}
+.btn__container .register__btn {
+  position: relative;
+  top: 0;
+  left: auto;
 }
 
 .popup {

@@ -47,6 +47,12 @@ textarea {
   position: relative;
 }
 
+.register__btn {
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
+}
+
 .btn {
   display: block;
   width: fit-content;
@@ -67,12 +73,35 @@ textarea {
     color: gray;
     transform: scale(0.95);
   }
-}
 
-.register__btn {
-  position: absolute;
-  bottom: 20px;
-  right: 20px;
+  &__danger {
+    background-color: #ee6d6d;
+    box-shadow: 6px 6px 5px 0px #ee6d6da6;
+    margin-right: 20px;
+
+    &:hover {
+      background-color: #ee6d6da6;
+      box-shadow: none;
+      color: gray;
+      transform: scale(0.95);
+    }
+  }
+
+  &__container {
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-end;
+    gap: 10px;
+    position: absolute;
+    bottom: 20px;
+    right: 20px;
+
+    & .register__btn {
+      position: relative;
+      top: 0;
+      left: auto;
+    }
+  }
 }
 
 .popup {
