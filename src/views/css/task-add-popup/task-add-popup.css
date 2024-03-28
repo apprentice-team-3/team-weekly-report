@@ -1,0 +1,421 @@
+ul,
+li {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+button {
+  cursor: pointer;
+  border: none;
+  background-color: transparent;
+}
+button:focus {
+  outline: none;
+}
+
+input {
+  border: none;
+  background-color: transparent;
+  color: black;
+}
+input:focus {
+  outline: none;
+}
+
+textarea {
+  border: none;
+  background-color: transparent;
+  color: black;
+  resize: none;
+  outline: none;
+}
+textarea:focus,
+textarea :hover {
+  outline: none;
+}
+
+.button__container {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 1rem;
+  position: relative;
+}
+
+.btn {
+  display: block;
+  width: -moz-fit-content;
+  width: fit-content;
+  min-height: 40px;
+  padding: 0 20px;
+  border-radius: 90px;
+  border: none;
+  background-color: #f6c64b;
+  color: white;
+  box-shadow: 6px 6px 5px 0px rgba(246, 198, 75, 0.6509803922);
+  cursor: pointer;
+  transition: all ease-in-out 0.2s;
+}
+.btn:hover {
+  background-color: rgba(246, 198, 75, 0.6509803922);
+  box-shadow: none;
+  color: gray;
+  transform: scale(0.95);
+}
+
+.register__btn {
+  margin-left: auto;
+}
+
+.popup {
+  visibility: hidden;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: -moz-fit-content;
+  width: fit-content;
+  height: -moz-fit-content;
+  height: fit-content;
+  z-index: 1000;
+  opacity: 0;
+  transition: opacity ease-in-out 0.2s;
+  gap: 10px;
+}
+.popup .parent__task__section {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: relative;
+}
+.popup .parent__task__section .parent__task__input {
+  cursor: pointer;
+  display: block;
+  border: 1px solid black;
+  border-radius: 10px;
+  padding: 10px 20px;
+  margin-right: 20px;
+  width: 100%;
+}
+.popup .parent__task__section .parent__task__input textarea {
+  display: block;
+  width: 100%;
+}
+.popup .parent__task__section .relative__progress__container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: absolute;
+  top: 0px;
+  right: 0px;
+}
+.popup .parent__task__section .relative__progress__container .parent__progress {
+  font-size: 28px;
+  -webkit-text-stroke: none;
+  text-shadow: 0px 0px 3px black;
+}
+.popup .parent__task__section .relative__progress__container .parent__progress.red {
+  color: #ee6d6d;
+  text-shadow: 0px 0px 3px #ee6d6d;
+}
+.popup .parent__task__section .relative__progress__container .parent__progress.yellow {
+  color: #ffee00;
+  text-shadow: 0px 0px 3px #ffee00;
+}
+.popup .parent__task__section .relative__progress__container .parent__progress.blue {
+  color: #6dcfee;
+  text-shadow: 0px 0px 3px #6dcfee;
+}
+.popup .parent__task__section .relative__progress__container .parent__progress.green {
+  color: #77e48f;
+  text-shadow: 0px 0px 3px #77e48f;
+}
+.popup .popup__text {
+  -webkit-text-stroke: 1px black;
+  text-shadow: 0px 0px 3px black;
+  color: white;
+}
+.popup .popup__text.parent__task {
+  font-size: 28px;
+}
+.popup .popup__text.relation__child__task {
+  font-size: 24px;
+  text-shadow: 0px 0px 0px black;
+}
+.popup .popup__text.child__task {
+  font-size: 18px;
+  text-shadow: 0px 0px 0px black;
+  color: white;
+}
+.popup .popup__text .progress__explanation__charactoer {
+  font-size: 18px;
+  text-shadow: 0px 0px 0px black;
+  color: white;
+}
+.popup.popup__open {
+  visibility: visible;
+  display: flex;
+  flex-direction: column;
+  opacity: 1;
+  background-color: white;
+  border: 1px solid white;
+  border-radius: 10px;
+  padding: 20px;
+  padding-right: 60px;
+  min-width: 33vw;
+  gap: 10px;
+}
+.popup.popup__open .child__task__section {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+.popup.popup__open .child__task__section .child__task__container {
+  display: flex;
+  gap: 20px;
+  flex-direction: column;
+  max-height: 60vh;
+  overflow-y: auto;
+  scrollbar-width: none;
+}
+.popup.popup__open .child__task__section .child__task__container .child__task__list__container {
+  display: flex;
+  gap: 3px;
+  flex-direction: column;
+}
+.popup.popup__open .child__task__section .child__task__container .child__task__list__container .child__task__name__remove {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.popup.popup__open .child__task__section .child__task__container .child__task__list__container .btn__container {
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+}
+.popup.popup__open .child__task__section .child__task__container .child__task__list__container .comment__box {
+  border: 1px solid black;
+  border-radius: 10px;
+  margin-top: 10px;
+  margin-right: 20px;
+  padding: 10px 20px;
+  text-shadow: none;
+  opacity: 1;
+  transition: all ease-in-out 0.2s;
+  height: -moz-fit-content;
+  height: fit-content;
+  visibility: visible;
+}
+.popup.popup__open .child__task__section .child__task__container .child__task__list__container .comment__box.hidden {
+  visibility: hidden;
+  height: 0px;
+  width: 0px;
+  opacity: 0;
+  margin-top: 0;
+  padding: 0;
+}
+.popup.popup__open .child__task__section .child__task__container .child__task__list__container .comment__box .comment__textarea {
+  border: none;
+  width: 100%;
+}
+.popup.popup__open .child__task__section .child__task__container .child__task__list__container .comment__box .comment__textarea:focus {
+  outline: none;
+}
+.popup.popup__open .child__task__section .child__task__container .child__task__list__container .progress__container {
+  display: flex;
+  gap: 10px;
+  flex-direction: column;
+  padding-top: 20px;
+}
+.popup.popup__open .child__task__section .child__task__container .child__task__list__container .progress__container .progress__character__container {
+  display: flex;
+  gap: 10px;
+  flex-direction: row;
+}
+.popup.popup__open .child__task__section .child__task__container .child__task__list__container .progress__container .progress__character__container .progress__character {
+  font-size: 18px;
+  text-shadow: 0px 0px 0px black;
+  color: white;
+  cursor: pointer;
+  transition: all ease-in-out 0.2s;
+}
+.popup.popup__open .child__task__section .child__task__container .child__task__list__container .progress__container .progress__character__container .progress__character:hover, .popup.popup__open .child__task__section .child__task__container .child__task__list__container .progress__container .progress__character__container .progress__character.selected {
+  transform: scale(1.05);
+}
+.popup.popup__open .child__task__section .child__task__container .child__task__list__container .progress__container .progress__character__container .progress__character:hover.red, .popup.popup__open .child__task__section .child__task__container .child__task__list__container .progress__container .progress__character__container .progress__character.selected.red {
+  color: #ee6d6d;
+  text-shadow: 0px 0px 3px #ee6d6d;
+}
+.popup.popup__open .child__task__section .child__task__container .child__task__list__container .progress__container .progress__character__container .progress__character:hover.yellow, .popup.popup__open .child__task__section .child__task__container .child__task__list__container .progress__container .progress__character__container .progress__character.selected.yellow {
+  color: #ffee00;
+  text-shadow: 0px 0px 3px #ffee00;
+}
+.popup.popup__open .child__task__section .child__task__container .child__task__list__container .progress__container .progress__character__container .progress__character:hover.blue, .popup.popup__open .child__task__section .child__task__container .child__task__list__container .progress__container .progress__character__container .progress__character.selected.blue {
+  color: #6dcfee;
+  text-shadow: 0px 0px 3px #6dcfee;
+}
+.popup.popup__open .child__task__section .child__task__container .child__task__list__container .progress__container .progress__character__container .progress__character:hover.green, .popup.popup__open .child__task__section .child__task__container .child__task__list__container .progress__container .progress__character__container .progress__character.selected.green {
+  color: #77e48f;
+  text-shadow: 0px 0px 3px #77e48f;
+}
+.popup.popup__open .child__task__section .child__task__container .child__task__list__container .progress__container .progress__character__container .progress__character label {
+  cursor: pointer;
+}
+.popup.popup__open .child__task__section .child__task__container .child__task__list__container .child__task__input__container {
+  display: flex;
+  width: 100%;
+  height: -moz-fit-content;
+  height: fit-content;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 20px;
+  padding: 20px;
+  padding-left: 0px;
+}
+.popup.popup__open .child__task__section .child__task__container .child__task__list__container .child__task__input__container .child__task__input {
+  cursor: pointer;
+  border: 1px solid black;
+  border-radius: 10px;
+  padding: 10px 20px;
+  margin-right: 20px;
+  width: 80%;
+}
+.popup.popup__open .child__task__section .child__task__container .child__task__list__container .child__task__input__container .child__task__input input {
+  display: block;
+  width: 100%;
+}
+.popup.popup__open .child__task__section .child__task__container .child__task__list__container .add__icon {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 40px;
+  height: 40px;
+  background-color: #77e48f;
+  margin-right: 3px;
+  margin-bottom: 3px;
+  border-radius: 50%;
+  color: white;
+  cursor: pointer;
+  position: relative;
+  box-shadow: #19af3a 3px 3px 3px;
+  transition: all ease-in-out 0.2s;
+}
+.popup.popup__open .child__task__section .child__task__container .child__task__list__container .add__icon:hover {
+  box-shadow: none;
+  background-color: #19af3a;
+  transform: scale(0.95);
+}
+.popup.popup__open .child__task__section .child__task__container .child__task__list__container .add__icon::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 60%;
+  height: 2px;
+  background-color: white;
+  transform: translate(-50%, -50%);
+  border: 1px solid white;
+}
+.popup.popup__open .child__task__section .child__task__container .child__task__list__container .add__icon::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 60%;
+  height: 2px;
+  background-color: white;
+  transform: translate(-50%, -50%) rotate(90deg);
+  border: 1px solid white;
+}
+.popup.popup__open .child__task__section .child__task__container .child__task__list__container .remove__icon {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 40px;
+  height: 40px;
+  background-color: #ee6d6d;
+  margin-right: 3px;
+  margin-bottom: 3px;
+  border-radius: 50%;
+  color: white;
+  cursor: pointer;
+  position: relative;
+  box-shadow: #b9490a 3px 3px 3px;
+  transition: all ease-in-out 0.2s;
+}
+.popup.popup__open .child__task__section .child__task__container .child__task__list__container .remove__icon:hover {
+  box-shadow: none;
+  background-color: #b9490a;
+  transform: scale(0.95);
+}
+.popup.popup__open .child__task__section .child__task__container .child__task__list__container .remove__icon::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 60%;
+  height: 2px;
+  background-color: white;
+  transform: translate(-50%, -50%);
+  border: 1px solid white;
+}
+.popup .close__btn {
+  display: block;
+  width: 30px;
+  height: 30px;
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  cursor: pointer;
+}
+.popup .close__btn::before {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 2px;
+  background-color: black;
+  top: 50%;
+  left: 0;
+  transform: rotate(45deg);
+}
+.popup .close__btn::after {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 2px;
+  background-color: black;
+  top: 50%;
+  left: 0;
+  transform: rotate(-45deg);
+}
+
+.cover {
+  visibility: hidden;
+  position: absolute;
+  width: 100vw;
+  height: 100vh;
+  top: 0;
+  left: 0;
+  background-color: rgba(0, 0, 0, 0.3);
+  z-index: 999;
+  opacity: 0;
+  transition: opacity ease-in-out 0.2s;
+}
+.cover.popup__open {
+  visibility: visible;
+  opacity: 1;
+}
+
+.hidden {
+  visibility: hidden;
+  height: 0px;
+  width: 0px;
+  opacity: 0;
+  margin-top: 0;
+  padding: 0;
+}/*# sourceMappingURL=task-add-popup.css.map */
