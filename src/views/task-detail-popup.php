@@ -1,3 +1,4 @@
+<link rel="stylesheet" href="/views/css/task-detail-popup/task-detail-popup.css">
 <template id="task-template">
       <div class="child__task__list__container">
         <div class="popup__text child__task child__task__php">子タスク</div>
