@@ -14,7 +14,9 @@
         <?php foreach ($users as $user) : ?>
             <li class="weekly__report">
                 <div class="user__name">
-                    <?php echo $user->name ?>
+                    <div>
+                        <?php echo $user->name ?>
+                    </div>
                 </div>
 
                 <?php foreach ($weekly_tasks as $weekly_task) : ?>
@@ -39,6 +41,9 @@
                                     <?php echo $weekly_task->parent_tasks[$i]->title; ?>
                                 <?php endfor ; ?>
                             </div>
+                            <?php if ($weekly_task->date === $today) :?>
+                                <button class="btn register__btn">タスクを追加</button>
+                            <?php endif ; ?>
                         </div>
                     <?php endif ;?>
                 <?php endforeach; ?>

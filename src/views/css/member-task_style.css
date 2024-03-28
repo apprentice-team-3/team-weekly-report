@@ -54,7 +54,7 @@ header nav li a {
 /* ページネーション */
 .pagination-nav {
   position: fixed;
-  bottom: 20px;
+  bottom: 0;
   right: 20px;
 }
 
@@ -93,7 +93,7 @@ header nav li a {
     justify-content: end;
     position: fixed;
     right: 5px;
-    top: 50px;
+    top: 30px;
 
     .project__detail {
       font-size: 1.3rem;
@@ -107,7 +107,7 @@ header nav li a {
   gap: 20px;
   flex-direction: column;
   width: max-content;
-  margin-top: 120px;
+  margin-top: 90px;
 
   .weekly__report {
     min-height: calc(((100vh - (48px + 45px) - 200px) / 4));
@@ -137,13 +137,27 @@ header nav li a {
       min-height: calc(((100vh - (48px + 45px) - 200px) / 4));
       border-right: solid;
       width: 150px;
-      height: 100px;
+      height: 120px;
 
       .date {
         width: 150px;
         font-size: .9rem;
         font-weight: bold;
         border-bottom: solid;
+      }
+
+      .btn {
+        display: block;
+        width: -moz-fit-content;
+        width: fit-content;
+        min-height: 25px;
+        border-radius: 90px;
+        border: none;
+        background-color: #f6c64b;
+        color: white;
+        box-shadow: 6px 6px 5px 0px rgba(246, 198, 75, 0.6509803922);
+        cursor: pointer;
+        transition: all ease-in-out 0.2s;
       }
     }
   }
