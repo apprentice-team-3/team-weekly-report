@@ -9,6 +9,8 @@ header {
   display: flex;
   justify-content: space-between;
   height: 3rem;
+  position: fixed;
+  top: 3px;
 }
 
 ul,
@@ -34,6 +36,8 @@ li {
 
 header nav {
   margin: 0 0.5rem 0;
+  position: inherit;
+  right: 30px;
 }
 
 header nav li {
@@ -50,7 +54,7 @@ header nav li a {
 /* ページネーション */
 .pagination-nav {
   position: fixed;
-  bottom: 20px;
+  bottom: 0;
   right: 20px;
 }
 
@@ -81,48 +85,15 @@ header nav li a {
   background-color: rgb(215, 215, 99);
 }
 
-/* 評価一覧画面 */
-.content__container {
-  padding: 0px 10px;
-
-  .container {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    gap: 20px;
-
-    >div {
-      width: calc(50% - 20px);
-      height: 250px;
-      background-color: rgb(6, 71, 6);
-    }
-  }
-
-  .evaluation__title__project__container {
-    display: flex;
-    justify-content: space-between;
-    align-items: baseline;
-    padding: 10px 10px 10px;
-
-    .evaluation__week__user__name {
-      font-size: 2rem;
-      font-weight: bold;
-    }
-
-    .evaluation__project__name {
-      font-size: 1.3rem;
-      font-weight: bold;
-      height: content-fit;
-    }
-  }
-}
-
 /* タスク一覧画面 */
 
 .task__container {
   .project__container {
     display: flex;
     justify-content: end;
+    position: fixed;
+    right: 5px;
+    top: 30px;
 
     .project__detail {
       font-size: 1.3rem;
@@ -135,6 +106,8 @@ header nav li a {
   display: flex;
   gap: 20px;
   flex-direction: column;
+  width: max-content;
+  margin-top: 90px;
 
   .weekly__report {
     min-height: calc(((100vh - (48px + 45px) - 200px) / 4));
@@ -164,13 +137,27 @@ header nav li a {
       min-height: calc(((100vh - (48px + 45px) - 200px) / 4));
       border-right: solid;
       width: 150px;
-      height: 100px;
+      height: 120px;
 
       .date {
         width: 150px;
         font-size: .9rem;
         font-weight: bold;
         border-bottom: solid;
+      }
+
+      .btn {
+        display: block;
+        width: -moz-fit-content;
+        width: fit-content;
+        min-height: 25px;
+        border-radius: 90px;
+        border: none;
+        background-color: #f6c64b;
+        color: white;
+        box-shadow: 6px 6px 5px 0px rgba(246, 198, 75, 0.6509803922);
+        cursor: pointer;
+        transition: all ease-in-out 0.2s;
       }
     }
   }
