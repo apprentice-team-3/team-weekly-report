@@ -35,7 +35,9 @@
                             </div>
                         <?php endif ; ?>
                         <div class="task">
-                            <?php echo $weekly_task->parent_tasks[0]->title; ?>
+                            <?php for ($i = 0; $i < count($weekly_task->parent_tasks); $i++) :?>
+                                <?php echo $weekly_task->parent_tasks[$i]->title; ?>
+                            <?php endfor ; ?>
                         </div>
                     </div>
                 <?php endif ;?>
