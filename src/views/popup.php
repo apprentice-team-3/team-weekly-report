@@ -1,7 +1,7 @@
 <link rel="stylesheet" href="/views/css/task-add-popup/task-add-popup.css">
 
 <!-- 親タスクは/task-detail-popup/task-detail-popup-contentで設定しています -->
-<template id="task-template">
+<!-- <template id="task-template">
     <li class="child__task__list__container">
     <div class="child__task__name__remove">
         <div class="popup__text child__task child__task__php">子タスク</div>
@@ -47,7 +47,7 @@
         </ul>
     </div>
     </li>
-</template>
+</template> -->
 
 
 <div class="button__container">
@@ -57,8 +57,9 @@
 
     <!-- ポップアップ -->
     <?php
-        include __DIR__ . '/task-detail-popup/task-detail-popup-content.php';
+        // include __DIR__ . '/task-detail-popup/task-detail-popup-content.php';
 
+        include __DIR__ . '/task-add-popup/task-add-popup-template.php';
         include __DIR__ . '/task-add-popup/task-add-popup-content.php';
     ?>
     <div class="cover"></div>
