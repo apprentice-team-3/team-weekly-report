@@ -151,31 +151,44 @@ header nav li a {
       flex-direction: column;
       min-height: calc(((100vh - (48px + 45px) - 200px) / 4));
       border-right: solid;
-      width: 150px;
+      width: 180px;
       height: 120px;
 
       .date {
-        width: 150px;
+        width: inherit;
         font-size: .9rem;
         font-weight: bold;
         border-bottom: solid;
+        margin-inline-end: auto;
+
+        .inner_date {
+          text-align: center;
+        }
       }
 
       .task {
         font-size: .7rem;
         margin: 2px;
+        width: inherit;
+
+        .title_progress {
+          display: flex;
+          justify-content: space-evenly;
+          margin: 1px 0 2px;
+        }
 
         .progress-bar {
-          width: 135px;
+          width: 150px;
           height: 10px;
           background-color: #ddd;
           overflow: hidden;
+          margin: auto;
 
           .progress {
-              height: 100%;
-              background-color: #4CAF50;
-              line-height: 20px;
-            }
+            height: 100%;
+            background-color: #4CAF50;
+            line-height: 20px;
+          }
         }
       }
     }
