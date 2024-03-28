@@ -126,6 +126,21 @@ header nav li a {
       border-right: 5px solid white;
       width: 200px;
       height: 100px;
+
+      .btn {
+        display: block;
+        width: -moz-fit-content;
+        width: fit-content;
+        padding: 0 10px;
+        min-height: 30px;
+        border-radius: 90px;
+        border: none;
+        background-color: #f6c64b;
+        color: white;
+        box-shadow: 6px 6px 5px 0px rgba(246, 198, 75, 0.6509803922);
+        cursor: pointer;
+        transition: all ease-in-out 0.2s;
+      }
     }
 
     .weekly__report__task__container {
@@ -136,28 +151,45 @@ header nav li a {
       flex-direction: column;
       min-height: calc(((100vh - (48px + 45px) - 200px) / 4));
       border-right: solid;
-      width: 150px;
+      width: 180px;
       height: 120px;
 
       .date {
-        width: 150px;
+        width: inherit;
         font-size: .9rem;
         font-weight: bold;
         border-bottom: solid;
+        margin-inline-end: auto;
+
+        .inner_date {
+          text-align: center;
+        }
       }
 
-      .btn {
-        display: block;
-        width: -moz-fit-content;
-        width: fit-content;
-        min-height: 25px;
-        border-radius: 90px;
-        border: none;
-        background-color: #f6c64b;
-        color: white;
-        box-shadow: 6px 6px 5px 0px rgba(246, 198, 75, 0.6509803922);
-        cursor: pointer;
-        transition: all ease-in-out 0.2s;
+      .task {
+        font-size: .7rem;
+        margin: 2px;
+        width: inherit;
+
+        .title_progress {
+          display: flex;
+          justify-content: space-evenly;
+          margin: 1px 0 2px;
+        }
+
+        .progress-bar {
+          width: 150px;
+          height: 10px;
+          background-color: #ddd;
+          overflow: hidden;
+          margin: auto;
+
+          .progress {
+            height: 100%;
+            background-color: #4CAF50;
+            line-height: 20px;
+          }
+        }
       }
     }
   }

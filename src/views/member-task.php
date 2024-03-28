@@ -17,6 +17,11 @@
                     <div>
                         <?php echo $user->name ?>
                     </div>
+                    <div>
+                        <button class="btn transition__btn">
+                            タスクを追加
+                        </button>
+                    </div>
                 </div>
 
                 <?php foreach ($weekly_tasks as $weekly_task) : ?>
@@ -28,22 +33,30 @@
                             ?>
                             <?php if ($weekly_task->date === $today) :?>
                                 <div class="date">
-                                    <?php echo $weekly_task->getDate() . ' 本日'; ?>
+                                    <div class="inner_date">
+                                        <?php echo $weekly_task->getDate() . ' 本日'; ?>
+                                    </div>
                                 </div>
                             <?php endif ; ?>
                             <?php if ($weekly_task->date !== $today) :?>
                                 <div class="date">
-                                    <?php echo $weekly_task->getDate(); ?>
+                                    <div class="inner_date">
+                                        <?php echo $weekly_task->getDate(); ?>
+                                    </div>
                                 </div>
                             <?php endif ; ?>
                             <div class="task">
                                 <?php for ($i = 0; $i < count($weekly_task->parent_tasks); $i++) :?>
-                                    <?php echo $weekly_task->parent_tasks[$i]->title; ?>
+                                    <?php $progress = $weekly_task->parent_tasks[$i]->progress; ?>
+                                    <div class="title_progress">
+                                        <div class="task_title"><?php echo $weekly_task->parent_tasks[$i]->title; ?></div>
+                                        <div class="task_progress"><?php echo $progress; ?>%</div>
+                                    </div>
+                                    <div class="progress-bar">
+                                        <div class="progress" style="width: <?php echo $progress; ?>%;"></div>
+                                    </div>
                                 <?php endfor ; ?>
                             </div>
-                            <?php if ($weekly_task->date === $today) :?>
-                                <button class="btn register__btn">タスクを追加</button>
-                            <?php endif ; ?>
                         </div>
                     <?php endif ;?>
                 <?php endforeach; ?>
