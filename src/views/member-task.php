@@ -1,37 +1,45 @@
 <div class="task__container">
     <h2 class="project__container">
         <div class="project__detail">
-          　<?php echo $project->title ?>
-          <script>
+        <?php echo $project->title ?>
+        <script>
             const progress = Number("<?php echo $project->progress ?>")
             const progressPercent = progress.toFixed(4)
             document.write(progressPercent + "%")
-          </script>
-          完了
+        </script>
+        完了
         </div>
     </h2>
     <ul class="weekly__report__container">
         <?php foreach ($users as $user) : ?>
             <li class="weekly__report">
-               <div class="user__name">
-                   <?php echo $user->name ?>
-                </div>
+            <div class="user__name">
+                <?php echo $user->name ?>
+            </div>
 
-                <?php foreach ($weekly_tasks as $weekly_task) : ?>
+            <?php foreach ($weekly_tasks as $weekly_task) : ?>
+                <?php if ($weekly_task->parent_tasks[0]->user_id === $user->id) : ?>
                     <div class="weekly__report__task__container">
-                        <div class="date">
-                            <?php
-                            $today = new DateTime();
-                            $today = $today->format('Y-m-d');
-                            if ($weekly_task->date === $today) {
-                                echo $weekly_task->getDate() . ' 本日';
-                            } else {
-                                echo $weekly_task->getDate();
-                            }
-                            ?>
+                        <?php
+                        $today = new DateTime();
+                        $today = $today->format('Y-m-d');
+                        ?>
+                        <?php if ($weekly_task->date === $today) :?>
+                            <div class="date">
+                                <?php echo $weekly_task->getDate() . ' 本日'; ?>
+                            </div>
+                        <?php endif ; ?>
+                        <?php if ($weekly_task->date !== $today) :?>
+                            <div class="date">
+                                <?php echo $weekly_task->getDate(); ?>
+                            </div>
+                        <?php endif ; ?>
+                        <div class="task">
+                            <?php echo $weekly_task->parent_tasks[0]->title; ?>
                         </div>
                     </div>
-                <?php endforeach; ?>
+                <?php endif ;?>
+            <?php endforeach; ?>
             </li>
         <?php endforeach; ?>
         <script>
