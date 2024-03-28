@@ -70,8 +70,9 @@ textarea {
 }
 
 .register__btn {
-  // 右にこの要素だけ移動
-  margin-left: auto;
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
 }
 
 .popup {
@@ -87,6 +88,8 @@ textarea {
   opacity: 0;
   transition: opacity ease-in-out 0.2s;
   gap: 10px;
+  min-height: 66vh;
+  max-height: 70vh;
 
   & .parent__task__section {
     width: 100%;
@@ -181,22 +184,27 @@ textarea {
     padding: 20px;
     padding-right: 60px;
     min-width: 33vw;
+    height: 33vh;
+
     gap: 10px;
 
     & .child__task__section {
       display: flex;
-      flex-direction: column;
       gap: 8px;
       flex-wrap: wrap;
+      width: 100%;
+      height: 100px;
 
       & .child__task__container {
         display: flex;
         gap: 20px;
         flex-direction: column;
-        max-height: 60vh;
-        // はみ出てる箇所は隠す
-        overflow-y: auto;
+        width: 100%;
+        height: 29vh;
+        overflow-y: scroll;
         scrollbar-width: none;
+
+        // はみ出てる箇所は隠す
 
         & .child__task__list__container {
           display: flex;
@@ -294,31 +302,33 @@ textarea {
               }
             }
           }
+        }
+      }
 
-          & .child__task__input__container {
-            display: flex;
+      & .child__task__add {
+        display: flex;
+        width: 100%;
+        height: fit-content;
+        justify-content: space-between;
+        align-items: center;
+        padding: 20px;
+        padding-top: 5px;
+        padding-bottom: 20px;
+        padding-right: 0;
+        padding-left: 0px;
+
+        & .child__task__input {
+          cursor: pointer;
+          border: 1px solid black;
+          border-radius: 10px;
+          padding: 10px 20px;
+          margin-right: 20px;
+          //   flexで8割の幅を取る
+          width: 80%;
+
+          & input {
+            display: block;
             width: 100%;
-            height: fit-content;
-            justify-content: space-between;
-            align-items: center;
-            margin-top: 20px;
-            padding: 20px;
-            padding-left: 0px;
-
-            & .child__task__input {
-              cursor: pointer;
-              border: 1px solid black;
-              border-radius: 10px;
-              padding: 10px 20px;
-              margin-right: 20px;
-              //   flexで8割の幅を取る
-              width: 80%;
-
-              & input {
-                display: block;
-                width: 100%;
-              }
-            }
           }
         }
       }
