@@ -286,7 +286,8 @@ INSERT INTO parent_tasks (project_id, user_id, id, title, created_at) VALUES
 (1, 1, 53, '1,aページとcページ', '2024-03-15 00:00:00'),
 (1, 2, 54, '2,bページとdページ', '2024-03-15 00:00:00'),
 (1, 3, 55, '3,aページとcページ', '2024-03-15 00:00:00'),
-(1, 4, 56, '4,bページとdページ', '2024-03-15 00:00:00');
+(1, 4, 56, '4,bページとdページ', '2024-03-15 00:00:00'),
+(1, 4, 57, '4,React', '2024-03-15 00:00:00');
 
 INSERT INTO child_tasks (project_id, user_id, parent_task_id, id, title, content, progress) VALUES
 (1, 1, 1, 1, '画面1のワイヤーフレーム作成', 'LPのワイヤーフレーム', 100),
