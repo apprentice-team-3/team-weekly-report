@@ -18,9 +18,8 @@
                         <?php echo $user->name ?>
                     </div>
                     <div>
-                        <button class="btn transition__btn">
-                            タスクを追加
-                        </button>
+                        <!-- $userをdata-userに渡したい -->
+                        <button class="btn transition__btn open__add__task__btn" data-user-name="<?php echo $user->name ?>" data-project-id="<?php echo $project->id ?>" >タスクを追加</button>
                     </div>
                 </div>
 
@@ -82,3 +81,6 @@
         </script>
     </ul>
 </div>
+<?php
+    include __DIR__ . "/js/member-task.php";
+?>
