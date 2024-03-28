@@ -21,16 +21,17 @@
                     <div class="weekly__report__task__container">
                         <div class="date">
                         <?php
-                            $today = new DateTime();
-                            $today = $today->format('Y-m-d');
-                            if ($weekly_task->parent_tasks[0]->user_id === $user->id) {
-                                if ($weekly_task->date === $today) {
-                                    echo $weekly_task->getDate() . ' 本日';
-                                } else {
-                                    echo $weekly_task->getDate();
-                                }
-                            }
-                            ?>
+                        $today = new DateTime();
+                        $today = $today->format('Y-m-d');
+                        ?>
+                        <?php if ($weekly_task->parent_tasks[0]->user_id === $user->id) : ?>
+                            <?php if ($weekly_task->date === $today) :?>
+                                <?php echo $weekly_task->getDate() . ' 本日'; ?>
+                            <?php endif ; ?>
+                            <?php if ($weekly_task->date !== $today) :?>
+                                <?php echo $weekly_task->getDate(); ?>
+                            <?php endif ; ?>
+                        <?php endif ;?>
                         </div>
                         <?php if($weekly_task->parent_tasks[0]->user_id === $user->id) : ?>
                             <div class="task">
