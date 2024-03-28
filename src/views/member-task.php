@@ -61,7 +61,7 @@
                         </div>
                     <?php endif ;?>
                 <?php endforeach; ?>
-            </div>
+            <?php endforeach; ?>
         </li>
         <script>
             const $users = document.querySelectorAll('.user__name')
