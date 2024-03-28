@@ -1,7 +1,5 @@
-<link rel="stylesheet" href="/views/css/task-add-popup/task-add-popup.css">
-
-<!-- 親タスクは/task-detail-popup/task-detail-popup-contentで設定しています -->
-<template id="task-template">
+<!-- views/popup.phpで呼ばれます -->
+<template id="task-edit-template">
     <li class="child__task__list__container">
     <div class="child__task__name__remove">
         <div class="popup__text child__task child__task__php">子タスク</div>
@@ -20,7 +18,7 @@
         </div>
         <ul class="progress__character__container">
         <li
-            class="popup__text progress__character child__task__progress__0__php"
+            class="popup__text progress__character child__task__progress__0__php selected"
         >
             <label for="">0%</label>
         </li>
@@ -40,7 +38,7 @@
             <label for="">80%</label>
         </li>
         <li
-            class="popup__text progress__character green child__task__progress__100__php selected"
+            class="popup__text progress__character green child__task__progress__100__php"
         >
             <label for="">100%</label>
         </li>
@@ -48,20 +46,3 @@
     </div>
     </li>
 </template>
-
-
-<div class="button__container">
-    <!-- ボタンにデータを仕込む -->
-    <button class="btn open__add__task__btn" data-parent_task_id="1">タスク追加</button>
-    <button class="btn open__detail__task__btn" data-create-task-user="YNSTakeru">タスク詳細</button>
-
-    <!-- ポップアップ -->
-    <?php
-        include __DIR__ . '/task-detail-popup/task-detail-popup-content.php';
-
-        include __DIR__ . '/task-add-popup/task-add-popup-content.php';
-    ?>
-    <div class="cover"></div>
-</div>
-
-<?php include __DIR__ . '/js/task-add.php'; ?>
