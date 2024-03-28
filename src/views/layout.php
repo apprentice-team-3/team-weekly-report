@@ -4,9 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/views/style.css">
-    <!-- 一旦detailの方と競合するのでコメントアウト -->
-    <!-- <link rel="stylesheet" href="/views/css/task-detail-popup/task-detail-popup.css"> -->
-    <link rel="stylesheet" href="/views/css/task-add-popup/task-add-popup.css">
     <title>TWR -<?php echo $title; ?>-</title>
 </head>
 <body>
