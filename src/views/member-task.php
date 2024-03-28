@@ -1,3 +1,4 @@
+<link rel="stylesheet" href="/views/css/popup/popup.css">
 <div class="task__container">
     <h2 class="project__container">
         <div class="project__detail">
@@ -82,5 +83,9 @@
     </ul>
 </div>
 <?php
+    include __DIR__ . "/task-add-popup/task-add-popup-template.php";
+    include __DIR__ . "/task-add-popup/task-add-popup-content.php";
+
+    include __DIR__ . "/js/task-add.php";
     include __DIR__ . "/js/member-task.php";
 ?>

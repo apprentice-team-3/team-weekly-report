@@ -22,31 +22,41 @@
 }
 
 function popupHandler($button, $popup, $taskTemplate){
-  const $cover = document.querySelector(".cover");
-const $closeBtn = $popup.querySelector(".close__btn");
-
-const $doms = [$popup, $cover, $closeBtn];
-
-$button.addEventListener("click", (e) => {
-  e.preventDefault();
-
-  $doms.forEach((dom) => {
-    dom.classList.toggle("popup__open");
-  });
-
-  if(!$cover.classList.contains("popup__open")){
-    dom.classList.add("popup__open")
+  let $cover = document.querySelector(".cover");
+  if(!$cover){
+    const $main =document.querySelector("main");
+    $cover = document.createElement("div");
+    $cover.classList.add("cover");
+    $main.insertAdjacentElement("afterend", $cover);
   }
 
-  const parentTaskId = $button.dataset.parent_task_id;
+  if(!$popup){
+    return;
+  }
 
-  const parentTaskName = $popup.querySelector(".parent__task");
-});
+  const $closeBtn = $popup.querySelector(".close__btn");
+  const $doms = [$popup, $cover, $closeBtn];
+
+  $button.addEventListener("click", (e) => {
+    e.preventDefault();
+
+    $doms.forEach((dom) => {
+      dom.classList.toggle("popup__open");
+    });
+
+    if(!$cover.classList.contains("popup__open")){
+      dom.classList.add("popup__open")
+    }
+
+    const parentTaskId = $button.dataset.parent_task_id;
+
+    const parentTaskName = $popup.querySelector(".parent__task");
+  });
+
 
 $doms.forEach((dom) => {
   if (dom === $popup) return;
   dom.addEventListener("click", (e) => {
-
     e.preventDefault();
     $doms.forEach((dom) => {
       dom.classList.remove("popup__open");
