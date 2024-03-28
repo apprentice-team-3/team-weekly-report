@@ -59,5 +59,5 @@ try {
     $db->rollback();
 }
 // echo "<pre>";
-    // print_r($weekly_tasks);
-    // echo "</pre>";
+// print_r($weekly_tasks);
+// echo "</pre>";
