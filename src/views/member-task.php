@@ -15,31 +15,31 @@
             <li class="weekly__report">
             <div class="user__name">
                 <?php echo $user->name ?>
-                </div>
+            </div>
 
-                <?php foreach ($weekly_tasks as $weekly_task) : ?>
+            <?php foreach ($weekly_tasks as $weekly_task) : ?>
+                <?php if ($weekly_task->parent_tasks[0]->user_id === $user->id) : ?>
                     <div class="weekly__report__task__container">
-                        <div class="date">
                         <?php
                         $today = new DateTime();
                         $today = $today->format('Y-m-d');
                         ?>
-                        <?php if ($weekly_task->parent_tasks[0]->user_id === $user->id) : ?>
-                            <?php if ($weekly_task->date === $today) :?>
+                        <?php if ($weekly_task->date === $today) :?>
+                            <div class="date">
                                 <?php echo $weekly_task->getDate() . ' 本日'; ?>
-                            <?php endif ; ?>
-                            <?php if ($weekly_task->date !== $today) :?>
-                                <?php echo $weekly_task->getDate(); ?>
-                            <?php endif ; ?>
-                        <?php endif ;?>
-                        </div>
-                        <?php if($weekly_task->parent_tasks[0]->user_id === $user->id) : ?>
-                            <div class="task">
-                                <?php echo $weekly_task->parent_tasks[0]->title; ?>
                             </div>
                         <?php endif ; ?>
+                        <?php if ($weekly_task->date !== $today) :?>
+                            <div class="date">
+                                <?php echo $weekly_task->getDate(); ?>
+                            </div>
+                        <?php endif ; ?>
+                        <div class="task">
+                            <?php echo $weekly_task->parent_tasks[0]->title; ?>
+                        </div>
                     </div>
-                <?php endforeach; ?>
+                <?php endif ;?>
+            <?php endforeach; ?>
             </li>
         <?php endforeach; ?>
         <script>
