@@ -65,16 +65,23 @@ textarea :hover {
   cursor: pointer;
   transition: all ease-in-out 0.2s;
 }
-.btn.disabled {
-  background-color: gray;
-  box-shadow: none;
-  cursor: not-allowed;
-}
 .btn:hover, .btn:focus {
   background-color: rgba(246, 198, 75, 0.6509803922);
   box-shadow: none;
   color: gray;
   transform: scale(0.95);
+}
+.btn.disabled {
+  background-color: gray;
+  box-shadow: none;
+  cursor: not-allowed;
+}
+.btn.disabled:hover {
+  background-color: gray;
+  box-shadow: none;
+  color: white;
+  transform: none;
+  cursor: not-allowed;
 }
 .btn__danger {
   background-color: #ee6d6d;

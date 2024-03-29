@@ -67,19 +67,27 @@ textarea {
   cursor: pointer;
   transition: all ease-in-out 0.2s;
 
-  // disabled属性
-  &.disabled {
-    background-color: gray;
-    box-shadow: none;
-    cursor: not-allowed;
-  }
-
   &:hover,
   &:focus {
     background-color: #f6c64ba6;
     box-shadow: none;
     color: gray;
     transform: scale(0.95);
+  }
+
+  // disabled属性
+  &.disabled {
+    background-color: gray;
+    box-shadow: none;
+    cursor: not-allowed;
+
+    &:hover {
+      background-color: gray;
+      box-shadow: none;
+      color: white;
+      transform: none;
+      cursor: not-allowed;
+    }
   }
 
   &__danger {
