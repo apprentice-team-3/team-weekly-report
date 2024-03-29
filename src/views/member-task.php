@@ -49,7 +49,7 @@
                                 <?php for ($i = 0; $i < count($weekly_task->parent_tasks); $i++) :?>
                                     <?php $progress = $weekly_task->parent_tasks[$i]->progress; ?>
                                     <div class="title_progress">
-                                        <div class="task_title"><?php echo $weekly_task->parent_tasks[$i]->title; ?></div>
+                                        <button class="task_title open__edit__task__btn"><?php echo $weekly_task->parent_tasks[$i]->title; ?></button>
                                         <div class="task_progress"><?php echo $progress; ?>%</div>
                                     </div>
                                     <div class="progress-bar">
