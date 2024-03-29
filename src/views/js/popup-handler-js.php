@@ -97,8 +97,12 @@ function popupAddEventListener($popup, $taskTemplate) {
       }, 0) / childTasks.length;
 
 
-    console.log(parentTaskName, parentTaskProgress, childTasks);
-    // sendServer
+      const userId =$popup.querySelector("#input_user_id").value;
+      const projectId =$popup.querySelector("#input_project_id").value;
+
+      console.log(userId,projectId, parentTaskName, parentTaskProgress, childTasks);
+
+      // ここにサーバーの処理をお願いします
 
     $popup.classList.remove("popup__open");
     $cover.classList.remove("popup__open");

@@ -8,7 +8,6 @@
     <?php
         include __DIR__ . '/task-detail-popup/task-detail-popup-content.php';
         include __DIR__ . '/task-detail-popup/task-detail-popup-template.php';
-
         include __DIR__ . '/task-add-popup/task-add-popup-template.php';
         include __DIR__ . '/task-add-popup/task-add-popup-content.php';
     ?>
