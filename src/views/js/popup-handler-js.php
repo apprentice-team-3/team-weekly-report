@@ -103,6 +103,8 @@ function popupAddEventListener($popup, $taskTemplate) {
     $popup.classList.remove("popup__open");
     $cover.classList.remove("popup__open");
 
+
+
   });
 }
 </script>
