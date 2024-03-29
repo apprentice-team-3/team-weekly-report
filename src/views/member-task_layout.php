@@ -27,7 +27,9 @@
     <main>
         <?php include $content; ?>
 
-        <nav class="pagination-nav">
+
+    </main>
+    <nav class="pagination-nav">
             <ul class="pagination">
                 <li class="page-item">
                     <a class="page-link" href="#">
@@ -48,6 +50,5 @@
                 </li>
             </ul>
         </nav>
-    </main>
 </body>
 </html>

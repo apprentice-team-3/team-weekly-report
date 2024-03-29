@@ -16,6 +16,16 @@
 
         $openAddTaskBtn.addEventListener('click', (e) => {
             e.preventDefault()
+            // popupの位置をボタンの近くで表示するようにする
+            const rect = e.target.getBoundingClientRect()
+            // popupの横の長さを取得
+            const popupWidth = $taskAddPopup.offsetWidth
+            // popupの高さを取得
+            const popupHeight = $taskAddPopup.offsetHeight
+
+            $taskAddPopup.style.top = `calc(${rect.top}px + ${popupHeight}px / 2)`
+            $taskAddPopup.style.left = `calc(${rect.left}px + ${popupWidth}px * 2)`
+
             $taskAddPopup.classList.toggle('popup__open')
             const $cover = document.querySelector('.cover');
             $cover.classList.toggle('popup__open')
