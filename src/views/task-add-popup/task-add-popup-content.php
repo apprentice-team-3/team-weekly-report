@@ -1,4 +1,4 @@
-<form class="popup" id="task-add-popup">
+<form class="popup" id="task-add-popup" method="POST">
     <div class="popup__text parent__task">タスク名</div>
     <div class="parent__task__section">
         <div class="parent__task__input">
@@ -28,6 +28,4 @@
     <div class="close__btn"></div>
     <input type="hidden" id="input_user_id" value="" />
     <input type="hidden" id="input_project_id" value="" />
-    <input type="hidden" id="input_parent_task_id" value="" />
-
 </form>

@@ -5,18 +5,16 @@ use db\DataSource;
 use model\ChildTask;
 
 // jsで送られてきたデータを取得
-$parent_task_id = 1;
-$child_task_name = "送信した子タスク";
-$child_task_comment = "子タスクコメント";
-$child_task_progress = 30;
+
+$data = json_decode(file_get_contents('php://input'), true);
 
 try {
     $db = new DataSource;
     $db->begin();
 
-    $sql = 'INSERT INTO child_tasks (parent_task_id, title, content, progress) VALUES (:parent_task_id, :title, :content, :progress)';
+    $sql = 'INSERT INTO parent_tasks (project_id, user_id, title, progress) VALUES (:project_id, :user_id, :title, :progress)';
 
-    $db->execute($sql, [':parent_task_id' => $parent_task_id, ':title' => $child_task_name, ':content' => $child_task_comment, ':progress' => $child_task_progress]);
+    $db->execute($sql, [':project_id' => $data["project_id"] , ':user_id' => $data["user_id"], ':title' => $data["parent_task_name"], ':progress' => $data["parent_task_progress"]]);
 
     $db->commit();
 
