@@ -513,4 +513,31 @@ textarea {
   &:hover {
     transform: scale(0.95);
   }
+
+  &.popup__open {
+    z-index: 1001;
+  }
+}
+
+.task_progress {
+  transition: all ease-in-out 0.2s;
+
+  &.popup__open {
+    z-index: 1001;
+    transform: scale(1.1);
+  }
+}
+
+.user__name div.popup__open {
+  position: relative;
+  z-index: 1001;
+}
+
+.progress-bar.popup__open {
+  position: relative;
+  z-index: 1001;
+}
+
+.date.popup__open {
+  z-index: 1001;
 }

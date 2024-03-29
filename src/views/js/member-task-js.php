@@ -36,15 +36,23 @@
         $taskAddPopup.querySelector("#input_project_id").value = projectId;
     })
 
-    $openEditTaskBtns.forEach($openEditTaskBtns => {
-        $openEditTaskBtns.addEventListener("click", (e) => {
+    $openEditTaskBtns.forEach($openEditTaskBtn => {
+        $openEditTaskBtn.addEventListener("click", (e) => {
             e.preventDefault();
+            if($openEditTaskBtn.classList.contains("popup__open")){
+                $openPopups = document.querySelectorAll(".popup__open");
+                $openPopups.forEach($openPopup => {
+                    $openPopup.classList.remove("popup__open");
+                });
+                return;
+            }
+
             const rect = e.target.getBoundingClientRect();
             const popupWidth = $taskEditPopup.offsetWidth;
             const popupHeight = $taskEditPopup.offsetHeight;
 
             // 上下は
-            $taskEditPopup.style.top = `50vh`;
+            $taskEditPopup.style.top = `50vh - ${popupHeight}px / 2 - 40px`;
             if (rect.left < window.innerWidth / 2) {
                 $taskEditPopup.style.left = `calc(${rect.left}px + ${popupWidth}px * 2)`;
             } else {
@@ -56,7 +64,14 @@
             $taskEditPopup.classList.toggle("popup__open");
             const $cover = document.querySelector(".cover");
             $cover.classList.toggle("popup__open");
+            $openEditTaskBtn.classList.toggle("popup__open");
 
+            $openEditTaskBtn.closest(".title_progress").querySelector(".task_progress").classList.toggle("popup__open");
+            // 一番近いprogress-barを取得してしまっている
+            $openEditTaskBtn.parentElement.nextElementSibling.classList.toggle("popup__open");
+
+            $openEditTaskBtn.closest(".weekly__report__task__container").querySelector(".date").classList.toggle("popup__open");
+            $openEditTaskBtn.closest(".weekly__report").querySelector(".user__name div").classList.toggle("popup__open")
         })
     })
 </script>

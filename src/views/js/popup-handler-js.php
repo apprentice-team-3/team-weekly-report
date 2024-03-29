@@ -39,9 +39,13 @@ function popupAddEventListener($popup, $taskTemplate) {
 
     $dom.addEventListener("click", (e) => {
       e.preventDefault();
-
         $popup.classList.remove("popup__open");
         $doms.forEach((dom) => {
+          dom.classList.remove("popup__open");
+        });
+
+        $openDom = document.querySelectorAll(".popup__open");
+        $openDom.forEach((dom) => {
           dom.classList.remove("popup__open");
         });
     });
@@ -127,9 +131,10 @@ function popupAddEventListener($popup, $taskTemplate) {
           console.error(e);
         })
 
-
-    $popup.classList.remove("popup__open");
-    $cover.classList.remove("popup__open");
+        $openPopup = document.querySelectorAll(".popup__open");
+        $openPopup.forEach((dom) => {
+          dom.classList.remove("popup__open");
+        });
 
   });
 }
