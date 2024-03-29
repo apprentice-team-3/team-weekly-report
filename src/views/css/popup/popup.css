@@ -444,4 +444,10 @@ textarea :hover {
   background-color: white;
   transform: translate(-50%, -50%);
   border: 1px solid white;
+}
+
+.pagination-nav {
+  position: fixed;
+  top: 0;
+  left: 0;
 }/*# sourceMappingURL=popup.css.map */
