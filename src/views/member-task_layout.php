@@ -15,7 +15,7 @@
             </h1>
         </div>
 
-        <nav>
+        <nav class="change_location">
             <ul>
                 <li><a href="">プロジェクト一覧</a></li>
                 <li><a href="/member-task.php">タスク一覧</a></li>
