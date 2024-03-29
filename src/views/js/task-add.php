@@ -65,6 +65,7 @@ $doms.forEach((dom) => {
 });
 
 const $childTaskContainer = $popup.querySelector(".child__task__container");
+
 for (let i = 0; i < 1; i++) {
   const $task = $taskTemplate.content.cloneNode(true);
   // $task.querySelector(".child__task").textContent = `子タスク${i + 1}`;
@@ -82,17 +83,14 @@ const $addBtn = $popup.querySelector(".icon__add");
 $addBtn.addEventListener("click", (e) => {
   e.preventDefault();
   const $childTaskInput = $popup.querySelector(".child__task__input");
-
   const $childTaskName = $childTaskInput.querySelector("input").value;
-
-
   const $task = $taskTemplate.content.cloneNode(true);
+
   $task.querySelector(".child__task").textContent = $childTaskName;
-
   addClickProgressEvent([$task]);
-
   $childTaskContainer.insertBefore($task, $childTaskContainer.firstChild);
 });
+
 
 const $registerBtn = $popup.querySelector(".register__btn");
 //   registerBtnが押されたら
@@ -107,23 +105,23 @@ $registerBtn.addEventListener("click", (e) => {
   );
 
   const childTasks = Array.from($childTasks).map(($childTask) => {
-    const childTaskName = $childTask.querySelector(".child__task").textContent;
+  const childTaskName = $childTask.querySelector(".child__task").textContent;
 
 
-    const progress = Number(
-      $childTask.querySelector(".selected label").textContent.slice(0, -1)
-    );
+  const progress = Number(
+    $childTask.querySelector(".selected label").textContent.slice(0, -1)
+  );
 
 
-    const comment = $childTask.querySelector(".comment__textarea").value;
+  const comment = $childTask.querySelector(".comment__textarea").value;
 
 
-    return {
-      childTaskName,
-      progress,
-      comment,
-    };
-  });
+  return {
+    childTaskName,
+    progress,
+    comment,
+  };
+});
 
   // 子タスクを集計して親タスクの進捗を算出
   const parentTaskProgress =
@@ -142,15 +140,15 @@ $registerBtn.addEventListener("click", (e) => {
 });
 }
 
-const $editTaskBtn = document.querySelector(".open__detail__task__btn");
-const $editPopup = document.querySelector("#task-edit-popup");
-const $taskEditTemplate = document.querySelector("#task-edit-template");
+// const $editTaskBtn = document.querySelector(".open__detail__task__btn");
+// const $editPopup = document.querySelector("#task-edit-popup");
+// const $taskEditTemplate = document.querySelector("#task-edit-template");
 
-const $addTaskBtn = document.querySelector(".open__add__task__btn");
-const $addPopup = document.querySelector("#task-add-popup");
-const $taskAddTemplate = document.querySelector("#task-add-template");
+// const $addTaskBtn = document.querySelector(".open__add__task__btn");
+// const $addPopup = document.querySelector("#task-add-popup");
+// const $taskAddTemplate = document.querySelector("#task-add-template");
 
-popupHandler($addTaskBtn, $addPopup, $taskAddTemplate);
-popupHandler($editTaskBtn, $editPopup, $taskEditTemplate);
+// popupHandler($addTaskBtn, $addPopup, $taskAddTemplate);
+// popupHandler($editTaskBtn, $editPopup, $taskEditTemplate);
 
 </script>

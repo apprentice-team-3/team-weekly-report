@@ -20,7 +20,7 @@
                     </div>
                     <div>
                         <!-- $userをdata-userに渡したい -->
-                        <button class="btn transition__btn open__add__task__btn" data-user-name="<?php echo $user->name ?>" data-project-id="<?php echo $project->id ?>" >タスクを追加</button>
+                        <button class="btn transition__btn open__add__task__btn" data-user_id="<?php echo $user->name ?>" data-project_id="<?php echo $project->id ?>" >タスクを追加</button>
                     </div>
                 </div>
 
@@ -86,5 +86,6 @@
     include __DIR__ . "/task-add-popup/task-add-popup-template.php";
     include __DIR__ . "/task-add-popup/task-add-popup-content.php";
 
-    include __DIR__ . "/js/task-add.php";
+    include __DIR__ . "/js/popup-handler.php";
+    include __DIR__ . "/js/member-task.php";
 ?>
