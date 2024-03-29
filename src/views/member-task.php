@@ -4,8 +4,8 @@
         <div class="project__detail">
         <?php echo $project->title ?>
         <script>
-            const progress = Number("<?php echo $project->progress ?>")
-            const progressPercent = progress.toFixed(4)
+            const progress = Number("<?php echo floor($project->progress) ?>")
+            const progressPercent = progress
             document.write(progressPercent + "%")
         </script>
         完了
@@ -13,7 +13,7 @@
     </h2>
     <div>
         <!-- $userをdata-userに渡したい -->
-        <button class="btn transition__btn open__add__task__btn" data-user_id="<?php echo $user->name ?>" data-project_id="<?php echo $project->id ?>" >今日のタスクを追加</button>
+        <button class="btn transition__btn open__add__task__btn" data-user_id="3" data-project_id="1" >今日のタスクを追加</button>
     </div>
     <ul class="weekly__report__container">
         <?php $j = 0; ?>
@@ -25,7 +25,7 @@
                     </div>
                     <div>
                         <!-- $userをdata-userに渡したい -->
-                        <button class="btn transition__btn open__add__task__btn" data-user_id="<?php echo $user->id ?>" data-project_id="<?php echo $project->id ?>" >タスクを追加</button>
+                        <!-- <button class="btn transition__btn open__add__task__btn" data-user_id="<?php echo $user->id ?>" data-project_id="<?php echo $project->id ?>" >タスクを追加</button> -->
                     </div>
                 </div>
 
@@ -70,40 +70,6 @@
                 <?php endforeach; ?>
             </li>
         <?php endforeach; ?>
-        <script>
-            /* const $users = document.querySelectorAll('.user__name')
-
-            // 文字の最大値を取得
-            const max = Math.max(...Array.from($users).map(user => user.textContent.length))
-
-            const maxValue = Array.from($users).find(user => user.textContent.length === max)
-            // 横幅のピクセルを取得
-            const width = maxValue.offsetWidth
-            const $weeklyReport = document.querySelector('.weekly__report')
-
-            const height = $weeklyReport.offsetHeight
-
-            Array.from($users).forEach(user => {
-                user.style.width = `${width}px`
-                user.style.height = `${height}px`
-            }) */
-
-            <?php for($k = 0; $k < $j; $k++) :?>
-            let progressBar<?php echo $k;?> = document.getElementById(<?php echo $k;?>);
-            let percent<?php echo $k;?> = <?php echo $progresses[$k]; ?>;
-
-            progressBar<?php echo $k;?>.classList.remove('progress-30', 'progress-60', 'progress-80', 'progress-100');
-            if (percent<?php echo $k;?> === 30) {
-                progressBar<?php echo $k;?>.classList.add('progress-30');
-            } else if (percent<?php echo $k;?> === 60) {
-                progressBar<?php echo $k;?>.classList.add('progress-60');
-            } else if (percent<?php echo $k;?> === 80) {
-                progressBar<?php echo $k;?>.classList.add('progress-80');
-            } else {
-                progressBar<?php echo $k;?>.classList.add('progress-100');
-            }
-            <?php endfor;?>
-        </script>
     </ul>
 </div>
 <?php

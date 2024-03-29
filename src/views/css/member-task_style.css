@@ -126,18 +126,24 @@ header {
     background-color: rgb(6, 71, 6);
     color: white;
     display: flex;
-    /* justify-content: left; */
     align-items: center;
     border-radius: 3px;
-    margin-left: 10px;
 
     .user__name {
+      border-radius: 3px;
       font-size: 1.3rem;
       font-weight: bold;
+      background-color: #095b1b;
       line-height: 6;
       border-right: 5px solid white;
-      width: 150px;
+      width: 100px;
       height: 130px;
+      position: fixed;
+
+      div {
+        border-radius: 3px;
+        text-align: center;
+      }
     }
 
     .weekly__report__task__container {
@@ -167,6 +173,14 @@ header {
           }
         }
 
+      }
+      
+      .task {
+        .title_progress {
+          .task_title {
+            cursor: pointer;
+          }
+        }
       }
 
       .task {
@@ -212,4 +226,8 @@ header {
       }
     }
   }
+}
+
+.user__name+.weekly__report__task__container {
+  margin-left: 100px;
 }
