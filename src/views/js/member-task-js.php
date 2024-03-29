@@ -97,6 +97,8 @@
                 if($evaluationBtn.classList.contains("disabled"))
                     $evaluationBtn.classList.remove("disabled")
             }
+
+
         })
     })
 </script>
