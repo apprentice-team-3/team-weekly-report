@@ -20,7 +20,7 @@
                     </div>
                     <div>
                         <!-- $userをdata-userに渡したい -->
-                        <button class="btn transition__btn open__add__task__btn" data-user_id="<?php echo $user->name ?>" data-project_id="<?php echo $project->id ?>" >タスクを追加</button>
+                        <button class="btn transition__btn open__add__task__btn" data-user_id="<?php echo $user->id ?>" data-project_id="<?php echo $project->id ?>" >タスクを追加</button>
                     </div>
                 </div>
 

@@ -67,6 +67,7 @@ function popupAddEventListener($popup, $taskTemplate) {
     e.preventDefault();
 
 
+
     const $parentTask = $popup.querySelector("#parent-task-php");
 
     const parentTaskName = $parentTask.value
@@ -102,12 +103,33 @@ function popupAddEventListener($popup, $taskTemplate) {
 
       console.log(userId,projectId, parentTaskName, parentTaskProgress, childTasks);
 
+
       // ここにサーバーの処理をお願いします
+
+      // fetchする
+      const safeParentTaskProgress = isNaN(parentTaskProgress) ? 0 : parentTaskProgress;
+
+      console.log(userId)
+
+      fetch("http://localhost:8080/api/post.php", {
+        method: "POST",
+        body: JSON.stringify({
+          "user_id": +userId,
+          "project_id": projectId,
+          "parent_task_name": parentTaskName,
+          "parent_task_progress" : safeParentTaskProgress
+        }),
+      })
+        .then((res) => {
+          console.log(res);
+        })
+        .catch((e) => {
+          console.error(e);
+        })
+
 
     $popup.classList.remove("popup__open");
     $cover.classList.remove("popup__open");
-
-
 
   });
 }
