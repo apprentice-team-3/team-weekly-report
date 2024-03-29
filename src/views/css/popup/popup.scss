@@ -67,6 +67,13 @@ textarea {
   cursor: pointer;
   transition: all ease-in-out 0.2s;
 
+  // disabled属性
+  &.disabled {
+    background-color: gray;
+    box-shadow: none;
+    cursor: not-allowed;
+  }
+
   &:hover,
   &:focus {
     background-color: #f6c64ba6;
@@ -540,4 +547,15 @@ textarea {
 
 .date.popup__open {
   z-index: 1001;
+}
+
+#task-edit-popup {
+  & .parent__task__section {
+    & .parent__task__input {
+      width: 70%;
+    }
+    & .relative__progress__container {
+      width: 20%;
+    }
+  }
 }

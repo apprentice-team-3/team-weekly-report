@@ -49,7 +49,13 @@
                                 <?php for ($i = 0; $i < count($weekly_task->parent_tasks); $i++) :?>
                                     <?php $progress = $weekly_task->parent_tasks[$i]->progress; ?>
                                     <div class="title_progress">
-                                        <button class="task_title open__edit__task__btn"><?php echo $weekly_task->parent_tasks[$i]->title; ?></button>
+                                        <button class="task_title open__edit__task__btn" data-parent_task_id="<?php
+                                        $parent_task = $weekly_task->parent_tasks[$i];
+                                        echo $parent_task->id;
+                                        ?>"
+                                        data-parent_task_name="<?php echo $parent_task->title; ?>"
+                                        data-parent_task_progress="<?php echo $parent_task->progress; ?>"
+                                        ><?php echo $parent_task->title; ?></button>
                                         <div class="task_progress"><?php echo $progress; ?>%</div>
                                     </div>
                                     <div class="progress-bar">
@@ -85,8 +91,8 @@
 <?php
     include __DIR__ . "/task-add-popup/task-add-popup-template.php";
     include __DIR__ . "/task-add-popup/task-add-popup-content.php";
-    include __DIR__ . "/task-detail-popup/task-detail-popup-template.php";
-    include __DIR__ . "/task-detail-popup/task-detail-popup-content.php";
+    include __DIR__ . "/task-edit-popup/task-edit-popup-template.php";
+    include __DIR__ . "/task-edit-popup/task-edit-popup-content.php";
 
     include __DIR__ . "/js/popup-handler-js.php";
     include __DIR__ . "/js/member-task-js.php";

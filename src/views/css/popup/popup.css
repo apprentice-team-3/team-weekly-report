@@ -65,6 +65,11 @@ textarea :hover {
   cursor: pointer;
   transition: all ease-in-out 0.2s;
 }
+.btn.disabled {
+  background-color: gray;
+  box-shadow: none;
+  cursor: not-allowed;
+}
 .btn:hover, .btn:focus {
   background-color: rgba(246, 198, 75, 0.6509803922);
   box-shadow: none;
@@ -479,4 +484,11 @@ textarea :hover {
 
 .date.popup__open {
   z-index: 1001;
+}
+
+#task-edit-popup .parent__task__section .parent__task__input {
+  width: 70%;
+}
+#task-edit-popup .parent__task__section .relative__progress__container {
+  width: 20%;
 }/*# sourceMappingURL=popup.css.map */
