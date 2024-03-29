@@ -11,5 +11,5 @@ require_once "services/common.php";
 
 $title = 'メンバータスク一覧、タスク詳細ポップアップ';
 
-$content = __DIR__ . '/views/general-popup.php';
+$content = __DIR__ . '/views/popup.php';
 include __DIR__ . '/views/member-task_layout.php';

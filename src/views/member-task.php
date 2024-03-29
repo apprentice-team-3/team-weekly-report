@@ -1,3 +1,4 @@
+<link rel="stylesheet" href="/views/css/popup/popup.css">
 <div class="task__container">
     <h2 class="project__container">
         <div class="project__detail">
@@ -18,9 +19,8 @@
                         <?php echo $user->name ?>
                     </div>
                     <div>
-                        <button class="btn transition__btn">
-                            タスクを追加
-                        </button>
+                        <!-- $userをdata-userに渡したい -->
+                        <button class="btn transition__btn open__add__task__btn" data-user_id="<?php echo $user->name ?>" data-project_id="<?php echo $project->id ?>" >タスクを追加</button>
                     </div>
                 </div>
 
@@ -82,3 +82,9 @@
         </script>
     </ul>
 </div>
+<?php
+    include __DIR__ . "/task-add-popup/task-add-popup-template.php";
+    include __DIR__ . "/task-add-popup/task-add-popup-content.php";
+    include __DIR__ . "/js/popup-handler-js.php";
+    include __DIR__ . "/js/member-task-js.php";
+?>

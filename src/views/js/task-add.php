@@ -16,48 +16,56 @@
           }
         });
         e.target.parentNode.classList.toggle("selected");
-        console.log(e.target.parentNode);
       });
     });
   });
 }
 
-function popupHandler($button, $popup, taskTemplateStr){
-  const $cover = document.querySelector(".cover");
-const $closeBtn = $popup.querySelector(".close__btn");
-
-const $doms = [$popup, $cover, $closeBtn];
-
-$button.addEventListener("click", (e) => {
-  e.preventDefault();
-
-  $doms.forEach((dom) => {
-    dom.classList.toggle("popup__open");
-  });
-
-  if(!$cover.classList.contains("popup__open")){
-    dom.classList.add("popup__open")
+function popupHandler($button, $popup, $taskTemplate){
+  let $cover = document.querySelector(".cover");
+  if(!$cover){
+    const $main =document.querySelector("main");
+    $cover = document.createElement("div");
+    $cover.classList.add("cover");
+    $main.insertAdjacentElement("afterend", $cover);
   }
 
-  const parentTaskId = $button.dataset.parent_task_id;
+  if(!$popup){
+    return;
+  }
 
-  const parentTaskName = $popup.querySelector(".parent__task");
-});
+  const $closeBtn = $popup.querySelector(".close__btn");
+  const $doms = [$popup, $cover, $closeBtn];
+
+  $button.addEventListener("click", (e) => {
+    e.preventDefault();
+
+    $doms.forEach((dom) => {
+      dom.classList.toggle("popup__open");
+    });
+
+    if(!$cover.classList.contains("popup__open")){
+      dom.classList.add("popup__open")
+    }
+
+    const parentTaskId = $button.dataset.parent_task_id;
+
+    const parentTaskName = $popup.querySelector(".parent__task");
+  });
+
 
 $doms.forEach((dom) => {
   if (dom === $popup) return;
   dom.addEventListener("click", (e) => {
-
     e.preventDefault();
     $doms.forEach((dom) => {
       dom.classList.remove("popup__open");
     });
   });
 });
-//   templateを使って1件の子タスクを作成
-const $taskTemplate = document.querySelector("#task-template");
 
 const $childTaskContainer = $popup.querySelector(".child__task__container");
+
 for (let i = 0; i < 1; i++) {
   const $task = $taskTemplate.content.cloneNode(true);
   // $task.querySelector(".child__task").textContent = `子タスク${i + 1}`;
@@ -75,17 +83,14 @@ const $addBtn = $popup.querySelector(".icon__add");
 $addBtn.addEventListener("click", (e) => {
   e.preventDefault();
   const $childTaskInput = $popup.querySelector(".child__task__input");
-
   const $childTaskName = $childTaskInput.querySelector("input").value;
-
-
   const $task = $taskTemplate.content.cloneNode(true);
+
   $task.querySelector(".child__task").textContent = $childTaskName;
-
   addClickProgressEvent([$task]);
-
   $childTaskContainer.insertBefore($task, $childTaskContainer.firstChild);
 });
+
 
 const $registerBtn = $popup.querySelector(".register__btn");
 //   registerBtnが押されたら
@@ -100,21 +105,23 @@ $registerBtn.addEventListener("click", (e) => {
   );
 
   const childTasks = Array.from($childTasks).map(($childTask) => {
-    const childTaskName = $childTask.querySelector(".child__task").textContent;
-
-    const progress = Number(
-      $childTask.querySelector(".selected label").textContent.slice(0, -1)
-    );
-
-    const comment = $childTask.querySelector(".comment__textarea").value;
+  const childTaskName = $childTask.querySelector(".child__task").textContent;
 
 
-    return {
-      childTaskName,
-      progress,
-      comment,
-    };
-  });
+  const progress = Number(
+    $childTask.querySelector(".selected label").textContent.slice(0, -1)
+  );
+
+
+  const comment = $childTask.querySelector(".comment__textarea").value;
+
+
+  return {
+    childTaskName,
+    progress,
+    comment,
+  };
+});
 
   // 子タスクを集計して親タスクの進捗を算出
   const parentTaskProgress =
@@ -133,13 +140,15 @@ $registerBtn.addEventListener("click", (e) => {
 });
 }
 
-const $editTaskBtn = document.querySelector(".open__detail__task__btn");
-const $editPopup = document.querySelector("#task-edit-popup");
+// const $editTaskBtn = document.querySelector(".open__detail__task__btn");
+// const $editPopup = document.querySelector("#task-edit-popup");
+// const $taskEditTemplate = document.querySelector("#task-edit-template");
 
-const $addTaskBtn = document.querySelector(".open__add__task__btn");
-const $addPopup = document.querySelector("#task-add-popup");
+// const $addTaskBtn = document.querySelector(".open__add__task__btn");
+// const $addPopup = document.querySelector("#task-add-popup");
+// const $taskAddTemplate = document.querySelector("#task-add-template");
 
-popupHandler($addTaskBtn, $addPopup, "#task-add-template");
-popupHandler($editTaskBtn, $editPopup, "#task-edit-template");
+// popupHandler($addTaskBtn, $addPopup, $taskAddTemplate);
+// popupHandler($editTaskBtn, $editPopup, $taskEditTemplate);
 
 </script>

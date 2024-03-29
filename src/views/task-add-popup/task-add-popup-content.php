@@ -26,4 +26,8 @@
     </div>
     <button class="btn register__btn">タスクの登録</button>
     <div class="close__btn"></div>
+    <input type="hidden" id="input_user_id" value="" />
+    <input type="hidden" id="input_project_id" value="" />
+    <input type="hidden" id="input_parent_task_id" value="" />
+
 </form>
