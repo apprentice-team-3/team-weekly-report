@@ -113,19 +113,25 @@ function popupAddEventListener($popup, $taskTemplate) {
 
       fetch("http://localhost:8080/api/post.php", {
         method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
         body: JSON.stringify({
           "user_id": +userId,
           "project_id": projectId,
           "parent_task_name": parentTaskName,
-          "parent_task_progress" : safeParentTaskProgress
-        }),
+          "parent_task_progress": safeParentTaskProgress,
+          "child_tasks": childTasks
+        })
       })
-        .then((res) => {
-          console.log(res);
+        .then((res) => res.json())
+        .then((data) => {
+          console.log(data);
         })
+        // エラーハンドリングが出るのでfetchでデータが送れてない（なんぜ）
         .catch((e) => {
-          console.error(e);
-        })
+          console.error("Error:", e);
+        });
 
 
     $popup.classList.remove("popup__open");
