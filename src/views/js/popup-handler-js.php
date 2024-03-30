@@ -88,8 +88,12 @@ function setChildTasks(childTasks, $popup, $taskTemplate) {
     const $task = $taskTemplate.content.cloneNode(true);
 
     $task.querySelector(".child__task__list__container").dataset.child_task_id = childTask.id;
-    $task.querySelector(".child__task").textContent = childTask.title;
+    $task.querySelector(".child__task textarea").textContent = childTask.title;
+
+
+    console.log($task.querySelector(".child__task textarea"));
     $task.querySelector(".comment__textarea").value = childTask.content;
+
     $task
       .querySelector(`.child__task__progress__${childTask.progress}__php`)
       .classList.add("selected");
@@ -228,7 +232,8 @@ function popupAddEventListener($popup, $taskTemplate) {
     const $childTaskInput = $popup.querySelector(".child__task__input");
     const $childTaskName = $childTaskInput.querySelector("input").value;
     const $task = $taskTemplate.content.cloneNode(true);
-    $task.querySelector(".child__task").textContent = $childTaskName;
+    $task.querySelector(".child__task textarea").textContent = $childTaskName;
+
     addClickProgressEvent([$task], $popup);
     $childTaskContainer.insertBefore($task, $childTaskContainer.firstChild);
     $childTaskInput.querySelector("input").value = "";

@@ -2,7 +2,9 @@
 <template id="task-edit-template">
     <li class="child__task__list__container" data-child_task_id="">
     <div class="child__task__name__remove">
-        <div class="popup__text child__task child__task__php">子タスク</div>
+        <div class="popup__text child__task child__task__php">
+            <textarea></textarea>
+        </div>
         <div class="icon icon__remove"></div>
     </div>
     <div class="comment__box child__task__comment__php">

@@ -576,3 +576,15 @@ textarea {
     }
   }
 }
+
+.child__task > textarea {
+  border: 1px solid black;
+  width: 100%;
+  display: block;
+  border-radius: 10px;
+  padding: 20px 10px;
+}
+
+.child__task {
+  width: 78%;
+}

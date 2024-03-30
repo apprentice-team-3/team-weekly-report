@@ -507,4 +507,16 @@ textarea :hover {
 }
 #task-edit-popup .parent__task__section .relative__progress__container {
   width: 20%;
+}
+
+.child__task > textarea {
+  border: 1px solid black;
+  width: 100%;
+  display: block;
+  border-radius: 10px;
+  padding: 20px 10px;
+}
+
+.child__task {
+  width: 78%;
 }/*# sourceMappingURL=popup.css.map */

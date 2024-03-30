@@ -34,14 +34,13 @@ function addSaveBtnEvent($popup) {
 
     for ($childTask of $childTasks) {
       const childTaskName =
-        $childTask.querySelector(".child__task__php").textContent;
+        $childTask.querySelector(".child__task__php textarea").value;
       const childTaskComment = $childTask.querySelector(
         ".child__task__comment__php textarea"
       ).value;
 
       childTaskProgress = $childTask.querySelector(".progress__container .progress__character__container .selected label").textContent.slice(0,-1)
 
-      console.log(childTaskProgress);
 
       if($childTask.dataset.child_task_id){
         childTasks.push({
@@ -70,6 +69,7 @@ function addSaveBtnEvent($popup) {
       new_child_tasks: newChildTasks,
     };
 
+      console.log("送信前")
 
     fetch("http://localhost:8080/api/update.php", {
       method: "POST",
@@ -179,7 +179,6 @@ $openEditTaskBtns.forEach(($openEditTaskBtn) => {
     $taskEditPopup.dataset.parent_task_id =
       $openEditTaskBtn.dataset.parent_task_id;
 
-      console.log("parent_task_id", $openEditTaskBtn.dataset.parent_task_id);
 
     fetch(`http://localhost:8080/api/child-tasks/fetch-all.php`, {
       method: "POST",
