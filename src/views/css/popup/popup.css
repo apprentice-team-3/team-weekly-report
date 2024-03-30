@@ -507,4 +507,8 @@ textarea :hover {
 }
 #task-edit-popup .parent__task__section .relative__progress__container {
   width: 20%;
+}
+
+.hidden {
+  visibility: hidden;
 }/*# sourceMappingURL=popup.css.map */

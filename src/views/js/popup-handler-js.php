@@ -80,9 +80,9 @@ function setChildTasks(childTasks, $popup, $taskTemplate){
         childTasks.forEach(childTask => {
             console.log(childTask)
             const $task = $taskTemplate.content.cloneNode(true)
+            $task.querySelector(".hidden").textContent = childTask.id
             $task.querySelector(".child__task").textContent = childTask.title
             $task.querySelector(".comment__textarea").value = childTask.content
-
             $task.querySelector(`.child__task__progress__${childTask.progress}__php`).classList.add("selected")
 
             $childTasksContainer.appendChild($task)
@@ -90,8 +90,6 @@ function setChildTasks(childTasks, $popup, $taskTemplate){
         const $childTasks = $childTasksContainer.querySelectorAll(".child__task__list__container")
         addClickProgressEvent($childTasks)
         displayParentTaskProgress($childTasks)
-
-
     }
 
 function addRegisterBtnEvent ($popup) {
@@ -130,12 +128,8 @@ function addRegisterBtnEvent ($popup) {
         return acc + childTask.progress;
       }, 0) / childTasks.length;
 
-
       const userId =$popup.querySelector("#input_user_id").value;
       const projectId =$popup.querySelector("#input_project_id").value;
-
-
-      // ここにサーバーの処理をお願いします
 
       // fetchする
       const safeParentTaskProgress = isNaN(parentTaskProgress) ? 0 : parentTaskProgress;
@@ -176,20 +170,6 @@ function addRegisterBtnEvent ($popup) {
         });
   });
 }
-
-function addSaveBtnEvent($popup){
-  const $saveBtn = $popup.querySelector(".save__btn");
-  if($saveBtn === null) return;
-
-  $saveBtn.addEventListener("click", (e) => {
-    e.preventDefault();
-
-    const $parentTask = $popup.querySelector("#parent-task-php").value;
-
-
-  })
-}
-
 
 function popupAddEventListener($popup, $taskTemplate) {
   if (!$popup) return;
@@ -239,6 +219,5 @@ function popupAddEventListener($popup, $taskTemplate) {
   });
 
   addRegisterBtnEvent($popup);
-  addSaveBtnEvent($popup);
 }
 </script>

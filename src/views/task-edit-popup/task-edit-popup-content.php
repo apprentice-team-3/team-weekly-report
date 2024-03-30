@@ -33,4 +33,5 @@
     <button class="btn save__btn">変更を保存</button>
   </div>
   <div class="close__btn"></div>
+  <div class="hidden">隠しデータ</div>
 </div>
