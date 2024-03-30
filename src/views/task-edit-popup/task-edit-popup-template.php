@@ -12,15 +12,15 @@
         ></textarea>
     </div>
         <div class="comment__box hidden child__task__comment__php">子タスクについての説明</div>
-    <div class="progress__container">
+    <div class="progress__container cursor">
         <div class="popup__text progress__explanation__character">
         達成度を選択してください
         </div>
         <ul class="progress__character__container">
         <li
-            class="popup__text progress__character child__task__progress__0__php"
+            class="popup__text progress__character child__task__progress__0__php pointer"
         >
-            <label for="">0%</label>
+            <label for="" class="pointer">0%</label>
         </li>
         <li
             class="popup__text progress__character red child__task__progress__30__php"

@@ -42,15 +42,16 @@ function addClickProgressEvent($childTasks) {
       $progressCharacter.addEventListener("click", (e) => {
         e.preventDefault();
 
-        e.target = e.target.querySelector("label")   ?  e.target : e.target.querySelector("label")
+
+
+        if(e.target.tagName !== "LABEL")
+          return;
 
         e.target.parentNode.parentNode.querySelectorAll("li").forEach(($li) => {
           if($li.classList.contains("selected")){
             $li.classList.remove("selected");
           }
         });
-
-        console.log(e.target)
 
         if(!e.target.parentNode.classList.contains("selected")){
           e.target.parentNode.classList.add("selected");
