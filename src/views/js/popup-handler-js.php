@@ -13,6 +13,24 @@ function changeProgressColor(parentTaskProgress, $parentTaskProgress){
   }
 }
 
+function displayParentTaskProgress($childTasks){
+      const progress = []
+    for($childTask of $childTasks){
+      progress.push(Number($childTask.querySelector(".selected label").textContent.slice(0, -1)))
+    }
+
+    console.log("計算",progress)
+
+    const parentTaskProgress = progress.reduce((acc, progress) => {
+        return acc + progress;
+    }, 0) / progress.length;
+
+    const $popup =document.getElementById("task-edit-popup");
+    $popup.querySelector("#parent-task-progress-php").textContent = parentTaskProgress + "%";
+
+    changeProgressColor(parentTaskProgress, $popup.querySelector("#parent-task-progress-php"))
+  }
+
 function addClickProgressEvent($childTasks) {
   $childTasks.forEach(($childTask) => {
     const $progressCharacters = $childTask
@@ -24,31 +42,23 @@ function addClickProgressEvent($childTasks) {
       $progressCharacter.addEventListener("click", (e) => {
         e.preventDefault();
 
+        e.target = e.target.querySelector("label")   ?  e.target : e.target.querySelector("label")
+
+
+
         e.target.parentNode.parentNode.querySelectorAll("li").forEach(($li) => {
           if($li.classList.contains("selected")){
             $li.classList.remove("selected");
           }
         });
 
+        console.log(e.target)
+
         if(!e.target.parentNode.classList.contains("selected")){
           e.target.parentNode.classList.add("selected");
         }
 
-        // 再計算
-        const progress = []
-        for($childTask of $childTasks){
-          progress.push(Number($childTask.querySelector(".selected label").textContent.slice(0, -1)))
-        }
-
-        const parentTaskProgress = progress.reduce((acc, progress) => {
-            return acc + progress;
-        }, 0) / progress.length;
-
-        const $popup =document.getElementById("task-edit-popup");
-        $popup.querySelector("#parent-task-progress-php").textContent = parentTaskProgress + "%";
-
-        changeProgressColor(parentTaskProgress, $popup.querySelector("#parent-task-progress-php"))
-
+        displayParentTaskProgress($childTasks);
       });
     });
   });
@@ -74,6 +84,9 @@ function setChildTasks(childTasks, $popup, $taskTemplate){
         })
         const $childTasks = $childTasksContainer.querySelectorAll(".child__task__list__container")
         addClickProgressEvent($childTasks)
+        displayParentTaskProgress($childTasks)
+
+
     }
 
 function addRegisterBtnEvent ($popup) {

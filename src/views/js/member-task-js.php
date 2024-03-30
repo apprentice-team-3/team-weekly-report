@@ -91,8 +91,6 @@
                 if($evaluationBtn.classList.contains("disabled"))
                     $evaluationBtn.classList.remove("disabled")
             }
-            console.log("parent_task_id")
-            console.log($openEditTaskBtn.dataset.parent_task_id)
 
             fetch(`http://localhost:8080/api/child-tasks/fetch-all.php`, {
                 method: "POST",
