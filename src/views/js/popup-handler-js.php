@@ -67,10 +67,13 @@ function popupAddEventListener($popup, $taskTemplate) {
   });
 
   const $registerBtn = $popup.querySelector(".register__btn");
+
+  if(!$registerBtn){
+    return;
+  }
+
   $registerBtn.addEventListener("click", (e) => {
     e.preventDefault();
-
-
 
     const $parentTask = $popup.querySelector("#parent-task-php");
 
@@ -146,7 +149,7 @@ function popupAddEventListener($popup, $taskTemplate) {
           console.log("送ったデータ")
           console.log(json);
           // fetch通信後に再リロード
-          location.reload(); 
+          location.reload();
         })
         // エラーハンドリングが出るのでfetchでデータが送れてない（なんぜ）
         .catch((e) => {
@@ -157,7 +160,6 @@ function popupAddEventListener($popup, $taskTemplate) {
         $openPopup.forEach((dom) => {
           dom.classList.remove("popup__open");
         });
-
   });
 }
 </script>

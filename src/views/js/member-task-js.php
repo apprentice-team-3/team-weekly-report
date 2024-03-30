@@ -70,13 +70,17 @@
                 return;
             }
 
-            const rect = e.target.getBoundingClientRect();
+           const $progressBar =  $openEditTaskBtn.parentElement.nextElementSibling;
+
+            const rect = $progressBar.getBoundingClientRect();
+            console.log(rect)
             const popupWidth = $taskEditPopup.offsetWidth;
             const popupHeight = $taskEditPopup.offsetHeight;
+            console.log(popupWidth);
 
             $taskEditPopup.style.top = `50vh - ${popupHeight}px / 2 - 40px`;
             if (rect.left < window.innerWidth / 2) {
-                $taskEditPopup.style.left = `calc(${rect.left}px + ${popupWidth}px * 2)`;
+                $taskEditPopup.style.left = `calc(${rect.left}px + ${rect.width}px + ${popupWidth}px * 2)`;
             } else {
                 $taskEditPopup.style.left = `calc(${rect.left}px - ${popupWidth}px * 2)`;
             }
@@ -87,16 +91,10 @@
             $openEditTaskBtn.classList.toggle("popup__open");
 
             $openEditTaskBtn.closest(".title_progress").querySelector(".task_progress").classList.toggle("popup__open");
-            $openEditTaskBtn.parentElement.nextElementSibling.classList.toggle("popup__open");
+            $progressBar.classList.toggle("popup__open");
             $openEditTaskBtn.closest(".weekly__report__task__container").querySelector(".date").classList.toggle("popup__open");
             $openEditTaskBtn.closest(".weekly__report").querySelector(".user__name div").classList.toggle("popup__open")
             $openEditTaskBtn.closest(".weekly__report").querySelector(".user__name").classList.toggle("popup__open")
-
-            console.log($openEditTaskBtn.closest(".weekly__report").querySelector(".user__name div"))
-
-            console.log($openEditTaskBtn.dataset.parent_task_id)
-            console.log($openEditTaskBtn.dataset.parent_task_name)
-            console.log($openEditTaskBtn.dataset.parent_task_progress);
 
             $taskEditPopup.querySelector("#parent-task-php").textContent = $openEditTaskBtn.dataset.parent_task_name
             const parentTaskProgress = Number($openEditTaskBtn.dataset.parent_task_progress)
@@ -143,7 +141,6 @@
 
             }
             ).catch((e) => console.error("Error:", e))
-
         })
     })
 
