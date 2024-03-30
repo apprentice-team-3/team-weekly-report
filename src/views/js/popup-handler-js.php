@@ -123,6 +123,10 @@ function popupAddEventListener($popup, $taskTemplate) {
         }
       )
 
+      if(childTasks.length === 0){
+        alert("関連するタスクを入力してください");
+        return;}
+
       fetch("http://localhost:8080/api/post.php", {
         method: "POST",
         headers: {

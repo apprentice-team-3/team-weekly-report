@@ -21,27 +21,28 @@ try {
 
 
     // 子タスクの登録
-    if ($parentTaskId) {
+    $childTasks = $data["child_tasks"];
+    if ($childTasks) {
         $childSql = "INSERT INTO child_tasks (parent_task_id, title, content, progress) VALUES (:parent_task_id, :title, :content, :progress)";
 
         foreach ($data["child_tasks"] as $childTask) {
             $db->execute($childSql, [
-                ':parent_task_id' => $parentTaskId,
+                ':parent_task_id' => $data["project_id"],
                 ':title' => $childTask["childTaskName"],
                 ':content' => $childTask["comment"],
                 ':progress' => $childTask["progress"]
             ]);
         }
         $db->commit();
+        echo json_encode([
+            "project_id" => $data["project_id"],
+            "user_id" => $data["user_id"],
+            "parent_task_name" => $data["parent_task_name"],
+            "parent_task_progress" => $data["parent_task_progress"],
+            "child_tasks" => $childTasks
+        ]);
     }
 
-    echo json_encode([
-        "project_id" => $data["project_id"],
-        "user_id" => $data["user_id"],
-        "parent_task_name" => $data["parent_task_name"],
-        "parent_task_progress" => $data["parent_task_progress"],
-        "child_tasks" => $data["child_tasks"]
-    ]);
 
 
 } catch(PDOException $e) {
