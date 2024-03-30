@@ -1,6 +1,29 @@
 <?php ?>
 
 <script>
+    function setChildTasks(childTasks, $popup, $taskTemplate){
+        $childTasksContainer = $popup.querySelector(".child__task__container")
+        // 既存の子タスクを削除
+        while($childTasksContainer.firstChild){
+            $childTasksContainer.removeChild($childTasksContainer.firstChild)
+        }
+        // 子タスクを追加
+        childTasks.forEach(childTask => {
+            console.log(childTask)
+            const $task = $taskTemplate.content.cloneNode(true)
+            $task.querySelector(".child__task").textContent = childTask.title
+            $task.querySelector(".comment__textarea").value = childTask.content
+
+            $task.querySelectorAll(".progress__character").forEach($progressCharacter => {
+                if($progressCharacter.classList.contains(`child__task__progress__${childTask.progress}__php`)){
+                    $progressCharacter.classList.add("selected")
+                }
+            })
+            $childTasksContainer.appendChild($task)
+        })
+
+    }
+
     const $openAddTaskBtn = document.querySelector('.open__add__task__btn')
     const $taskAddPopup = document.getElementById('task-add-popup')
     const $taskAddPopupContent = document.getElementById('task-add-template')
@@ -113,7 +136,13 @@
                 body: JSON.stringify({
                     "parent_task_id": $openEditTaskBtn.dataset.parent_task_id
                 })
-            }).then((res) => res.json()).then(data => console.log("受信成功",data)).catch((e) => console.error("Error:", e))
+            }).then((res) => res.json()).then(data =>
+            {
+                console.log("受信成功",data)
+                setChildTasks(data, $taskEditPopup, document.getElementById("task-edit-template"))
+
+            }
+            ).catch((e) => console.error("Error:", e))
 
         })
     })
