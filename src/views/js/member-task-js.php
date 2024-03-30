@@ -79,11 +79,13 @@
 
             if(parentTaskProgress === 0){
                 $parentTaskProgress.style.color = "white"
-            } else if(parentTaskProgress >= 80){
+            } else if(parentTaskProgress > 80){
                 $parentTaskProgress.style.color = "green"
-            } else if(parentTaskProgress >= 60){
+            } else if(parentTaskProgress > 60){
                 $parentTaskProgress.style.color = "blue"
-            } else  {
+            } else if(parentTaskProgress > 30){
+                $parentTaskProgress.style.color = "yellow"
+             } else {
                 $parentTaskProgress.style.color = "red"
             }
 
