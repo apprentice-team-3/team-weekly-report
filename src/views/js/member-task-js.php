@@ -21,6 +21,8 @@
             })
             $childTasksContainer.appendChild($task)
         })
+        const $childTasks = $childTasksContainer.querySelectorAll(".child__task__list__container")
+        addClickProgressEvent($childTasks)
 
     }
 
@@ -77,6 +79,7 @@
             const popupWidth = $taskEditPopup.offsetWidth;
             const popupHeight = $taskEditPopup.offsetHeight;
             console.log(popupWidth);
+            console
 
             $taskEditPopup.style.top = `50vh - ${popupHeight}px / 2 - 40px`;
             if (rect.left < window.innerWidth / 2) {
@@ -138,6 +141,7 @@
             {
                 console.log("受信成功",data)
                 setChildTasks(data, $taskEditPopup, document.getElementById("task-edit-template"))
+
 
             }
             ).catch((e) => console.error("Error:", e))

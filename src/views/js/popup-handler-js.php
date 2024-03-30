@@ -108,8 +108,6 @@ function popupAddEventListener($popup, $taskTemplate) {
       const userId =$popup.querySelector("#input_user_id").value;
       const projectId =$popup.querySelector("#input_project_id").value;
 
-      console.log(userId,projectId, parentTaskName, parentTaskProgress, childTasks);
-
 
       // ここにサーバーの処理をお願いします
 
