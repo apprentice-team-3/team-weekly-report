@@ -11,44 +11,44 @@ header {
   height: 3rem;
   position: fixed;
   top: 3px;
-}
 
-ul,
-li {
-  list-style: none;
-  padding: 0;
-}
+  .main-header {
+    display: flex;
 
-.main-header {
-  display: flex;
-}
+    svg {
+      width: 5rem;
+      height: 2rem;
+      margin: 0 0.6rem;
+    }
 
-.main-header svg {
-  width: 5rem;
-  height: 3rem;
-  margin: 0 0.6rem;
-}
+    h1 {
+      font-size: 1.4rem;
+      margin: 0.2rem 1rem 0;
+    }
+  }
 
-.main-header h1 {
-  font-size: 1.4rem;
-  margin: 0.6rem 1rem 1rem;
-}
+  .change_location {
+    margin: 0 0.5rem 0;
+    position: inherit;
+    right: 30px;
+    top: 11px;
 
-header nav {
-  margin: 0 0.5rem 0;
-  position: inherit;
-  right: 30px;
-}
+    ul {
+      list-style: none;
+      padding: 0;
 
-header nav li {
-  list-style: none;
-  display: inline-block;
-  margin: 0 0.5rem 0;
-  font-weight: bold;
-}
+      li {
+        list-style: none;
+        display: inline-block;
+        margin: 0 0.5rem 0;
+        font-weight: bold;
 
-header nav li a {
-  color: black;
+        a {
+          color: black;
+        }
+      }
+    }
+  }
 }
 
 /* ページネーション */
@@ -97,16 +97,26 @@ header nav li a {
     right: 5px;
     top: 30px;
 
-    .project__detail {
-      font-size: 1.3rem;
-      font-weight: bold;
+    h2 {
+      margin: 0;
+
+      .project__detail {
+        font-size: 1.3rem;
+        font-weight: bold;
+      }
     }
+  }
+
+  .transition__btn {
+    position: fixed;
+    top: 40px;
+    left: 80px;
   }
 }
 
 .weekly__report__container {
   display: flex;
-  gap: 20px;
+  gap: 15px;
   flex-direction: column;
   width: max-content;
   margin-top: 90px;
@@ -116,32 +126,23 @@ header nav li a {
     background-color: rgb(6, 71, 6);
     color: white;
     display: flex;
-    justify-content: left;
     align-items: center;
     border-radius: 3px;
-    margin-left: 10px;
 
     .user__name {
+      border-radius: 3px;
       font-size: 1.3rem;
       font-weight: bold;
-      line-height: 1.5;
+      background-color: #095b1b;
+      line-height: 6;
       border-right: 5px solid white;
-      width: 200px;
-      height: 100px;
+      width: 100px;
+      height: 130px;
+      position: fixed;
 
-      .btn {
-        display: block;
-        width: -moz-fit-content;
-        width: fit-content;
-        padding: 0 10px;
-        min-height: 30px;
-        border-radius: 90px;
-        border: none;
-        background-color: #f6c64b;
-        color: white;
-        box-shadow: 6px 6px 5px 0px rgba(246, 198, 75, 0.6509803922);
-        cursor: pointer;
-        transition: all ease-in-out 0.2s;
+      div {
+        border-radius: 3px;
+        text-align: center;
       }
     }
 
@@ -154,7 +155,7 @@ header nav li a {
       min-height: calc(((100vh - (48px + 45px) - 200px) / 4));
       border-right: solid;
       width: 180px;
-      height: 120px;
+      height: 130px;
 
       .date {
         width: inherit;
@@ -165,6 +166,20 @@ header nav li a {
 
         .inner_date {
           text-align: center;
+          margin: 2px;
+
+          .today {
+            color: #ffee00;
+          }
+        }
+
+      }
+      
+      .task {
+        .title_progress {
+          .task_title {
+            cursor: pointer;
+          }
         }
       }
 
@@ -191,8 +206,28 @@ header nav li a {
             background-color: #4caf50;
             line-height: 20px;
           }
+
+          .progress.progress-30 {
+            background-color: #ec2424;
+          }
+
+          .progress.progress-60 {
+            background-color: #e3d62b;
+          }
+
+          .progress.progress-80 {
+            background-color: #1c2ae8;
+          }
+
+          .progress.progress-100 {
+            background-color: #49df6a;
+          }
         }
       }
     }
   }
+}
+
+.user__name+.weekly__report__task__container {
+  margin-left: 100px;
 }
