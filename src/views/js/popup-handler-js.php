@@ -145,6 +145,8 @@ function popupAddEventListener($popup, $taskTemplate) {
         }).then((json) => {
           console.log("送ったデータ")
           console.log(json);
+          // fetch通信後に再リロード
+          location.reload(); 
         })
         // エラーハンドリングが出るのでfetchでデータが送れてない（なんぜ）
         .catch((e) => {
