@@ -74,6 +74,7 @@
             $openEditTaskBtn.closest(".weekly__report").querySelector(".user__name div").classList.toggle("popup__open")
             $openEditTaskBtn.closest(".weekly__report").querySelector(".user__name").classList.toggle("popup__open")
 
+            // ここからボタンに仕込んだPHPを取得
             $taskEditPopup.querySelector("#parent-task-php").textContent = $openEditTaskBtn.dataset.parent_task_name
             const parentTaskProgress = Number($openEditTaskBtn.dataset.parent_task_progress)
             const $parentTaskProgress = $taskEditPopup.querySelector("#parent-task-progress-php")
