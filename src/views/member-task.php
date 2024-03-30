@@ -85,5 +85,6 @@
     include __DIR__ . "/task-edit-popup/task-edit-popup-content.php";
 
     include __DIR__ . "/js/popup-handler-js.php";
+include __DIR__ . "/js/popup/add-popup.php";
     include __DIR__ . "/js/member-task-js.php";
 ?>
