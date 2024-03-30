@@ -6,11 +6,6 @@ use model\ParentTask;
 
 // jsで送られてきたデータを取得
 $data = json_decode(file_get_contents('php://input'), true);
-// コンソールにvar_dumpが出力されるようにする記述
-    ob_start();
-    var_dump($data);
-    $output = ob_get_clean();
-    echo "<script>console.log(" . json_encode($output) . ");</script>";
 
 try {
     $db = new DataSource;
@@ -24,12 +19,12 @@ try {
         ':title' => $data["parent_task_name"],
         ':progress' => $data["parent_task_progress"]
     ]);
-    $parentTaskId = $db->getLastInsertId();
-    var_dump($parentTaskId);
+
 
     // 子タスクの登録
     if ($parentTaskId) {
         $childSql = "INSERT INTO child_tasks (parent_task_id, title, content, progress) VALUES (:parent_task_id, :title, :content, :progress)";
+
         foreach ($data["child_tasks"] as $childTask) {
             $db->execute($childSql, [
                 ':parent_task_id' => $parentTaskId,
