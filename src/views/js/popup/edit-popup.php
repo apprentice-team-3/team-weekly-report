@@ -3,6 +3,7 @@ const $openEditTaskBtns = document.querySelectorAll(".open__edit__task__btn");
 const $taskEditPopup = document.getElementById("task-edit-popup");
 const $taskEditPopupContent = document.getElementById("task-edit-template");
 
+// 子タスクの追加ボタンはpop-up-handlerで定義
 popupAddEventListener($taskEditPopup, $taskEditPopupContent);
 
 function addSaveBtnEvent($popup) {
@@ -29,6 +30,7 @@ function addSaveBtnEvent($popup) {
       ".child__task__list__container"
     );
     const childTasks = [];
+    const newChildTasks = [];
 
     for ($childTask of $childTasks) {
       const childTaskName =
@@ -37,20 +39,25 @@ function addSaveBtnEvent($popup) {
         ".child__task__comment__php textarea"
       ).value;
 
-      const childTaskProgress = Number(
-        $childTask
-          .querySelector(
-            ".progress__container .progress__character__container .selected label"
-          )
-          .textContent.slice(0, -1)
-      );
+      childTaskProgress = $childTask.querySelector(".progress__container .progress__character__container .selected label").textContent.slice(0,-1)
 
-      childTasks.push({
-        child_task_id: +$childTask.dataset.child_task_id,
-        child_task_name: childTaskName,
-        child_task_comment: childTaskComment,
-        child_task_progress: +childTaskProgress,
-      });
+      console.log(childTaskProgress);
+
+      if($childTask.dataset.child_task_id){
+        childTasks.push({
+          child_task_id: +$childTask.dataset.child_task_id,
+          child_task_name: childTaskName,
+          child_task_comment: childTaskComment,
+          child_task_progress: +childTaskProgress,
+        });
+      }else{
+        newChildTasks.push({
+          child_task_name: childTaskName,
+          child_task_comment: childTaskComment,
+          child_task_progress: +childTaskProgress,
+        });
+      }
+
     }
 
     const parentTaskId = Number($popup.dataset.parent_task_id);
@@ -60,9 +67,9 @@ function addSaveBtnEvent($popup) {
       parent_task_name: parentTaskName,
       parent_task_progress: parentTaskProgress,
       child_tasks: childTasks,
+      new_child_tasks: newChildTasks,
     };
 
-    console.log(data);
 
     fetch("http://localhost:8080/api/update.php", {
       method: "POST",
@@ -185,7 +192,7 @@ $openEditTaskBtns.forEach(($openEditTaskBtn) => {
       .then((res) => res.json())
       .then((data) => {
         console.log("受信成功", data);
-        // popup-handler
+        // popup-handlerで定義
         setChildTasks(
           data,
           $taskEditPopup,

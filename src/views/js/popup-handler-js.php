@@ -218,11 +218,13 @@ function popupAddEventListener($popup, $taskTemplate) {
     });
   });
 
-  const $addBtn = $popup.querySelector(".icon__add");
+  const $addChildTaskBtn = $popup.querySelector(".icon__add");
   const $childTaskContainer = $popup.querySelector(".child__task__container");
 
-  $addBtn.addEventListener("click", (e) => {
+  // 子タスク追加ボタン
+  $addChildTaskBtn.addEventListener("click", (e) => {
     e.preventDefault();
+
     const $childTaskInput = $popup.querySelector(".child__task__input");
     const $childTaskName = $childTaskInput.querySelector("input").value;
     const $task = $taskTemplate.content.cloneNode(true);
@@ -231,6 +233,7 @@ function popupAddEventListener($popup, $taskTemplate) {
     $childTaskContainer.insertBefore($task, $childTaskContainer.firstChild);
     $childTaskInput.querySelector("input").value = "";
     $childTaskInput.querySelector("input").focus();
+    $dom = $childTaskContainer.querySelector(".child__task__list__container .progress__container .progress__character__container .progress__character").classList.add("selected");
   });
 
   addRegisterBtnEvent($popup);

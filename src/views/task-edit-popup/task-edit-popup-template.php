@@ -18,7 +18,7 @@
         </div>
         <ul class="progress__character__container">
         <li
-            class="popup__text progress__character child__task__progress__0__php pointer"
+            class="popup__text progress__character child__task__progress__0__php"
         >
             <label for="" class="pointer">0%</label>
         </li>
