@@ -87,7 +87,7 @@ $_SESSION['user_id'] = 2;
 <script>
 document.addEventListener('DOMContentLoaded', function() {
     const openDetailTaskBtns = document.getElementsByClassName("open__edit__task__btn");
-    const taskEditPopup = document.getElementById("task-edit-popup");
+    // const taskEditPopup = document.getElementById("task-edit-popup");
     const loggedInUserId = <?php echo $_SESSION['user_id']; ?>;
 
     Array.from(openDetailTaskBtns).forEach(function(openDetailTaskBtn) {
@@ -109,7 +109,8 @@ document.addEventListener('DOMContentLoaded', function() {
                 document.querySelector('.btn__container').style.display = "none";
                 document.querySelector('.evaluation').style.display = "none";
                 document.querySelector('.child__task__input').style.display = "none";
-                document.getElementById('task-add-template').style.display = "none";
+                document.querySelector('.icon__add').style.display = "none";
+                document.querySelector('.icon__remove').style.display = "none";
             }
 
             // イベントリスナーを削除
