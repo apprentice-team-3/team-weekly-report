@@ -102,7 +102,18 @@
                 if($evaluationBtn.classList.contains("disabled"))
                     $evaluationBtn.classList.remove("disabled")
             }
+            console.log("parent_task_id")
+            console.log($openEditTaskBtn.dataset.parent_task_id)
 
+            fetch(`http://localhost:8080/api/child-tasks/fetch-all.php`, {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify({
+                    "parent_task_id": $openEditTaskBtn.dataset.parent_task_id
+                })
+            }).then((res) => res.json()).then(data => console.log("受信成功",data)).catch((e) => console.error("Error:", e))
 
         })
     })
