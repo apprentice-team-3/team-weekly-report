@@ -113,19 +113,30 @@ function popupAddEventListener($popup, $taskTemplate) {
       // fetchする
       const safeParentTaskProgress = isNaN(parentTaskProgress) ? 0 : parentTaskProgress;
 
-      console.log(userId)
+      console.log("送るデータ")
+      console.log(
+        {
+          "user_id": +userId,
+          "project_id": +projectId,
+          "parent_task_name": parentTaskName,
+          "parent_task_progress" : +safeParentTaskProgress
+        }
+      )
 
       fetch("http://localhost:8080/api/post.php", {
         method: "POST",
         body: JSON.stringify({
           "user_id": +userId,
-          "project_id": projectId,
+          "project_id": +projectId,
           "parent_task_name": parentTaskName,
-          "parent_task_progress" : safeParentTaskProgress
+          "parent_task_progress" : +safeParentTaskProgress
         }),
       })
         .then((res) => {
-          console.log(res);
+          return res.json();
+        }).then((json) => {
+          console.log("送ったデータ")
+          console.log(json);
         })
         .catch((e) => {
           console.error(e);

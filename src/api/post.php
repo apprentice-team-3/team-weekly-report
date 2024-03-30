@@ -2,7 +2,6 @@
 require_once __DIR__ . '/../datasource.php';
 
 use db\DataSource;
-use model\ChildTask;
 
 // jsで送られてきたデータを取得
 
@@ -18,10 +17,15 @@ try {
 
     $db->commit();
 
-    echo '送信成功！<br>';
+    echo json_encode([
+        "project_id" => $data["project_id"],
+        "user_id" => $data["user_id"],
+        "parent_task_name" => $data["parent_task_name"],
+        "parent_task_progress" => $data["parent_task_progress"]
+    ]);
+
 
 } catch(PDOException $e) {
-    echo '時間をおいて再度お試しください。<br>';
     $db->rollback();
 }
 
