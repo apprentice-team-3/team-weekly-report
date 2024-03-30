@@ -21,10 +21,7 @@ try {
         ':progress' => $data["parent_task_progress"]
     ]);
 
-    // dbから最後に登録した親タスクのidを取得
-    $sql = 'SELECT id FROM parent_tasks ORDER BY id DESC LIMIT 1';
-    $parentTaskId = $db->selectOne($sql, [], DataSource::CLS,parentTask::class)->id;
-
+    $parentTaskId = $db->getLastInsertId();
     // 子タスクの登録
     $childTasks = $data["child_tasks"];
     if ($childTasks) {
