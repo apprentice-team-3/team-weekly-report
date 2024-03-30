@@ -3,6 +3,9 @@
     const $taskAddPopup = document.getElementById('task-add-popup')
     const $taskAddPopupContent = document.getElementById('task-add-template')
 
+    const userId = $openAddTaskBtn.dataset.user_id
+    const projectId = $openAddTaskBtn.dataset.project_id
+
    popupAddEventListener($taskAddPopup, $taskAddPopupContent)
 
 

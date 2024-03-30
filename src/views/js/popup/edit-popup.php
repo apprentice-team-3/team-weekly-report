@@ -8,6 +8,7 @@ popupAddEventListener($taskEditPopup, $taskEditPopupContent);
 function addSaveBtnEvent($popup) {
   const $saveBtn = $popup.querySelector(".save__btn");
 
+
   if ($saveBtn === null) return;
   console.log($saveBtn);
 
@@ -45,14 +46,14 @@ function addSaveBtnEvent($popup) {
       );
 
       childTasks.push({
-        child_task_id: +$childTask.querySelector(".hidden").textContent,
+        child_task_id: +$childTask.dataset.child_task_id,
         child_task_name: childTaskName,
         child_task_comment: childTaskComment,
         child_task_progress: +childTaskProgress,
       });
     }
 
-    const parentTaskId = Number($popup.querySelector(".hidden").textContent);
+    const parentTaskId = Number($popup.dataset.parent_task_id);
 
     const data = {
       parent_task_id: parentTaskId,
@@ -166,11 +167,11 @@ $openEditTaskBtns.forEach(($openEditTaskBtn) => {
         $evaluationBtn.classList.remove("disabled");
     }
 
-    // hiddenの子タスクを取得
 
-    // hiddenを取得する
-    $taskEditPopup.querySelector(".hidden").textContent =
+    $taskEditPopup.dataset.parent_task_id =
       $openEditTaskBtn.dataset.parent_task_id;
+
+      console.log("parent_task_id", $openEditTaskBtn.dataset.parent_task_id);
 
     fetch(`http://localhost:8080/api/child-tasks/fetch-all.php`, {
       method: "POST",

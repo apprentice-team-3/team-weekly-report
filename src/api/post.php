@@ -3,7 +3,6 @@ require_once __DIR__ . '/../datasource.php';
 require_once __DIR__ . '/../models/parent_task.model.php';
 
 use db\DataSource;
-use model\ParentTask;
 
 // jsで送られてきたデータを取得
 $data = json_decode(file_get_contents('php://input'), true);

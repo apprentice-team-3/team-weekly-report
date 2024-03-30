@@ -1,6 +1,6 @@
 <!-- views/popup.phpで呼ばれます -->
 <template id="task-edit-template">
-    <li class="child__task__list__container">
+    <li class="child__task__list__container" data-child_task_id="">
     <div class="child__task__name__remove">
         <div class="popup__text child__task child__task__php">子タスク</div>
         <div class="icon icon__remove"></div>
@@ -44,6 +44,5 @@
         </li>
         </ul>
     </div>
-    <div class="hidden"></div>
     </li>
 </template>
