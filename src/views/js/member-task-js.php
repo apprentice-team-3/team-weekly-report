@@ -67,6 +67,9 @@
             $openEditTaskBtn.parentElement.nextElementSibling.classList.toggle("popup__open");
             $openEditTaskBtn.closest(".weekly__report__task__container").querySelector(".date").classList.toggle("popup__open");
             $openEditTaskBtn.closest(".weekly__report").querySelector(".user__name div").classList.toggle("popup__open")
+            $openEditTaskBtn.closest(".weekly__report").querySelector(".user__name").classList.toggle("popup__open")
+
+            console.log($openEditTaskBtn.closest(".weekly__report").querySelector(".user__name div"))
 
             console.log($openEditTaskBtn.dataset.parent_task_id)
             console.log($openEditTaskBtn.dataset.parent_task_name)

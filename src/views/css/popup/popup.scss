@@ -543,6 +543,15 @@ textarea {
   }
 }
 
+.user__name.popup__open {
+  position: relative;
+  z-index: 1001;
+
+  & .popup__open {
+    position: relative;
+    z-index: 1001;
+  }
+}
 .user__name div.popup__open {
   position: relative;
   z-index: 1001;
