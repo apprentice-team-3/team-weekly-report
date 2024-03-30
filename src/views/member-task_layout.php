@@ -15,7 +15,7 @@
             </h1>
         </div>
 
-        <nav>
+        <nav class="change_location">
             <ul>
                 <li><a href="">プロジェクト一覧</a></li>
                 <li><a href="/member-task.php">タスク一覧</a></li>
@@ -31,18 +31,12 @@
     </main>
     <nav class="pagination-nav">
             <ul class="pagination">
-                <li class="page-item">
-                    <a class="page-link" href="#">
-                    <span>&laquo;</span>
-                    </a>
-                </li>
-                <li class="page-item"><a class="page-link" href="#">先週</a></li>
                 <li class="page-item"><a class="page-link" href="#">1</a></li>
                 <li class="page-item"><a class="page-link" href="#">2</a></li>
                 <li class="page-item"><a class="page-link" href="#">3</a></li>
                 <li class="page-item"><a class="page-link" href="#">...</a></li>
                 <li class="page-item"><a class="page-link" href="#">9</a></li>
-                <li class="page-item"><a class="page-link" href="#">来週</a></li>
+                <li class="page-item"><a class="page-link" href="#">先週</a></li>
                 <li class="page-item">
                     <a class="page-link" href="#">
                     <span>&raquo;</span>

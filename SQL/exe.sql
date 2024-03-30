@@ -186,7 +186,7 @@ INSERT INTO users (id, name, email, password, avatar_url) VALUES
 (1, '柳瀬', 'ynstakeru@gmail.com', 'password', 'https://drive.google.com/file/d/1FXvhb0P416fJKwo-3_y8J3SmxDq65_kR/view?usp=sharing'),
 (2, '尾崎', 'gintoki@gmail.com', 'password', ''),
 (3, '松岡', 'ryuumasann@gmail.com', 'password', ''),
-(4, '松浦 Matsuoka', 'ryuunosukematsuoka@gmail.com', 'password', '');
+(4, '松浦', 'ryuunosukematsuoka@gmail.com', 'password', '');
 
 -- 作成日時よりも120日前に作成する
 INSERT INTO projects (id, title, content, created_at) VALUES
