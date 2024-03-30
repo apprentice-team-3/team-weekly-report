@@ -20,6 +20,7 @@ services:
       MYSQL_DATABASE: mydb
       MYSQL_USER: myuser
       MYSQL_PASSWORD: mypassword
+      TZ: Asia/Tokyo
     volumes:
       - ./mysql/data:/var/lib/mysql
     ports:

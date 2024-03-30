@@ -75,6 +75,21 @@ textarea {
     transform: scale(0.95);
   }
 
+  // disabled属性
+  &.disabled {
+    background-color: gray;
+    box-shadow: none;
+    cursor: not-allowed;
+
+    &:hover {
+      background-color: gray;
+      box-shadow: none;
+      color: white;
+      transform: none;
+      cursor: not-allowed;
+    }
+  }
+
   &__danger {
     background-color: #ee6d6d;
     box-shadow: 6px 6px 5px 0px #ee6d6da6;
@@ -503,11 +518,61 @@ textarea {
   }
 }
 
-.pagination-nav {
-  position: fixed;
-  top: 0;
-  left: 0;
+.open__edit__task__btn {
+  color: white;
+  cursor: pointer;
+  white-space: nowrap;
 
-  @media screen and (max-width: 768px) {
+  transition: all ease-in-out 0.2s;
+
+  &:hover {
+    transform: scale(0.95);
+  }
+
+  &.popup__open {
+    z-index: 1001;
+  }
+}
+
+.task_progress {
+  transition: all ease-in-out 0.2s;
+
+  &.popup__open {
+    z-index: 1001;
+    transform: scale(1.1);
+  }
+}
+
+.user__name.popup__open {
+  position: relative;
+  z-index: 1001;
+
+  & .popup__open {
+    position: relative;
+    z-index: 1001;
+  }
+}
+.user__name div.popup__open {
+  position: relative;
+  z-index: 1001;
+}
+
+.progress-bar.popup__open {
+  position: relative;
+  z-index: 1001;
+}
+
+.date.popup__open {
+  z-index: 1001;
+}
+
+#task-edit-popup {
+  & .parent__task__section {
+    & .parent__task__input {
+      width: 70%;
+    }
+    & .relative__progress__container {
+      width: 20%;
+    }
   }
 }

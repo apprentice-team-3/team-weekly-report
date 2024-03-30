@@ -39,9 +39,13 @@ function popupAddEventListener($popup, $taskTemplate) {
 
     $dom.addEventListener("click", (e) => {
       e.preventDefault();
-
         $popup.classList.remove("popup__open");
         $doms.forEach((dom) => {
+          dom.classList.remove("popup__open");
+        });
+
+        $openDom = document.querySelectorAll(".popup__open");
+        $openDom.forEach((dom) => {
           dom.classList.remove("popup__open");
         });
     });
@@ -109,27 +113,50 @@ function popupAddEventListener($popup, $taskTemplate) {
       // fetchする
       const safeParentTaskProgress = isNaN(parentTaskProgress) ? 0 : parentTaskProgress;
 
-      console.log(userId)
+      console.log("送るデータ")
+      console.log(
+        {
+          "user_id": +userId,
+          "project_id": +projectId,
+          "parent_task_name": parentTaskName,
+          "parent_task_progress" : +safeParentTaskProgress
+        }
+      )
+
+      if(childTasks.length === 0){
+        alert("関連するタスクを入力してください");
+        return;}
 
       fetch("http://localhost:8080/api/post.php", {
         method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
         body: JSON.stringify({
           "user_id": +userId,
-          "project_id": projectId,
+          "project_id": +projectId,
           "parent_task_name": parentTaskName,
-          "parent_task_progress" : safeParentTaskProgress
-        }),
+          "parent_task_progress": safeParentTaskProgress,
+          "child_tasks": childTasks
+        })
       })
         .then((res) => {
-          console.log(res);
+          return res.json();
+        }).then((json) => {
+          console.log("送ったデータ")
+          console.log(json);
+          // fetch通信後に再リロード
+          location.reload(); 
         })
+        // エラーハンドリングが出るのでfetchでデータが送れてない（なんぜ）
         .catch((e) => {
-          console.error(e);
+          console.error("Error:", e);
         })
 
-
-    $popup.classList.remove("popup__open");
-    $cover.classList.remove("popup__open");
+        $openPopup = document.querySelectorAll(".popup__open");
+        $openPopup.forEach((dom) => {
+          dom.classList.remove("popup__open");
+        });
 
   });
 }

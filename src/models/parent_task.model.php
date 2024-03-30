@@ -4,9 +4,9 @@ namespace model;
 
 class ParentTask
 {
+    public int $id;
     public int $project_id;
     public int $user_id;
-    public int $id;
     public float $progress;
     public string $title;
     public string $created_at;

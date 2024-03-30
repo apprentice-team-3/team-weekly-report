@@ -5,6 +5,7 @@ use model\Project;
 use model\User;
 use model\ParentTask;
 use model\WeeklyTask;
+use model\ChildTask;
 
 try {
     $db = new DataSource;
@@ -58,6 +59,3 @@ try {
     echo '親タスクを取得できませんでした。<br>';
     $db->rollback();
 }
-// echo "<pre>";
-// print_r($weekly_tasks);
-// echo "</pre>";
