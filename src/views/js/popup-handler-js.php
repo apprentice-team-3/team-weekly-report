@@ -19,6 +19,31 @@ function addClickProgressEvent($childTasks) {
   });
 }
 
+function setChildTasks(childTasks, $popup, $taskTemplate){
+        $childTasksContainer = $popup.querySelector(".child__task__container")
+        // 既存の子タスクを削除
+        while($childTasksContainer.firstChild){
+            $childTasksContainer.removeChild($childTasksContainer.firstChild)
+        }
+        // 子タスクを追加
+        childTasks.forEach(childTask => {
+            console.log(childTask)
+            const $task = $taskTemplate.content.cloneNode(true)
+            $task.querySelector(".child__task").textContent = childTask.title
+            $task.querySelector(".comment__textarea").value = childTask.content
+
+            $task.querySelectorAll(".progress__character").forEach($progressCharacter => {
+                if($progressCharacter.classList.contains(`child__task__progress__${childTask.progress}__php`)){
+                    $progressCharacter.classList.add("selected")
+                }
+            })
+            $childTasksContainer.appendChild($task)
+        })
+        const $childTasks = $childTasksContainer.querySelectorAll(".child__task__list__container")
+        addClickProgressEvent($childTasks)
+    }
+
+
 function popupAddEventListener($popup, $taskTemplate) {
   if (!$popup) return;
 
