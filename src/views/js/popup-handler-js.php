@@ -44,8 +44,6 @@ function addClickProgressEvent($childTasks) {
 
         e.target = e.target.querySelector("label")   ?  e.target : e.target.querySelector("label")
 
-
-
         e.target.parentNode.parentNode.querySelectorAll("li").forEach(($li) => {
           if($li.classList.contains("selected")){
             $li.classList.remove("selected");
