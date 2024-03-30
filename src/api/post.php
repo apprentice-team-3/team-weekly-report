@@ -1,7 +1,9 @@
 <?php
 require_once __DIR__ . '/../datasource.php';
+require_once __DIR__ . '/../models/parent_task.model.php';
 
 use db\DataSource;
+use model\ParentTask;
 
 // jsで送られてきたデータを取得
 $data = json_decode(file_get_contents('php://input'), true);
@@ -19,7 +21,7 @@ try {
         ':progress' => $data["parent_task_progress"]
     ]);
 
-
+    $parentTaskId = $db->getLastInsertId();
     // 子タスクの登録
     $childTasks = $data["child_tasks"];
     if ($childTasks) {
@@ -27,7 +29,7 @@ try {
 
         foreach ($data["child_tasks"] as $childTask) {
             $db->execute($childSql, [
-                ':parent_task_id' => $data["project_id"],
+                ':parent_task_id' => $parentTaskId,
                 ':title' => $childTask["childTaskName"],
                 ':content' => $childTask["comment"],
                 ':progress' => $childTask["progress"]
@@ -35,7 +37,7 @@ try {
         }
         $db->commit();
         echo json_encode([
-            "project_id" => $data["project_id"],
+            "project_id" => $parentTaskId,
             "user_id" => $data["user_id"],
             "parent_task_name" => $data["parent_task_name"],
             "parent_task_progress" => $data["parent_task_progress"],
