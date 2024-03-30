@@ -81,6 +81,7 @@ function addSaveBtnEvent($popup) {
       .then((res) => res.json())
       .then((data) => {
         console.log("受信成功", data);
+        location.reload();
       })
       .catch((e) => console.error("Error:", e));
   });
