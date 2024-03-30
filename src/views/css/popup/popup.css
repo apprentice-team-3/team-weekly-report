@@ -457,6 +457,9 @@ textarea :hover {
   transform: translate(-50%, -50%);
   border: 1px solid white;
 }
+.icon.hidden {
+  visibility: hidden;
+}
 
 .open__edit__task__btn {
   color: white;

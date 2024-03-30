@@ -460,6 +460,7 @@ textarea {
     transform: scale(0.95);
   }
 
+  // 追加
   &__add {
     background-color: #77e48f;
     box-shadow: #19af3a 3px 3px 3px;
@@ -494,6 +495,7 @@ textarea {
     }
   }
 
+  // remove
   &__remove {
     background-color: #ee6d6d;
     color: white;
@@ -515,6 +517,10 @@ textarea {
       transform: translate(-50%, -50%);
       border: 1px solid white;
     }
+  }
+
+  &.hidden {
+    visibility: hidden;
   }
 }
 
