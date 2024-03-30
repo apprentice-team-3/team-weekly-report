@@ -1,5 +1,3 @@
-<?php ?>
-
 <form class="popup" id="task-edit-popup">
 <div class="parent__task__section">
     <div class="parent__task popup__text" id="parent-task-php">親タスク</div>

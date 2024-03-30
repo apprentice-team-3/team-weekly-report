@@ -1,5 +1,3 @@
-<?php ?>
-
 <script>
     function setChildTasks(childTasks, $popup, $taskTemplate){
         $childTasksContainer = $popup.querySelector(".child__task__container")
@@ -59,7 +57,7 @@
         $taskAddPopup.querySelector("#input_project_id").value = projectId;
     })
 
-    $openEditTaskBtns.forEach($openEditTaskBtn => {
+$openEditTaskBtns.forEach($openEditTaskBtn => {
         $openEditTaskBtn.addEventListener("click", (e) => {
             e.preventDefault();
             if($openEditTaskBtn.classList.contains("popup__open")){
@@ -146,6 +144,7 @@
 
         })
     })
+  
 
     //　進捗度バーを着色
     <?php for($k = 0; $k < $j; $k++) :?>

@@ -13,7 +13,7 @@
     </h2>
     <div>
         <!-- $userをdata-userに渡したい -->
-        <button class="btn transition__btn open__add__task__btn" data-user_id="3" data-project_id="1" >今日のタスクを追加</button>
+        <button class="btn transition__btn open__add__task__btn" data-user_id="<?php echo $_SESSION['user_id']; ?>" data-project_id="1" >今日のタスクを追加</button>
     </div>
     <ul class="weekly__report__container">
         <?php $j = 0; ?>
@@ -56,13 +56,14 @@
                                 <?php for ($i = 0; $i < count($weekly_task->parent_tasks); $i++) : ?>
                                     <?php $progress = $weekly_task->parent_tasks[$i]->progress; $progresses[] = $progress; ?>
                                     <div class="title_progress">
-                                        <button class="task_title open__edit__task__btn" data-parent_task_id="<?php
-                                        $parent_task = $weekly_task->parent_tasks[$i];
-                                        echo $parent_task->id;
-                                        ?>"
-                                        data-parent_task_name="<?php echo $parent_task->title; ?>"
-                                        data-parent_task_progress="<?php echo $parent_task->progress; ?>"
-                                        ><?php echo $parent_task->title; ?></button>
+                                        <button class="task_title open__edit__task__btn"
+                                            data-parent_task_id="<?php $parent_task = $weekly_task->parent_tasks[$i]; echo $parent_task->id; ?>"
+                                            data-parent_task_name="<?php echo $parent_task->title; ?>"
+                                            data-parent_task_progress="<?php echo $parent_task->progress; ?>"
+                                            data-parent_task_user_id="<?php echo $parent_task->user_id; ?>"
+                                    >
+                                        <?php echo $parent_task->title; ?>
+                                    </button>
                                         <div class="task_progress"><?php echo $progress; ?>%</div>
                                     </div>
                                     <div class="progress-bar">
@@ -79,10 +80,54 @@
     </ul>
 </div>
 <?php
+session_start();
+// 任意のユーザーIDを設定
+$_SESSION['user_id'] = 2;
+?>
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const openDetailTaskBtns = document.getElementsByClassName("open__edit__task__btn");
+    const taskEditPopup = document.getElementById("task-edit-popup");
+    const loggedInUserId = <?php echo $_SESSION['user_id']; ?>;
+
+    Array.from(openDetailTaskBtns).forEach(function(openDetailTaskBtn) {
+        const handleClick = function(e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            const parentTaskUserId = parseInt(openDetailTaskBtn.dataset.parent_task_user_id);
+            console.log(parentTaskUserId);
+            console.log(loggedInUserId);
+
+            if (loggedInUserId === parentTaskUserId) {
+                // ログインユーザーIDと親タスクのユーザーIDが一致する場合の処理
+                document.querySelector('.register__btn').style.display = "inline-block";
+                document.querySelector('.btn__danger').style.display = "inline-block";
+                document.querySelector('.icon__add').style.display = "inline-block";
+            } else {
+                // ログインユーザーIDと親タスクのユーザーIDが一致しない場合の処理
+                document.querySelector('.btn__container').style.display = "none";
+                document.querySelector('.evaluation').style.display = "none";
+                document.querySelector('.child__task__input').style.display = "none";
+                document.getElementById('task-add-template').style.display = "none";
+            }
+
+            // イベントリスナーを削除
+            openDetailTaskBtn.removeEventListener("click", handleClick);
+        };
+
+        openDetailTaskBtn.addEventListener("click", handleClick);
+    });
+});
+</script>
+<?php
+
     include __DIR__ . "/task-add-popup/task-add-popup-template.php";
     include __DIR__ . "/task-add-popup/task-add-popup-content.php";
     include __DIR__ . "/task-edit-popup/task-edit-popup-template.php";
     include __DIR__ . "/task-edit-popup/task-edit-popup-content.php";
+    include __DIR__ . "/task-detail-popup/task-detail-popup-content.php";
+    include __DIR__ . "/task-detail-popup/task-detail-popup-template.php";
 
     include __DIR__ . "/js/popup-handler-js.php";
     include __DIR__ . "/js/member-task-js.php";
