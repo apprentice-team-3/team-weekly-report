@@ -5,6 +5,7 @@ use model\Project;
 use model\User;
 use model\ParentTask;
 use model\WeeklyTask;
+use model\ChildTask;
 
 try {
     $db = new DataSource;
@@ -59,6 +60,19 @@ try {
     $db->rollback();
 }
 
-// echo "<pre>";
-// print_r($weekly_tasks);
-// echo "</pre>";
+
+function fetchChildTasks($parent_task_id){
+    try {
+        $db = new DataSource;
+        $db->begin();
+        $sql = 'SELECT * FROM child_tasks where parent_task_id = :parent_task_id;';
+
+        $child_tasks = $db->select($sql,[':parent_task_id' => $parent_task_id],DataSource::CLS,ChildTask::class);
+
+        $db->commit();
+        return $child_tasks;
+    } catch (PDOException $e) {
+        echo '子タスクを取得できませんでした。<br>';
+        $db->rollback();
+    }
+}
