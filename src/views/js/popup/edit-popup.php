@@ -25,11 +25,15 @@
             const popupWidth = $taskEditPopup.offsetWidth;
             const popupHeight = $taskEditPopup.offsetHeight;
 
+            console.log("ほい",rect.left)
+
             $taskEditPopup.style.top = `50vh - ${popupHeight}px / 2 - 40px`;
             if (rect.left < window.innerWidth / 2) {
+
                 $taskEditPopup.style.left = `calc(${rect.left}px + ${rect.width}px + ${popupWidth}px * 2)`;
             } else {
-                $taskEditPopup.style.left = `calc(${rect.left}px + ${rect.width}px - ${popupWidth}px * 2)`;
+                $taskEditPopup.style.left = `calc(${rect.left}px - ${rect.width}px - ${popupWidth}px)`;
+                console.log(rect.left)
             }
 
             $taskEditPopup.classList.toggle("popup__open");

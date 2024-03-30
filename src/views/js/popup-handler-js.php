@@ -14,19 +14,25 @@ function changeProgressColor(parentTaskProgress, $parentTaskProgress){
 }
 
 function displayParentTaskProgress($childTasks){
+  if($childTasks.length === 0){
+    const $popup =document.getElementById("task-edit-popup");
+    $popup.querySelector("#parent-task-progress-php").textContent = "0%";
+    changeProgressColor(0, $popup.querySelector("#parent-task-progress-php"))
+    return;
+  }
       const progress = []
     for($childTask of $childTasks){
       progress.push(Number($childTask.querySelector(".selected label").textContent.slice(0, -1)))
     }
 
-    console.log("計算",progress)
-
     const parentTaskProgress = progress.reduce((acc, progress) => {
         return acc + progress;
     }, 0) / progress.length;
 
+    const parentTaskProgressFixed = parentTaskProgress.toFixed(2);
+
     const $popup =document.getElementById("task-edit-popup");
-    $popup.querySelector("#parent-task-progress-php").textContent = parentTaskProgress + "%";
+    $popup.querySelector("#parent-task-progress-php").textContent = parentTaskProgressFixed + "%";
 
     changeProgressColor(parentTaskProgress, $popup.querySelector("#parent-task-progress-php"))
   }
