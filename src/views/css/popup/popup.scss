@@ -5,6 +5,10 @@ li {
   list-style: none;
 }
 
+main {
+  position: relative;
+}
+
 button {
   cursor: pointer;
   &:focus {
@@ -113,7 +117,7 @@ textarea {
     bottom: 20px;
     right: 20px;
 
-    & .register__btn {
+    & .save__btn {
       position: relative;
       top: 0;
       left: auto;
@@ -231,8 +235,13 @@ textarea {
     padding-right: 60px;
     min-width: 33vw;
     height: 33vh;
-
     gap: 10px;
+    position: fixed;
+
+    // 画面の中央に設定
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -40%);
 
     & .child__task__section {
       display: flex;
@@ -460,6 +469,7 @@ textarea {
     transform: scale(0.95);
   }
 
+  // 追加
   &__add {
     background-color: #77e48f;
     box-shadow: #19af3a 3px 3px 3px;
@@ -494,6 +504,7 @@ textarea {
     }
   }
 
+  // remove
   &__remove {
     background-color: #ee6d6d;
     color: white;
@@ -515,6 +526,10 @@ textarea {
       transform: translate(-50%, -50%);
       border: 1px solid white;
     }
+  }
+
+  &.hidden {
+    visibility: hidden;
   }
 }
 
@@ -574,5 +589,33 @@ textarea {
     & .relative__progress__container {
       width: 20%;
     }
+  }
+}
+
+.child__task > textarea {
+  border: 1px solid black;
+  width: 100%;
+  display: block;
+  border-radius: 10px;
+  padding: 20px 10px;
+}
+
+.child__task {
+  width: 78%;
+}
+
+.open__detail__task__btn {
+  color: white;
+  cursor: pointer;
+  white-space: nowrap;
+
+  transition: all ease-in-out 0.2s;
+
+  &:hover {
+    transform: scale(0.95);
+  }
+
+  &.popup__open {
+    z-index: 1001;
   }
 }

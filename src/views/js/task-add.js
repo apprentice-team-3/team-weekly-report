@@ -45,6 +45,7 @@ $doms.forEach((dom) => {
     });
   });
 });
+
 //   templateを使って1件の子タスクを作成
 const $taskTemplate = document.querySelector("#task-template");
 const $childTaskContainer = document.querySelector(".child__task__container");
@@ -57,9 +58,7 @@ for (let i = 0; i < 1; i++) {
 
 //   子タスク分だけ取得
 const $childTasks = document.querySelectorAll(".child__task__list__container");
-
 addClickProgressEvent($childTasks);
-
 const $addBtn = document.querySelector(".icon__add");
 
 $addBtn.addEventListener("click", (e) => {

@@ -12,7 +12,8 @@ function fetchChildTasks($parent_task_id){
     try {
         $db = new DataSource;
         $db->begin();
-        $sql = 'SELECT * FROM child_tasks where parent_task_id = :parent_task_id;';
+        // 日付が新しい順に取得
+        $sql = 'SELECT * FROM child_tasks WHERE parent_task_id = :parent_task_id ORDER BY created_at DESC';
 
         $child_tasks = $db->select($sql,[':parent_task_id' => $parent_task_id],DataSource::CLS,ChildTask::class);
 

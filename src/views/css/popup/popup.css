@@ -5,6 +5,10 @@ li {
   list-style: none;
 }
 
+main {
+  position: relative;
+}
+
 button {
   cursor: pointer;
   border: none;
@@ -103,7 +107,7 @@ textarea :hover {
   bottom: 20px;
   right: 20px;
 }
-.btn__container .register__btn {
+.btn__container .save__btn {
   position: relative;
   top: 0;
   left: auto;
@@ -210,6 +214,10 @@ textarea :hover {
   min-width: 33vw;
   height: 33vh;
   gap: 10px;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -40%);
 }
 .popup.popup__open .child__task__section {
   display: flex;
@@ -457,6 +465,9 @@ textarea :hover {
   transform: translate(-50%, -50%);
   border: 1px solid white;
 }
+.icon.hidden {
+  visibility: hidden;
+}
 
 .open__edit__task__btn {
   color: white;
@@ -507,4 +518,29 @@ textarea :hover {
 }
 #task-edit-popup .parent__task__section .relative__progress__container {
   width: 20%;
+}
+
+.child__task > textarea {
+  border: 1px solid black;
+  width: 100%;
+  display: block;
+  border-radius: 10px;
+  padding: 20px 10px;
+}
+
+.child__task {
+  width: 78%;
+}
+
+.open__detail__task__btn {
+  color: white;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: all ease-in-out 0.2s;
+}
+.open__detail__task__btn:hover {
+  transform: scale(0.95);
+}
+.open__detail__task__btn.popup__open {
+  z-index: 1001;
 }/*# sourceMappingURL=popup.css.map */

@@ -210,64 +210,64 @@ INSERT INTO tags (id, name) VALUES
 (5, '実装速度');
 
 -- (project_id, user_id, title, progress, created_at)
-INSERT INTO parent_tasks (project_id, user_id, title, progress, created_at) VALUES
-(1, 1,'ワイヤーフレームの作成', 30, '2024-03-28 00:00:00'),
-(1, 2,'画面遷移図', 60,'2024-03-28 00:00:00'),
-(1, 3,'データベース設計', 80, '2024-03-28 00:00:00'),
-(1, 4,'タスク出し', 100, '2024-03-28 00:00:00'),
-(1, 1,'LPの作成', 0, '2024-03-27 00:00:00'),
-(1, 2,'コア機能実装', 80, '2024-03-27 00:00:00'),
-(1, 3,'データベース周りの実装', 80, '2024-03-27 00:00:00'),
-(1, 4,'ユーザー登録処理の実装', 80, '2024-03-27 00:00:00'),
-(1, 1,'aページの表示処理', 80, '2024-03-26 00:00:00'),
-(1, 2, 'bページの表示処理', 80, '2024-03-26 00:00:00'),
-(1, 3, 'cページの表示処理', 80, '2024-03-26 00:00:00'),
-(1, 4, 'dページの表示処理', 80, '2024-03-26 00:00:00'),
-(1, 1, 'aページのスタイルを整える', 80, '2024-03-25 00:00:00'),
-(1, 2, 'bページのスタイルを整える', 80, '2024-03-25 00:00:00'),
-(1, 3, 'cページのスタイルを整える', 80, '2024-03-25 00:00:00'),
-(1, 4, 'dページのスタイルを整える', 80, '2024-03-25 00:00:00'),
-(1, 1, 'aページの動的な画面処理', 80, '2024-03-24 00:00:00'),
-(1, 2, 'bページの動的な画面処理', 80, '2024-03-24 00:00:00'),
-(1, 3, 'cページの動的な画面処理', 80, '2024-03-24 00:00:00'),
-(1, 4, 'dページの動的な画面処理', 80, '2024-03-24 00:00:00'),
-(1, 1, 'aページのPHP処理', 80, '2024-03-23 00:00:00'),
-(1, 2, 'bページのPHP処理', 80, '2024-03-23 00:00:00'),
-(1, 3, 'cページのPHP処理', 80, '2024-03-23 00:00:00'),
-(1, 4, 'dページのPHP処理', 80, '2024-03-23 00:00:00'),
-(1, 1, '1,aページとcページ', 80, '2024-03-22 00:00:00'),
-(1, 2, '2,bページとdページ', 80, '2024-03-22 00:00:00'),
-(1, 3, '3,aページとcページ', 80, '2024-03-22 00:00:00'),
-(1, 4, '4,bページとdページ', 80, '2024-03-22 00:00:00'),
-(1, 1, 'ワイヤーフレームの作成', 80, '2024-03-21 00:00:00'),
-(1, 2, '画面遷移図', 80, '2024-03-21 00:00:00'),
-(1, 3, 'データベース設計', 80, '2024-03-21 00:00:00'),
-(1, 4, 'タスク出し', 80, '2024-03-21 00:00:00'),
-(1, 1, 'LPの作成', 80, '2024-03-20 00:00:00'),
-(1, 2, 'コア機能実装', 80, '2024-03-20 00:00:00'),
-(1, 3, 'データベース周りの実装', 80, '2024-03-20 00:00:00'),
-(1, 4, 'ユーザー登録処理の実装', 80, '2024-03-20 00:00:00'),
-(1, 1, 'aページの表示処理', 80, '2024-03-19 00:00:00'),
-(1, 2, 'bページの表示処理', 80, '2024-03-19 00:00:00'),
-(1, 3, 'cページの表示処理', 80, '2024-03-19 00:00:00'),
-(1, 4, 'dページの表示処理', 80, '2024-03-19 00:00:00'),
-(1, 1, 'aページのスタイルを整える', 80, '2024-03-18 00:00:00'),
-(1, 2, 'bページのスタイルを整える', 80, '2024-03-18 00:00:00'),
-(1, 3, 'cページのスタイルを整える', 80, '2024-03-18 00:00:00'),
-(1, 4, 'dページのスタイルを整える', 80, '2024-03-18 00:00:00'),
-(1, 1, 'aページの動的な画面処理', 80, '2024-03-17 00:00:00'),
-(1, 2, 'bページの動的な画面処理', 80, '2024-03-17 00:00:00'),
-(1, 3, 'cページの動的な画面処理', 80, '2024-03-17 00:00:00'),
-(1, 4, 'dページの動的な画面処理', 80, '2024-03-17 00:00:00'),
-(1, 1, 'aページのPHP処理', 80, '2024-03-16 00:00:00'),
-(1, 2, 'bページのPHP処理', 80, '2024-03-16 00:00:00'),
-(1, 3, 'cページのPHP処理', 80, '2024-03-16 00:00:00'),
-(1, 4, 'dページのPHP処理', 80, '2024-03-16 00:00:00'),
-(1, 1, '1,aページとcページ', 80, '2024-03-15 00:00:00'),
-(1, 2, '2,bページとdページ', 80, '2024-03-15 00:00:00'),
-(1, 3, '3,aページとcページ', 80, '2024-03-15 00:00:00'),
-(1, 4, '4,bページとdページ', 80, '2024-03-15 00:00:00'),
-(1, 4, '4,React', 80, '2024-03-15 00:00:00');
+INSERT INTO parent_tasks (project_id, user_id, title, created_at) VALUES
+(1, 1,'ワイヤーフレームの作成', '2024-03-28 00:00:00'),
+(1, 2,'画面遷移図', '2024-03-28 00:00:00'),
+(1, 3,'データベース設計', '2024-03-28 00:00:00'),
+(1, 4,'タスク出し', '2024-03-28 00:00:00'),
+(1, 1,'LPの作成', '2024-03-27 00:00:00'),
+(1, 2,'コア機能実装', '2024-03-27 00:00:00'),
+(1, 3,'データベース周りの実装', '2024-03-27 00:00:00'),
+(1, 4,'ユーザー登録処理の実装', '2024-03-27 00:00:00'),
+(1, 1,'aページの表示処理', '2024-03-26 00:00:00'),
+(1, 2, 'bページの表示処理', '2024-03-26 00:00:00'),
+(1, 3, 'cページの表示処理', '2024-03-26 00:00:00'),
+(1, 4, 'dページの表示処理', '2024-03-26 00:00:00'),
+(1, 1, 'aページのスタイルを整える', '2024-03-25 00:00:00'),
+(1, 2, 'bページのスタイルを整える', '2024-03-25 00:00:00'),
+(1, 3, 'cページのスタイルを整える', '2024-03-25 00:00:00'),
+(1, 4, 'dページのスタイルを整える', '2024-03-25 00:00:00'),
+(1, 1, 'aページの動的な画面処理', '2024-03-24 00:00:00'),
+(1, 2, 'bページの動的な画面処理', '2024-03-24 00:00:00'),
+(1, 3, 'cページの動的な画面処理', '2024-03-24 00:00:00'),
+(1, 4, 'dページの動的な画面処理', '2024-03-24 00:00:00'),
+(1, 1, 'aページのPHP処理', '2024-03-23 00:00:00'),
+(1, 2, 'bページのPHP処理', '2024-03-23 00:00:00'),
+(1, 3, 'cページのPHP処理', '2024-03-23 00:00:00'),
+(1, 4, 'dページのPHP処理', '2024-03-23 00:00:00'),
+(1, 1, '1,aページとcページ', '2024-03-22 00:00:00'),
+(1, 2, '2,bページとdページ', '2024-03-22 00:00:00'),
+(1, 3, '3,aページとcページ', '2024-03-22 00:00:00'),
+(1, 4, '4,bページとdページ', '2024-03-22 00:00:00'),
+(1, 1, 'ワイヤーフレームの作成', '2024-03-21 00:00:00'),
+(1, 2, '画面遷移図', '2024-03-21 00:00:00'),
+(1, 3, 'データベース設計', '2024-03-21 00:00:00'),
+(1, 4, 'タスク出し', '2024-03-21 00:00:00'),
+(1, 1, 'LPの作成', '2024-03-20 00:00:00'),
+(1, 2, 'コア機能実装', '2024-03-20 00:00:00'),
+(1, 3, 'データベース周りの実装', '2024-03-20 00:00:00'),
+(1, 4, 'ユーザー登録処理の実装', '2024-03-20 00:00:00'),
+(1, 1, 'aページの表示処理', '2024-03-19 00:00:00'),
+(1, 2, 'bページの表示処理', '2024-03-19 00:00:00'),
+(1, 3, 'cページの表示処理', '2024-03-19 00:00:00'),
+(1, 4, 'dページの表示処理', '2024-03-19 00:00:00'),
+(1, 1, 'aページのスタイルを整える', '2024-03-18 00:00:00'),
+(1, 2, 'bページのスタイルを整える', '2024-03-18 00:00:00'),
+(1, 3, 'cページのスタイルを整える', '2024-03-18 00:00:00'),
+(1, 4, 'dページのスタイルを整える', '2024-03-18 00:00:00'),
+(1, 1, 'aページの動的な画面処理', '2024-03-17 00:00:00'),
+(1, 2, 'bページの動的な画面処理', '2024-03-17 00:00:00'),
+(1, 3, 'cページの動的な画面処理', '2024-03-17 00:00:00'),
+(1, 4, 'dページの動的な画面処理', '2024-03-17 00:00:00'),
+(1, 1, 'aページのPHP処理', '2024-03-16 00:00:00'),
+(1, 2, 'bページのPHP処理', '2024-03-16 00:00:00'),
+(1, 3, 'cページのPHP処理', '2024-03-16 00:00:00'),
+(1, 4, 'dページのPHP処理', '2024-03-16 00:00:00'),
+(1, 1, '1,aページとcページ', '2024-03-15 00:00:00'),
+(1, 2, '2,bページとdページ', '2024-03-15 00:00:00'),
+(1, 3, '3,aページとcページ', '2024-03-15 00:00:00'),
+(1, 4, '4,bページとdページ', '2024-03-15 00:00:00'),
+(1, 4, '4,React', '2024-03-15 00:00:00');
 
 INSERT INTO child_tasks (parent_task_id, title, content, progress) VALUES
 (1, '画面1のワイヤーフレーム作成', 'LPのワイヤーフレーム', 100),
@@ -324,3 +324,66 @@ INSERT INTO task_status (child_task_id, status_id) VALUES
 (17, 3),
 (18, 3),
 (19, 1);
+
+set @s_parent_task_id = 1;
+select sum( progress ) / count(progress) from child_tasks c where parent_task_id = @s_parent_task_id group by c.parent_task_id ;
+
+update parent_tasks p
+set progress = (select sum( progress ) / count(progress) from child_tasks c where parent_task_id = @s_parent_task_id group by c.parent_task_id)
+where project_id = 1 and id = @s_parent_task_id;
+
+set @s_parent_task_id = 2;
+select sum( progress ) / count(progress) from child_tasks c where parent_task_id = @s_parent_task_id group by c.parent_task_id ;
+
+update parent_tasks p
+set progress = (select sum( progress ) / count(progress) from child_tasks c where parent_task_id = @s_parent_task_id group by c.parent_task_id)
+where project_id = 1 and id = @s_parent_task_id;
+
+set @s_parent_task_id = 3;
+select sum( progress ) / count(progress) from child_tasks c where parent_task_id = @s_parent_task_id group by c.parent_task_id ;
+
+update parent_tasks p
+set progress = (select sum( progress ) / count(progress) from child_tasks c where parent_task_id = @s_parent_task_id group by c.parent_task_id)
+where project_id = 1 and id = @s_parent_task_id;
+
+set @s_parent_task_id = 4;
+select sum( progress ) / count(progress) from child_tasks c where parent_task_id = @s_parent_task_id group by c.parent_task_id ;
+
+update parent_tasks p
+set progress = (select sum( progress ) / count(progress) from child_tasks c where parent_task_id = @s_parent_task_id group by c.parent_task_id)
+where project_id = 1 and id = @s_parent_task_id;
+
+set @s_parent_task_id = 5;
+select sum( progress ) / count(progress) from child_tasks c where parent_task_id = @s_parent_task_id group by c.parent_task_id ;
+
+update parent_tasks p
+set progress = (select sum( progress ) / count(progress) from child_tasks c where parent_task_id = @s_parent_task_id group by c.parent_task_id)
+where project_id = 1 and id = @s_parent_task_id;
+
+set @s_parent_task_id = 6;
+select sum( progress ) / count(progress) from child_tasks c where parent_task_id = @s_parent_task_id group by c.parent_task_id ;
+
+update parent_tasks p
+set progress = (select sum( progress ) / count(progress) from child_tasks c where parent_task_id = @s_parent_task_id group by c.parent_task_id)
+where project_id = 1 and id = @s_parent_task_id;
+
+set @s_parent_task_id = 7;
+select sum( progress ) / count(progress) from child_tasks c where parent_task_id = @s_parent_task_id group by c.parent_task_id ;
+
+update parent_tasks p
+set progress = (select sum( progress ) / count(progress) from child_tasks c where parent_task_id = @s_parent_task_id group by c.parent_task_id)
+where project_id = 1 and id = @s_parent_task_id;
+
+set @s_parent_task_id = 8;
+select sum( progress ) / count(progress) from child_tasks c where parent_task_id = @s_parent_task_id group by c.parent_task_id ;
+
+update parent_tasks p
+set progress = (select sum( progress ) / count(progress) from child_tasks c where parent_task_id = @s_parent_task_id group by c.parent_task_id)
+where project_id = 1 and id = @s_parent_task_id;
+
+set @s_parent_task_id = 9;
+select sum( progress ) / count(progress) from child_tasks c where parent_task_id = @s_parent_task_id group by c.parent_task_id ;
+
+update parent_tasks p
+set progress = (select sum( progress ) / count(progress) from child_tasks c where parent_task_id = @s_parent_task_id group by c.parent_task_id)
+where project_id = 1 and id = @s_parent_task_id;

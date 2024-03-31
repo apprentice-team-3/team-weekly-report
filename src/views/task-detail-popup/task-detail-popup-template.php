@@ -1,15 +1,14 @@
 <!-- views/popup.phpで呼ばれます -->
-<template id="task-edit-template">
-    <li class="child__task__list__container">
+<template id="task-detail-template">
+    <li  class="child__task__list__container" data-child_task_id data-type="detail">
     <div class="child__task__name__remove">
         <div class="popup__text child__task child__task__php">子タスク</div>
-        <div class="icon icon__remove"></div>
     </div>
     <div class="comment__box child__task__comment__php">
-        <textarea
+        <div
         class="comment__textarea comment__php"
         placeholder="サーバーからコメントを取得する"
-        ></textarea>
+        ></div>
     </div>
         <div class="comment__box hidden child__task__comment__php">子タスクについての説明</div>
     <div class="progress__container">
