@@ -15,8 +15,6 @@
         } else {
             progressBar<?php echo $k;?>.classList.add('progress-100');
         }
-
-
     <?php endfor;?>
 
 function calcProjectProgress(dataList) {
