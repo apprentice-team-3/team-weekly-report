@@ -97,47 +97,7 @@ $_SESSION['user_id'] = 2;
     </ul>
 </div>
 
-<script>
-document.addEventListener('DOMContentLoaded', function() {
-    const openDetailTaskBtns = document.getElementsByClassName("open__detail__task__btn");
-    // const loggedInUserId = <?php echo $_SESSION['user_id']; ?>;
-
-      // console.log(loggedInUserId);
-
-            // if (loggedInUserId === parentTaskUserId) {
-            //     // ログインユーザーIDと親タスクのユーザーIDが一致する場合の処理
-            //     document.querySelector('.register__btn').style.display = "inline-block";
-            //     document.querySelector('.btn__danger').style.display = "inline-block";
-            //     document.querySelector('.icon__add').style.display = "inline-block";
-            // } else {
-            //     // ログインユーザーIDと親タスクのユーザーIDが一致しない場合の処理
-            //     document.querySelector('.btn__container').style.display = "none";
-            //     document.querySelector('.evaluation').style.display = "none";
-            //     document.querySelector('.child__task__input').style.display = "none";
-            //     document.querySelector('.icon__add').style.display = "none";
-            //     document.querySelector('.icon__remove').style.display = "none";
-            // }
-
-    const $popup = document.querySelector('#task-detail-popup');
-
-    Array.from(openDetailTaskBtns).forEach(function(openDetailTaskBtn) {
-        const handleClick = function(e) {
-            e.preventDefault();
-            e.stopPropagation();
-
-            const parentTaskUserId = parseInt(openDetailTaskBtn.dataset.parent_task_user_id);
-            console.log(parentTaskUserId);
-
-            // $popupを開く
-            $popup.classList.add('popup__open');
-        };
-
-        openDetailTaskBtn.addEventListener("click", handleClick);
-    });
-});
-</script>
 <?php
-
     include __DIR__ . "/task-add-popup/task-add-popup-template.php";
     include __DIR__ . "/task-add-popup/task-add-popup-content.php";
     include __DIR__ . "/task-edit-popup/task-edit-popup-template.php";
@@ -146,7 +106,8 @@ document.addEventListener('DOMContentLoaded', function() {
     include __DIR__ . "/task-detail-popup/task-detail-popup-template.php";
 
     include __DIR__ . "/js/popup-handler-js.php";
-include __DIR__ . "/js/popup/add-popup.php";
-include __DIR__ . "/js/popup/edit-popup.php";
+    include __DIR__ . "/js/popup/add-popup-js.php";
+    include __DIR__ . "/js/popup/edit-popup-js.php";
+    include __DIR__ . "/js/popup/detail-popup-js.php";
     include __DIR__ . "/js/member-task-js.php";
 ?>

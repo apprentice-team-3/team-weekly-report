@@ -84,15 +84,17 @@ function setChildTasks(childTasks, $popup, $taskTemplate) {
   }
   // 子タスクを追加
   childTasks.forEach((childTask) => {
-    console.log(childTask);
     const $task = $taskTemplate.content.cloneNode(true);
 
     $task.querySelector(".child__task__list__container").dataset.child_task_id = childTask.id;
-    $task.querySelector(".child__task textarea").textContent = childTask.title;
-
-
-    console.log($task.querySelector(".child__task textarea"));
-    $task.querySelector(".comment__textarea").value = childTask.content;
+    if($task.querySelector(".child__task__list__container").dataset.type === "detail"){
+      $task.querySelector(".child__task").textContent = childTask.title;
+      $task.querySelector(".comment__textarea").textContent = childTask.content;
+    }
+    else{
+      $task.querySelector(".child__task textarea").textContent = childTask.title;
+      $task.querySelector(".comment__textarea").value = childTask.content;
+    }
 
     $task
       .querySelector(`.child__task__progress__${childTask.progress}__php`)
@@ -166,7 +168,6 @@ function addRegisterBtnEvent($popup) {
         child_tasks: childTasks,
       }
 
-      console.log(data);
 
     fetch("http://localhost:8080/api/post.php", {
       method: "POST",
@@ -199,6 +200,7 @@ function addRegisterBtnEvent($popup) {
 function popupAddEventListener($popup, $taskTemplate) {
   if (!$popup) return;
 
+
   let $cover = document.querySelector(".cover");
 
   if (!$cover) {
@@ -225,6 +227,10 @@ function popupAddEventListener($popup, $taskTemplate) {
       });
     });
   });
+
+  if($popup.id === "task-detail-popup")
+    return;
+
 
   const $addChildTaskBtn = $popup.querySelector(".icon__add");
   const $childTaskContainer = $popup.querySelector(".child__task__container");

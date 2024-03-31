@@ -5,6 +5,10 @@ li {
   list-style: none;
 }
 
+main {
+  position: relative;
+}
+
 button {
   cursor: pointer;
   &:focus {
@@ -231,8 +235,13 @@ textarea {
     padding-right: 60px;
     min-width: 33vw;
     height: 33vh;
-
     gap: 10px;
+    position: absolute;
+
+    // 画面の中央に設定
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -40%);
 
     & .child__task__section {
       display: flex;
