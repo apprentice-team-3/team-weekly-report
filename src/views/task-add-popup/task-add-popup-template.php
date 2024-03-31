@@ -1,7 +1,9 @@
 <!-- views/popup.phpで呼ばれます -->
 <template id="task-add-template">
     <div class="child__task__list__container">
-    <div class="popup__text child__task child__task__php">子タスク</div>
+    <div class="popup__text child__task child__task__php">
+        <textarea></textarea>
+    </div>
     <div class="comment__box child__task__comment__php">
         <textarea
         class="comment__textarea"

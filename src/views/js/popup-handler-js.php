@@ -127,7 +127,7 @@ function addRegisterBtnEvent($popup) {
     );
     const childTasks = Array.from($childTasks).map(($childTask) => {
       const childTaskName =
-        $childTask.querySelector(".child__task").textContent;
+        $childTask.querySelector(".child__task textarea").value;
       const progress = Number(
         $childTask.querySelector(".selected label").textContent.slice(0, -1)
       );
@@ -158,18 +158,22 @@ function addRegisterBtnEvent($popup) {
       return;
     }
 
-    fetch("http://localhost:8080/api/post.php", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
+    const data = {
         user_id: +userId,
         project_id: +projectId,
         parent_task_name: parentTaskName,
         parent_task_progress: safeParentTaskProgress,
         child_tasks: childTasks,
-      }),
+      }
+
+      console.log(data);
+
+    fetch("http://localhost:8080/api/post.php", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(data),
     })
       .then((res) => {
         return res.json();
@@ -178,7 +182,7 @@ function addRegisterBtnEvent($popup) {
         console.log("送ったデータ");
         console.log(json);
         // fetch通信後に再リロード
-        location.reload();
+        // location.reload();
       })
       // エラーハンドリングが出るのでfetchでデータが送れてない（なんぜ）
       .catch((e) => {
@@ -232,7 +236,10 @@ function popupAddEventListener($popup, $taskTemplate) {
     const $childTaskInput = $popup.querySelector(".child__task__input");
     const $childTaskName = $childTaskInput.querySelector("input").value;
     const $task = $taskTemplate.content.cloneNode(true);
-    $task.querySelector(".child__task textarea").textContent = $childTaskName;
+    console.log($task.querySelector(".child__task"), $popup);
+
+    $task.querySelector(".child__task textarea").value = $childTaskName;
+
 
     addClickProgressEvent([$task], $popup);
     $childTaskContainer.insertBefore($task, $childTaskContainer.firstChild);
