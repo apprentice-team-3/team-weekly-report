@@ -1,7 +1,7 @@
 mode<link rel="stylesheet" href="/views/css/popup/popup.css">
 <?php
 // 任意のユーザーIDを設定
-$_SESSION['user_id'] = 2;
+$_SESSION['user_id'] = 3;
 ?>
 
 <div class="task__container">
