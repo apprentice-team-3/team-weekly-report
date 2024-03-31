@@ -1,6 +1,5 @@
 mode<link rel="stylesheet" href="/views/css/popup/popup.css">
 <?php
-session_start();
 // 任意のユーザーIDを設定
 $_SESSION['user_id'] = 2;
 ?>
@@ -19,7 +18,7 @@ $_SESSION['user_id'] = 2;
     </h2>
     <div>
         <!-- $userをdata-userに渡したい -->
-        <button class="btn transition__btn open__add__task__btn" data-user_id="jsの方で更新する" data-project_id="1" >今日のタスクを追加</button>
+        <button class="btn transition__btn open__add__task__btn" data-user_id="<?php echo $_SESSION['user_id']; ?>" data-project_id="1" >今日のタスクを追加</button>
     </div>
     <ul class="weekly__report__container">
         <?php $j = 0; ?>
@@ -102,6 +101,7 @@ $_SESSION['user_id'] = 2;
 document.addEventListener('DOMContentLoaded', function() {
     const openDetailTaskBtns = document.getElementsByClassName("open__detail__task__btn");
     const loggedInUserId = <?php echo $_SESSION['user_id']; ?>;
+
     Array.from(openDetailTaskBtns).forEach(function(openDetailTaskBtn) {
         const handleClick = function(e) {
             e.preventDefault();
