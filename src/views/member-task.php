@@ -67,14 +67,26 @@ $_SESSION['user_id'] = 3;
                                             data-parent_task_progress="<?php echo $parent_task->progress; ?>"
                                             data-parent_task_user_id="<?php echo $parent_task->user_id; ?>"
                                     >
-                                        <?php echo $title ?>
+                                        <?php
+                                        $title = $weekly_task->parent_tasks[$i]->title;
+                                        // 文字が10文字まで表示
+                                        if (mb_strlen($title) > 8)
+                                            $title = mb_substr($title, 0, 8) . '...';
+                                        echo $title;
+                                        ?>
                                      </button>
                                         <?php else : ?>
                                             <button class="task_title open__detail__task__btn"  data-parent_task_id="<?php $parent_task = $weekly_task->parent_tasks[$i]; echo $parent_task->id; ?>"
                                             data-parent_task_name="<?php echo $parent_task->title; ?>"
                                             data-parent_task_progress="<?php echo $parent_task->progress; ?>"
                                             data-parent_task_user_id="<?php echo $parent_task->user_id; ?>">
-                                               <?php echo $title ?>
+                                               <?php
+                                                 $title = $weekly_task->parent_tasks[$i]->title;
+                                                 // 文字が10文字まで表示
+                                                 if (mb_strlen($title) > 8)
+                                                     $title = mb_substr($title, 0, 8) . '...';
+                                                 echo $title;
+                                               ?>
                                             </button>
                                     <?php endif ; ?>
 
