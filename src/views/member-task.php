@@ -146,5 +146,7 @@ document.addEventListener('DOMContentLoaded', function() {
     include __DIR__ . "/task-detail-popup/task-detail-popup-template.php";
 
     include __DIR__ . "/js/popup-handler-js.php";
+include __DIR__ . "/js/popup/add-popup.php";
+include __DIR__ . "/js/popup/edit-popup.php";
     include __DIR__ . "/js/member-task-js.php";
 ?>

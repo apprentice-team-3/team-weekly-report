@@ -1,8 +1,10 @@
 <!-- views/popup.phpで呼ばれます -->
 <template id="task-edit-template">
-    <li class="child__task__list__container">
+    <li class="child__task__list__container" data-child_task_id="">
     <div class="child__task__name__remove">
-        <div class="popup__text child__task child__task__php">子タスク</div>
+        <div class="popup__text child__task child__task__php">
+            <textarea></textarea>
+        </div>
         <div class="icon icon__remove"></div>
     </div>
     <div class="comment__box child__task__comment__php">
@@ -12,15 +14,15 @@
         ></textarea>
     </div>
         <div class="comment__box hidden child__task__comment__php">子タスクについての説明</div>
-    <div class="progress__container">
+    <div class="progress__container cursor">
         <div class="popup__text progress__explanation__character">
         達成度を選択してください
         </div>
         <ul class="progress__character__container">
         <li
-            class="popup__text progress__character child__task__progress__0__php selected"
+            class="popup__text progress__character child__task__progress__0__php"
         >
-            <label for="">0%</label>
+            <label for="" class="pointer">0%</label>
         </li>
         <li
             class="popup__text progress__character red child__task__progress__30__php"

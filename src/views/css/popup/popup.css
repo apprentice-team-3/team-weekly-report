@@ -65,7 +65,8 @@ textarea :hover {
   cursor: pointer;
   transition: all ease-in-out 0.2s;
 }
-.btn:hover, .btn:focus {
+.btn:hover,
+.btn:focus {
   background-color: rgba(246, 198, 75, 0.6509803922);
   box-shadow: none;
   color: gray;
@@ -88,7 +89,8 @@ textarea :hover {
   box-shadow: 6px 6px 5px 0px rgba(238, 109, 109, 0.6509803922);
   margin-right: 20px;
 }
-.btn__danger:hover, .btn__danger:focus {
+.btn__danger:hover,
+.btn__danger:focus {
   background-color: rgba(238, 109, 109, 0.6509803922);
   box-shadow: none;
   color: gray;
@@ -103,7 +105,7 @@ textarea :hover {
   bottom: 20px;
   right: 20px;
 }
-.btn__container .register__btn {
+.btn__container .save__btn {
   position: relative;
   top: 0;
   left: auto;
@@ -159,19 +161,31 @@ textarea :hover {
   -webkit-text-stroke: none;
   text-shadow: 0px 0px 3px black;
 }
-.popup .parent__task__section .relative__progress__container .parent__progress.red {
+.popup
+  .parent__task__section
+  .relative__progress__container
+  .parent__progress.red {
   color: #ee6d6d;
   text-shadow: 0px 0px 3px #ee6d6d;
 }
-.popup .parent__task__section .relative__progress__container .parent__progress.yellow {
+.popup
+  .parent__task__section
+  .relative__progress__container
+  .parent__progress.yellow {
   color: #ffee00;
   text-shadow: 0px 0px 3px #ffee00;
 }
-.popup .parent__task__section .relative__progress__container .parent__progress.blue {
+.popup
+  .parent__task__section
+  .relative__progress__container
+  .parent__progress.blue {
   color: #6dcfee;
   text-shadow: 0px 0px 3px #6dcfee;
 }
-.popup .parent__task__section .relative__progress__container .parent__progress.green {
+.popup
+  .parent__task__section
+  .relative__progress__container
+  .parent__progress.green {
   color: #77e48f;
   text-shadow: 0px 0px 3px #77e48f;
 }
@@ -227,22 +241,37 @@ textarea :hover {
   overflow-y: scroll;
   scrollbar-width: none;
 }
-.popup.popup__open .child__task__section .child__task__container .child__task__list__container {
+.popup.popup__open
+  .child__task__section
+  .child__task__container
+  .child__task__list__container {
   display: flex;
   gap: 3px;
   flex-direction: column;
 }
-.popup.popup__open .child__task__section .child__task__container .child__task__list__container .child__task__name__remove {
+.popup.popup__open
+  .child__task__section
+  .child__task__container
+  .child__task__list__container
+  .child__task__name__remove {
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
-.popup.popup__open .child__task__section .child__task__container .child__task__list__container .btn__container {
+.popup.popup__open
+  .child__task__section
+  .child__task__container
+  .child__task__list__container
+  .btn__container {
   display: flex;
   flex-direction: row;
   gap: 10px;
 }
-.popup.popup__open .child__task__section .child__task__container .child__task__list__container .comment__box {
+.popup.popup__open
+  .child__task__section
+  .child__task__container
+  .child__task__list__container
+  .comment__box {
   border: 1px solid black;
   border-radius: 10px;
   margin-top: 10px;
@@ -255,7 +284,11 @@ textarea :hover {
   height: fit-content;
   visibility: visible;
 }
-.popup.popup__open .child__task__section .child__task__container .child__task__list__container .comment__box.hidden {
+.popup.popup__open
+  .child__task__section
+  .child__task__container
+  .child__task__list__container
+  .comment__box.hidden {
   visibility: hidden;
   height: 0px;
   width: 0px;
@@ -263,51 +296,148 @@ textarea :hover {
   margin-top: 0;
   padding: 0;
 }
-.popup.popup__open .child__task__section .child__task__container .child__task__list__container .comment__box .comment__textarea {
+.popup.popup__open
+  .child__task__section
+  .child__task__container
+  .child__task__list__container
+  .comment__box
+  .comment__textarea {
   border: none;
   width: 100%;
 }
-.popup.popup__open .child__task__section .child__task__container .child__task__list__container .comment__box .comment__textarea:focus {
+.popup.popup__open
+  .child__task__section
+  .child__task__container
+  .child__task__list__container
+  .comment__box
+  .comment__textarea:focus {
   outline: none;
 }
-.popup.popup__open .child__task__section .child__task__container .child__task__list__container .progress__container {
+.popup.popup__open
+  .child__task__section
+  .child__task__container
+  .child__task__list__container
+  .progress__container {
   display: flex;
   gap: 10px;
   flex-direction: column;
   padding-top: 20px;
 }
-.popup.popup__open .child__task__section .child__task__container .child__task__list__container .progress__container .progress__character__container {
+.popup.popup__open
+  .child__task__section
+  .child__task__container
+  .child__task__list__container
+  .progress__container
+  .progress__character__container {
   display: flex;
   gap: 10px;
   flex-direction: row;
 }
-.popup.popup__open .child__task__section .child__task__container .child__task__list__container .progress__container .progress__character__container .progress__character {
+.popup.popup__open
+  .child__task__section
+  .child__task__container
+  .child__task__list__container
+  .progress__container
+  .progress__character__container
+  .progress__character {
   font-size: 18px;
   text-shadow: 0px 0px 0px black;
   color: white;
   cursor: pointer;
   transition: all ease-in-out 0.2s;
 }
-.popup.popup__open .child__task__section .child__task__container .child__task__list__container .progress__container .progress__character__container .progress__character:hover, .popup.popup__open .child__task__section .child__task__container .child__task__list__container .progress__container .progress__character__container .progress__character.selected {
+.popup.popup__open
+  .child__task__section
+  .child__task__container
+  .child__task__list__container
+  .progress__container
+  .progress__character__container
+  .progress__character:hover,
+.popup.popup__open
+  .child__task__section
+  .child__task__container
+  .child__task__list__container
+  .progress__container
+  .progress__character__container
+  .progress__character.selected {
   transform: scale(1.05);
 }
-.popup.popup__open .child__task__section .child__task__container .child__task__list__container .progress__container .progress__character__container .progress__character:hover.red, .popup.popup__open .child__task__section .child__task__container .child__task__list__container .progress__container .progress__character__container .progress__character.selected.red {
+.popup.popup__open
+  .child__task__section
+  .child__task__container
+  .child__task__list__container
+  .progress__container
+  .progress__character__container
+  .progress__character:hover.red,
+.popup.popup__open
+  .child__task__section
+  .child__task__container
+  .child__task__list__container
+  .progress__container
+  .progress__character__container
+  .progress__character.selected.red {
   color: #ee6d6d;
   text-shadow: 0px 0px 3px #ee6d6d;
 }
-.popup.popup__open .child__task__section .child__task__container .child__task__list__container .progress__container .progress__character__container .progress__character:hover.yellow, .popup.popup__open .child__task__section .child__task__container .child__task__list__container .progress__container .progress__character__container .progress__character.selected.yellow {
+.popup.popup__open
+  .child__task__section
+  .child__task__container
+  .child__task__list__container
+  .progress__container
+  .progress__character__container
+  .progress__character:hover.yellow,
+.popup.popup__open
+  .child__task__section
+  .child__task__container
+  .child__task__list__container
+  .progress__container
+  .progress__character__container
+  .progress__character.selected.yellow {
   color: #ffee00;
   text-shadow: 0px 0px 3px #ffee00;
 }
-.popup.popup__open .child__task__section .child__task__container .child__task__list__container .progress__container .progress__character__container .progress__character:hover.blue, .popup.popup__open .child__task__section .child__task__container .child__task__list__container .progress__container .progress__character__container .progress__character.selected.blue {
+.popup.popup__open
+  .child__task__section
+  .child__task__container
+  .child__task__list__container
+  .progress__container
+  .progress__character__container
+  .progress__character:hover.blue,
+.popup.popup__open
+  .child__task__section
+  .child__task__container
+  .child__task__list__container
+  .progress__container
+  .progress__character__container
+  .progress__character.selected.blue {
   color: #6dcfee;
   text-shadow: 0px 0px 3px #6dcfee;
 }
-.popup.popup__open .child__task__section .child__task__container .child__task__list__container .progress__container .progress__character__container .progress__character:hover.green, .popup.popup__open .child__task__section .child__task__container .child__task__list__container .progress__container .progress__character__container .progress__character.selected.green {
+.popup.popup__open
+  .child__task__section
+  .child__task__container
+  .child__task__list__container
+  .progress__container
+  .progress__character__container
+  .progress__character:hover.green,
+.popup.popup__open
+  .child__task__section
+  .child__task__container
+  .child__task__list__container
+  .progress__container
+  .progress__character__container
+  .progress__character.selected.green {
   color: #77e48f;
   text-shadow: 0px 0px 3px #77e48f;
 }
-.popup.popup__open .child__task__section .child__task__container .child__task__list__container .progress__container .progress__character__container .progress__character label {
+.popup.popup__open
+  .child__task__section
+  .child__task__container
+  .child__task__list__container
+  .progress__container
+  .progress__character__container
+  .progress__character
+  label {
   cursor: pointer;
 }
 .popup.popup__open .child__task__section .child__task__add {
@@ -331,7 +461,11 @@ textarea :hover {
   margin-right: 20px;
   width: 80%;
 }
-.popup.popup__open .child__task__section .child__task__add .child__task__input input {
+.popup.popup__open
+  .child__task__section
+  .child__task__add
+  .child__task__input
+  input {
   display: block;
   width: 100%;
 }
@@ -405,7 +539,8 @@ textarea :hover {
   position: relative;
   transition: all ease-in-out 0.2s;
 }
-.icon:hover, .icon:focus {
+.icon:hover,
+.icon:focus {
   box-shadow: none;
   transform: scale(0.95);
 }
@@ -413,7 +548,8 @@ textarea :hover {
   background-color: #77e48f;
   box-shadow: #19af3a 3px 3px 3px;
 }
-.icon__add:hover, .icon__add:focus {
+.icon__add:hover,
+.icon__add:focus {
   background-color: #19af3a;
 }
 .icon__add::before {
@@ -443,7 +579,8 @@ textarea :hover {
   color: white;
   box-shadow: #b9490a 3px 3px 3px;
 }
-.icon__remove:hover, .icon__remove:focus {
+.icon__remove:hover,
+.icon__remove:focus {
   background-color: #b9490a;
 }
 .icon__remove::before {
@@ -456,6 +593,9 @@ textarea :hover {
   background-color: white;
   transform: translate(-50%, -50%);
   border: 1px solid white;
+}
+.icon.hidden {
+  visibility: hidden;
 }
 
 .open__edit__task__btn {
@@ -509,6 +649,18 @@ textarea :hover {
   width: 20%;
 }
 
+.child__task > textarea {
+  border: 1px solid black;
+  width: 100%;
+  display: block;
+  border-radius: 10px;
+  padding: 20px 10px;
+}
+
+.child__task {
+  width: 78%;
+}
+
 .open__detail__task__btn {
   color: white;
   cursor: pointer;
@@ -520,4 +672,4 @@ textarea :hover {
 }
 .open__detail__task__btn.popup__open {
   z-index: 1001;
-}/*# sourceMappingURL=popup.css.map */
+} /*# sourceMappingURL=popup.css.map */

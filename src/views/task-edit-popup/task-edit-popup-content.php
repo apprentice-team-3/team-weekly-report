@@ -30,7 +30,7 @@
   </div>
   <div class="btn__container">
     <button class="btn btn__danger">タスクを削除</button>
-    <button class="btn register__btn">変更を保存</button>
+    <button class="btn save__btn">変更を保存</button>
   </div>
   <div class="close__btn"></div>
 </div>
