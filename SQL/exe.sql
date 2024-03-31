@@ -88,7 +88,7 @@ CREATE TABLE task_status (
     status_id INT,
     isStatus BOOLEAN DEFAULT FALSE,
     primary key (child_task_id, status_id),
-    FOREIGN KEY (child_task_id) REFERENCES child_tasks (id),
+    FOREIGN KEY (child_task_id) REFERENCES child_tasks (id) on delete cascade,
     FOREIGN KEY (status_id) REFERENCES status (id)
 );
 
@@ -108,7 +108,7 @@ CREATE TABLE evaluations(
     child_task_id INT,
     user_id INT,
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    FOREIGN KEY (child_task_id) REFERENCES child_tasks (id),
+    FOREIGN KEY (child_task_id) REFERENCES child_tasks (id) on delete cascade,
     FOREIGN KEY (user_id) REFERENCES users (id)
 );
 
