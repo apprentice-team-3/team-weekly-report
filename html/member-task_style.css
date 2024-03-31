@@ -1,0 +1,232 @@
+@charset "UTF-8";
+
+body {
+  margin: 0;
+}
+
+/* ヘッダー */
+header {
+  display: flex;
+  justify-content: space-between;
+  height: 3rem;
+  position: fixed;
+  top: 3px;
+
+  .main-header {
+    display: flex;
+
+    svg {
+      width: 5rem;
+      height: 2rem;
+      margin: 0 0.6rem;
+    }
+
+    h1 {
+      font-size: 1.4rem;
+      margin: 0.2rem 1rem 0;
+    }
+  }
+
+  .change_location {
+    margin: 0 0.5rem 0;
+    position: inherit;
+    right: 30px;
+    top: 11px;
+
+    ul {
+      list-style: none;
+      padding: 0;
+
+      li {
+        list-style: none;
+        display: inline-block;
+        margin: 0 0.5rem 0;
+        font-weight: bold;
+
+        a {
+          color: black;
+        }
+      }
+    }
+  }
+}
+
+/* ページネーション */
+.pagination-nav {
+  position: fixed;
+  bottom: 0;
+  right: 20px;
+  width: fit-content;
+  height: 34px;
+}
+
+.pagination {
+  display: inline-block;
+  padding: 0;
+  margin: 0;
+  background-color: rgb(6, 71, 6);
+  border-radius: 5px;
+}
+
+.pagination li {
+  display: inline;
+}
+
+.pagination li a {
+  color: white;
+  float: left;
+  padding: 0.3rem 0.8rem;
+  text-decoration: none;
+}
+
+.pagination li a {
+  color: white;
+}
+
+.pagination li a:hover {
+  background-color: rgb(215, 215, 99);
+}
+
+/* タスク一覧画面 */
+
+.task__container {
+  .project__container {
+    display: flex;
+    justify-content: end;
+    position: fixed;
+    right: 5px;
+    top: 30px;
+
+    h2 {
+      margin: 0;
+
+      .project__detail {
+        font-size: 1.3rem;
+        font-weight: bold;
+      }
+    }
+  }
+
+  .transition__btn {
+    position: fixed;
+    top: 40px;
+    left: 80px;
+  }
+}
+
+.weekly__report__container {
+  display: flex;
+  gap: 15px;
+  flex-direction: column;
+  width: max-content;
+  margin-top: 90px;
+
+  .weekly__report {
+    min-height: calc(((100vh - (48px + 45px) - 200px) / 4));
+    background-color: rgb(6, 71, 6);
+    color: white;
+    display: flex;
+    align-items: center;
+    border-radius: 3px;
+
+    .user__name {
+      border-radius: 3px;
+      font-size: 1.3rem;
+      font-weight: bold;
+      background-color: #095b1b;
+      line-height: 6;
+      border-right: 5px solid white;
+      width: 100px;
+      height: 130px;
+      position: fixed;
+
+      div {
+        border-radius: 3px;
+        text-align: center;
+      }
+    }
+
+    .weekly__report__task__container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: flex-start;
+      align-items: center;
+      flex-direction: column;
+      min-height: calc(((100vh - (48px + 45px) - 200px) / 4));
+      border-right: solid;
+      width: 180px;
+      height: 130px;
+
+      .date {
+        width: inherit;
+        font-size: 0.9rem;
+        font-weight: bold;
+        border-bottom: solid;
+        margin-inline-end: auto;
+
+        .inner_date {
+          text-align: center;
+          margin: 2px;
+
+          .today {
+            color: #ffee00;
+          }
+        }
+      }
+
+      .task {
+        .title_progress {
+          .task_title {
+            cursor: pointer;
+          }
+        }
+      }
+
+      .task {
+        font-size: 0.7rem;
+        margin: 2px;
+        width: inherit;
+
+        .title_progress {
+          display: flex;
+          justify-content: space-evenly;
+          margin: 1px 0 2px;
+        }
+
+        .progress-bar {
+          width: 150px;
+          height: 10px;
+          background-color: #ddd;
+          overflow: hidden;
+          margin: auto;
+
+          .progress {
+            height: 100%;
+            background-color: #4caf50;
+            line-height: 20px;
+          }
+
+          .progress.progress-30 {
+            background-color: #ec2424;
+          }
+
+          .progress.progress-60 {
+            background-color: #e3d62b;
+          }
+
+          .progress.progress-80 {
+            background-color: #1c2ae8;
+          }
+
+          .progress.progress-100 {
+            background-color: #49df6a;
+          }
+        }
+      }
+    }
+  }
+}
+
+.user__name + .weekly__report__task__container {
+  margin-left: 100px;
+}
