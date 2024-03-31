@@ -6,6 +6,8 @@ const $taskEditPopupContent = document.getElementById("task-edit-template");
 // 子タスクの追加ボタンはpop-up-handlerで定義
 popupAddEventListener($taskEditPopup, $taskEditPopupContent);
 
+// Todo 進捗表示処理を移植する ちょっと時間かかりそー
+
 function addSaveBtnEvent($popup) {
   const $saveBtn = $popup.querySelector(".save__btn");
 
