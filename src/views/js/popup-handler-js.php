@@ -183,7 +183,7 @@ function addRegisterBtnEvent($popup) {
         console.log("送ったデータ");
         console.log(json);
         // fetch通信後に再リロード
-        // location.reload();
+        location.reload();
       })
       // エラーハンドリングが出るのでfetchでデータが送れてない（なんぜ）
       .catch((e) => {
@@ -196,6 +196,47 @@ function addRegisterBtnEvent($popup) {
     });
   });
 }
+
+// タスク削除-------------------------------------
+function deleteTask($popup) {
+  const $deleteBtn = document.querySelector(".btn__danger");
+  console.log($deleteBtn);
+  if ($deleteBtn === null) return;
+  $deleteBtn.addEventListener("click", (e) => {
+    e.preventDefault();
+
+    const $parentTask = $popup.querySelector("#parent-task-php");
+
+    const parentTaskId = $popup.dataset.parent_task_id;
+    console.log(parentTaskId);
+    const data = {
+        parent_task_id: +parentTaskId,
+      }
+    console.log(data);
+
+    fetch("http://localhost:8080/api/delete.php", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(data),
+    })
+      .then((res) => {
+        return res.json();
+      })
+      .then((json) => {
+        console.log("送ったデータ");
+        console.log(json);
+        // fetch通信後に再リロード
+        location.reload();
+      })
+      // エラーハンドリングが出るのでfetchでデータが送れてない（なんぜ）
+      .catch((e) => {
+        console.error("Error:", e);
+      });
+  });
+}
+// -------------------------------------
 
 function popupAddEventListener($popup, $taskTemplate) {
   if (!$popup) return;
@@ -227,7 +268,6 @@ function popupAddEventListener($popup, $taskTemplate) {
       });
     });
   });
-
   if($popup.id === "task-detail-popup")
     return;
 

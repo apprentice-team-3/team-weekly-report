@@ -107,6 +107,7 @@ function addSaveBtnEvent($popup) {
 }
 
 addSaveBtnEvent($taskEditPopup);
+deleteTask($taskEditPopup);
 
 $openEditTaskBtns.forEach(($openEditTaskBtn) => {
   $openEditTaskBtn.addEventListener("click", (e) => {
