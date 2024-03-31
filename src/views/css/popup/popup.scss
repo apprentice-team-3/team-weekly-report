@@ -576,3 +576,19 @@ textarea {
     }
   }
 }
+
+.open__detail__task__btn {
+  color: white;
+  cursor: pointer;
+  white-space: nowrap;
+
+  transition: all ease-in-out 0.2s;
+
+  &:hover {
+    transform: scale(0.95);
+  }
+
+  &.popup__open {
+    z-index: 1001;
+  }
+}

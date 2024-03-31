@@ -1,4 +1,10 @@
-<link rel="stylesheet" href="/views/css/popup/popup.css">
+mode<link rel="stylesheet" href="/views/css/popup/popup.css">
+<?php
+session_start();
+// 任意のユーザーIDを設定
+$_SESSION['user_id'] = 2;
+?>
+
 <div class="task__container">
     <h2 class="project__container">
         <div class="project__detail">
@@ -13,7 +19,7 @@
     </h2>
     <div>
         <!-- $userをdata-userに渡したい -->
-        <button class="btn transition__btn open__add__task__btn" data-user_id="<?php echo $_SESSION['user_id']; ?>" data-project_id="1" >今日のタスクを追加</button>
+        <button class="btn transition__btn open__add__task__btn" data-user_id="jsの方で更新する" data-project_id="1" >今日のタスクを追加</button>
     </div>
     <ul class="weekly__report__container">
         <?php $j = 0; ?>
@@ -56,6 +62,9 @@
                                 <?php for ($i = 0; $i < count($weekly_task->parent_tasks); $i++) : ?>
                                     <?php $progress = $weekly_task->parent_tasks[$i]->progress; $progresses[] = $progress; ?>
                                     <div class="title_progress">
+                                        <!-- user_idが一致しているかどうかで分離させる -->
+                                    <?php $parent_task = $weekly_task->parent_tasks[$i]; ?>
+                                        <?php if ($_SESSION["user_id"] == $parent_task->user_id) : ?>
                                         <button class="task_title open__edit__task__btn"
                                             data-parent_task_id="<?php $parent_task = $weekly_task->parent_tasks[$i]; echo $parent_task->id; ?>"
                                             data-parent_task_name="<?php echo $parent_task->title; ?>"
@@ -63,8 +72,17 @@
                                             data-parent_task_user_id="<?php echo $parent_task->user_id; ?>"
                                     >
                                         <?php echo $parent_task->title; ?>
-                                    </button>
-                                        <div class="task_progress"><?php echo $progress; ?>%</div>
+                                     </button>
+                                        <?php else : ?>
+                                            <button class="task_title open__detail__task__btn"  data-parent_task_id="<?php $parent_task = $weekly_task->parent_tasks[$i]; echo $parent_task->id; ?>"
+                                            data-parent_task_name="<?php echo $parent_task->title; ?>"
+                                            data-parent_task_progress="<?php echo $parent_task->progress; ?>"
+                                            data-parent_task_user_id="<?php echo $parent_task->user_id; ?>">
+                                               <?php echo $parent_task->title; ?>
+                                            </button>
+                                    <?php endif ; ?>
+
+                                    <div class="task_progress"><?php echo $progress; ?>%</div>
                                     </div>
                                     <div class="progress-bar">
                                         <div class="progress" id="<?php echo $j; ?>" style="width: <?php echo $progress; ?>%;"></div>
@@ -79,17 +97,11 @@
         <?php endforeach; ?>
     </ul>
 </div>
-<?php
-session_start();
-// 任意のユーザーIDを設定
-$_SESSION['user_id'] = 2;
-?>
+
 <script>
 document.addEventListener('DOMContentLoaded', function() {
-    const openDetailTaskBtns = document.getElementsByClassName("open__edit__task__btn");
-    // const taskEditPopup = document.getElementById("task-edit-popup");
+    const openDetailTaskBtns = document.getElementsByClassName("open__detail__task__btn");
     const loggedInUserId = <?php echo $_SESSION['user_id']; ?>;
-
     Array.from(openDetailTaskBtns).forEach(function(openDetailTaskBtn) {
         const handleClick = function(e) {
             e.preventDefault();
