@@ -15,4 +15,35 @@
             progressBar<?php echo $k;?>.classList.add('progress-100');
         }
     <?php endfor;?>
+
+    function calcProjectProgress(dataList) {
+  const parentTaskProgress = [];
+
+  Object.keys(dataList).forEach((key) => {
+    const parent_tasks = dataList[key].parent_tasks;
+    const progress =
+      parent_tasks.reduce((acc, cur) => {
+        return acc + cur.progress;
+      }, 0) / parent_tasks.length;
+
+    parentTaskProgress.push(progress);
+  });
+
+  const projectTaskProgress =
+    parentTaskProgress.reduce((acc, progress) => {
+      return acc + progress;
+    }, 0) / parentTaskProgress.length;
+
+    return projectTaskProgress
+}
+
+const projectTaskProgress = calcProjectProgress(
+        <?php echo
+    json_encode($weekly_tasks)
+    ?>)
+
+    const $projectProgress = document.getElementById('project-progress');
+    $projectProgress.textContent = projectTaskProgress.toFixed(2) + '%';
+
 </script>
+

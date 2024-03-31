@@ -8,11 +8,8 @@ $_SESSION['user_id'] = 3;
     <h2 class="project__container">
         <div class="project__detail">
         <?php echo $project->title ?>
-        <script>
-            const progress = Number("<?php echo floor($project->progress) ?>")
-            const progressPercent = progress
-            document.write(progressPercent + "%")
-        </script>
+        <span id="project-progress">
+        </span>
         完了
         </div>
     </h2>

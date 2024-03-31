@@ -42,20 +42,6 @@ for (const $openDetailTaskBtn of $openDetailTaskBtns) {
     const $cover =document.querySelector('.cover');
     $cover.classList.add('popup__open');
 
-//     const rect = $progressBar.getBoundingClientRect();
-//     const popupWidth = $popup.offsetWidth;
-//     const popupHeight = $popup.offsetHeight;
-
-//     const windowWidth = 1260
-//     const windowHeight = 775
-
-
-//     if (rect.left < popupWidth + 40) {
-//     $popup.style.left = `${rect.left + rect.width*5 - windowWidth*0.15 - 20 }px`;
-// } else {
-//     $popup.style.left = `${rect.left - rect.width*5 / 2  - 20}px`;
-//   }
-
     $openDetailTaskBtn.classList.toggle("popup__open");
 
     $openDetailTaskBtn
