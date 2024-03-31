@@ -25,10 +25,6 @@ $_SESSION['user_id'] = 3;
                     <div>
                         <?php echo $user->name ?>
                     </div>
-                    <div>
-                        <!-- $userをdata-userに渡したい -->
-                        <!-- <button class="btn transition__btn open__add__task__btn" data-user_id="<?php echo $user->id ?>" data-project_id="<?php echo $project->id ?>" >タスクを追加</button> -->
-                    </div>
                 </div>
 
                 <?php foreach ($weekly_tasks as $weekly_task) : ?>
@@ -58,8 +54,12 @@ $_SESSION['user_id'] = 3;
                                 <?php for ($i = 0; $i < count($weekly_task->parent_tasks); $i++) : ?>
                                     <?php $progress = $weekly_task->parent_tasks[$i]->progress; $progresses[] = $progress; ?>
                                     <div class="title_progress">
-                                        <!-- user_idが一致しているかどうかで分離させる -->
-                                    <?php $parent_task = $weekly_task->parent_tasks[$i]; ?>
+                                    <?php
+                                    $parent_task = $weekly_task->parent_tasks[$i];
+                                    // 文字が10文字まで表示
+                                    if (mb_strlen($parent_task->title) > 8)
+                                        $title = mb_substr($parent_task->title, 0, 8) . '...';
+                                    ?>
                                         <?php if ($_SESSION["user_id"] == $parent_task->user_id) : ?>
                                         <button class="task_title open__edit__task__btn"
                                             data-parent_task_id="<?php $parent_task = $weekly_task->parent_tasks[$i]; echo $parent_task->id; ?>"
@@ -67,18 +67,21 @@ $_SESSION['user_id'] = 3;
                                             data-parent_task_progress="<?php echo $parent_task->progress; ?>"
                                             data-parent_task_user_id="<?php echo $parent_task->user_id; ?>"
                                     >
-                                        <?php echo $parent_task->title; ?>
+                                        <?php echo $title ?>
                                      </button>
                                         <?php else : ?>
                                             <button class="task_title open__detail__task__btn"  data-parent_task_id="<?php $parent_task = $weekly_task->parent_tasks[$i]; echo $parent_task->id; ?>"
                                             data-parent_task_name="<?php echo $parent_task->title; ?>"
                                             data-parent_task_progress="<?php echo $parent_task->progress; ?>"
                                             data-parent_task_user_id="<?php echo $parent_task->user_id; ?>">
-                                               <?php echo $parent_task->title; ?>
+                                               <?php echo $title ?>
                                             </button>
                                     <?php endif ; ?>
 
-                                    <div class="task_progress"><?php echo $progress; ?>%</div>
+                                    <div class="task_progress"><?php
+                                    // 整数だけ取り出す
+                                    echo (int)$progress;
+                                    ?>%</div>
                                     </div>
                                     <div class="progress-bar">
                                         <div class="progress" id="<?php echo $j; ?>" style="width: <?php echo $progress; ?>%;"></div>
