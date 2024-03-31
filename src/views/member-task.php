@@ -100,7 +100,25 @@ $_SESSION['user_id'] = 2;
 <script>
 document.addEventListener('DOMContentLoaded', function() {
     const openDetailTaskBtns = document.getElementsByClassName("open__detail__task__btn");
-    const loggedInUserId = <?php echo $_SESSION['user_id']; ?>;
+    // const loggedInUserId = <?php echo $_SESSION['user_id']; ?>;
+
+      // console.log(loggedInUserId);
+
+            // if (loggedInUserId === parentTaskUserId) {
+            //     // ログインユーザーIDと親タスクのユーザーIDが一致する場合の処理
+            //     document.querySelector('.register__btn').style.display = "inline-block";
+            //     document.querySelector('.btn__danger').style.display = "inline-block";
+            //     document.querySelector('.icon__add').style.display = "inline-block";
+            // } else {
+            //     // ログインユーザーIDと親タスクのユーザーIDが一致しない場合の処理
+            //     document.querySelector('.btn__container').style.display = "none";
+            //     document.querySelector('.evaluation').style.display = "none";
+            //     document.querySelector('.child__task__input').style.display = "none";
+            //     document.querySelector('.icon__add').style.display = "none";
+            //     document.querySelector('.icon__remove').style.display = "none";
+            // }
+
+    const $popup = document.querySelector('#task-detail-popup');
 
     Array.from(openDetailTaskBtns).forEach(function(openDetailTaskBtn) {
         const handleClick = function(e) {
@@ -109,24 +127,9 @@ document.addEventListener('DOMContentLoaded', function() {
 
             const parentTaskUserId = parseInt(openDetailTaskBtn.dataset.parent_task_user_id);
             console.log(parentTaskUserId);
-            console.log(loggedInUserId);
 
-            if (loggedInUserId === parentTaskUserId) {
-                // ログインユーザーIDと親タスクのユーザーIDが一致する場合の処理
-                document.querySelector('.register__btn').style.display = "inline-block";
-                document.querySelector('.btn__danger').style.display = "inline-block";
-                document.querySelector('.icon__add').style.display = "inline-block";
-            } else {
-                // ログインユーザーIDと親タスクのユーザーIDが一致しない場合の処理
-                document.querySelector('.btn__container').style.display = "none";
-                document.querySelector('.evaluation').style.display = "none";
-                document.querySelector('.child__task__input').style.display = "none";
-                document.querySelector('.icon__add').style.display = "none";
-                document.querySelector('.icon__remove').style.display = "none";
-            }
-
-            // イベントリスナーを削除
-            openDetailTaskBtn.removeEventListener("click", handleClick);
+            // $popupを開く
+            $popup.classList.add('popup__open');
         };
 
         openDetailTaskBtn.addEventListener("click", handleClick);
