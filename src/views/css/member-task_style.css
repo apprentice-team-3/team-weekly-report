@@ -172,9 +172,8 @@ header {
             color: #ffee00;
           }
         }
-
       }
-      
+
       .task {
         .title_progress {
           .task_title {
@@ -190,8 +189,9 @@ header {
 
         .title_progress {
           display: flex;
-          justify-content: space-evenly;
+          justify-content: space-between;
           margin: 1px 0 2px;
+          padding: 0 10px;
         }
 
         .progress-bar {
@@ -228,6 +228,6 @@ header {
   }
 }
 
-.user__name+.weekly__report__task__container {
+.user__name + .weekly__report__task__container {
   margin-left: 100px;
 }

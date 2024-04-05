@@ -543,4 +543,14 @@ textarea :hover {
 }
 .open__detail__task__btn.popup__open {
   z-index: 1001;
+}
+
+.title_progress {
+  display: flex;
+  align-items: center;
+  justify-content: start;
+}
+
+.title_progress {
+  justify-content: start;
 }/*# sourceMappingURL=popup.css.map */
