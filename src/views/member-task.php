@@ -1,4 +1,4 @@
-mode<link rel="stylesheet" href="/views/css/popup/popup.css">
+<link rel="stylesheet" href="/views/css/popup/popup.css">
 <?php
 // 任意のユーザーIDを設定
 $_SESSION['user_id'] = 3;
