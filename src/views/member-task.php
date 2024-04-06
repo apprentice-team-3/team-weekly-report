@@ -6,6 +6,7 @@ use model\User;
 use model\ParentTask;
 use model\WeeklyTask;
 
+
 try {
     $db = new DataSource;
     $db->begin();
@@ -26,6 +27,7 @@ try {
     $users = $db->select($sql,[],DataSource::CLS,User::class);
 
     $db->commit();
+
 } catch (PDOException $e) {
     echo 'ユーザーを取得できませんでした。<br>';
     $db->rollback();
